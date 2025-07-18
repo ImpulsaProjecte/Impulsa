@@ -20,10 +20,43 @@
     }
   </script>
   <style>
-    /* Estilos adicionales para un mejor aspecto del cuestionario */
     body {
       overflow-y: scroll; /* Força la barra de desplaçament vertical */
     }
+    /* Estilos para el overlay del código grande */
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semitransparente */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Asegura que esté por encima de todo */
+      color: white;
+      font-size: 8em; /* Tamaño de fuente grande para el código */
+      font-weight: bold;
+      text-shadow: 0 0 10px #f59e0b; /* Sombra para el texto */
+    }
+    .fullscreen-overlay button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: #f59e0b;
+      color: #1e3a8a;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .fullscreen-overlay button:hover {
+      background-color: #e68a00;
+    }
+
+    /* Estilos adicionales para un mejor aspecto del cuestionario */
     .question-card, .role-selection-card {
       background-color: rgba(255, 255, 255, 0.9); /* Un poco más opaco que el formulario */
       border-radius: 0.75rem; /* rounded-xl */
@@ -82,6 +115,32 @@
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
+    .host-results-display {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        color: #1e3a8a;
+    }
+    .host-results-display ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    .host-results-display li {
+        font-size: 1.1em;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    .winner-message {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #f59e0b;
+        margin-top: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-hidden">
@@ -96,10 +155,12 @@
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
       </a>
       <ul class="flex space-x-6 text-white">
+        <li><a href="index.html" class="hover:text-taronja transition-all">Inici</a></li>
         <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
         <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
         <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+        <li><a href="activitat.html" class="hover:text-taronja transition-all font-bold">Activitat</a></li>
       </ul>
     </div>
   </nav>
@@ -126,7 +187,19 @@
         </button>
         <div id="activityCodeDisplay" class="mt-4 text-lg font-bold text-blau hidden">
           El teu codi és: <span id="generatedCode" class="text-taronja text-2xl"></span>
-          <p class="text-sm text-gray-600 mt-2">Aquest codi és només una simulació i no es guarda ni connecta a participants reals.</p>
+          <button id="showCodeFullscreenBtn" class="bg-blau text-white font-semibold px-4 py-1 rounded-full ml-4 transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja text-base">
+            Fer Codi Gran
+          </button>
+        </div>
+        <div id="hostResultsContainer" class="host-results-display hidden mt-8">
+            <h3 class="text-2xl font-bold mb-4">Resultats dels Participants</h3>
+            <ul id="participantsList" class="text-left max-h-60 overflow-y-auto px-4">
+                <li>Esperant participants...</li>
+            </ul>
+            <button id="revealWinnerBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+                Revelar Guanyador
+            </button>
+            <div id="winnerDisplay" class="winner-message hidden"></div>
         </div>
       </div>
 
@@ -254,10 +327,9 @@
         </button>
       </form>
 
-      <div id="resultsContainer" class="results hidden">
+      <div id="participantResultsContainer" class="results hidden">
         <h2>Resultats del Cuestionari</h2>
-        <p id="scoreMessage"></p>
-        <p class="mt-4 text-gray-700">Gràcies per participar! Esperem que t'hagis divertit amb aquestes preguntes.</p>
+        <p>Gràcies per participar! El Host revelarà els resultats.</p>
       </div>
 
     </section>
@@ -267,7 +339,38 @@
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
 
-  <script>
+  <div id="fullscreenCodeOverlay" class="fullscreen-overlay hidden">
+    <span id="fullscreenCode"></span>
+    <button id="closeFullscreenCodeBtn">Tancar</button>
+  </div>
+
+  <script type="module">
+    // Importa las funciones necesarias de Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // TODO: PEGA AQUÍ LA CONFIGURACIÓN DE TU PROYECTO FIREBASE (DESDE EL PASO 4 DE LA PARTE 1)
+    // Ejemplo (REEMPLAZA ESTO CON TUS PROPIOS VALORES):
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY_AQUI", // REEMPLAZA
+      authDomain: "TU_AUTH_DOMAIN_AQUI.firebaseapp.com", // REEMPLAZA
+      projectId: "TU_PROJECT_ID_AQUI", // REEMPLAZA
+      storageBucket: "TU_STORAGE_BUCKET_AQUI.appspot.com", // REEMPLAZA
+      messagingSenderId: "TU_MESSAGING_SENDER_ID_AQUI", // REEMPLAZA
+      appId: "TU_APP_ID_AQUI" // REEMPLAZA
+    };
+
+    // Inicializa Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Importa la biblioteca de confetti
+    import confetti from 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.js';
+
+    // Para el audio de fanfarria
+    const fanfareAudio = new Audio('fanfare.mp3'); // Asegúrate de tener este archivo en tu carpeta
+
+
     function generateRandomCode() {
       return Math.random().toString(36).substring(2, 8).toUpperCase(); // 6 caracteres alfanuméricos
     }
@@ -281,58 +384,194 @@
       const generateCodeBtn = document.getElementById('generateCodeBtn');
       const generatedCodeDisplay = document.getElementById('activityCodeDisplay');
       const generatedCodeSpan = document.getElementById('generatedCode');
+      const showCodeFullscreenBtn = document.getElementById('showCodeFullscreenBtn');
+      const fullscreenCodeOverlay = document.getElementById('fullscreenCodeOverlay');
+      const fullscreenCodeSpan = document.getElementById('fullscreenCode');
+      const closeFullscreenCodeBtn = document.getElementById('closeFullscreenCodeBtn');
       const participantNameInput = document.getElementById('participantName');
       const activityCodeInput = document.getElementById('activityCodeInput');
       const startActivityBtn = document.getElementById('startActivityBtn');
       const quizForm = document.getElementById('quizForm');
       const submitQuizBtn = document.getElementById('submitQuiz');
-      const resultsContainer = document.getElementById('resultsContainer');
-      const scoreMessage = document.getElementById('scoreMessage');
+      const participantResultsContainer = document.getElementById('participantResultsContainer');
+      const hostResultsContainer = document.getElementById('hostResultsContainer');
+      const participantsList = document.getElementById('participantsList');
+      const revealWinnerBtn = document.getElementById('revealWinnerBtn');
+      const winnerDisplay = document.getElementById('winnerDisplay');
 
-      let currentActivityCode = ''; // Simula el código de la actividad
+      let currentActivityCode = '';
+      let isHost = false;
+      let participantName = ''; // Para guardar el nombre del participante actual
 
+      // --- Firebase Listeners y Funciones ---
+      let unsubscribeFromParticipants = null; // Para desuscribirse del listener de Firebase
+
+      // Función para iniciar el listener de Firebase (solo para el host)
+      const startFirebaseListener = (code) => {
+          const q = collection(db, "activities", code, "participants");
+          // onSnapshot es un listener en tiempo real. Se ejecuta cada vez que hay un cambio en la colección.
+          unsubscribeFromParticipants = onSnapshot(q, (snapshot) => {
+              participantsList.innerHTML = ''; // Limpia la lista
+              if (snapshot.empty) {
+                  participantsList.innerHTML = '<li>Esperant participants...</li>';
+                  return;
+              }
+              const participantsData = [];
+              snapshot.forEach((doc) => {
+                  participantsData.push(doc.data());
+              });
+
+              // Ordenar participantes por puntuación (del más alto al más bajo)
+              participantsData.sort((a, b) => b.score - a.score);
+
+              participantsData.forEach(p => {
+                  const li = document.createElement('li');
+                  // Mostramos el nombre y la puntuación si ya ha finalizado
+                  if (p.completed) {
+                    li.innerHTML = `<strong>${p.name}</strong>: ${p.score} punts (Finalitzat)`;
+                  } else {
+                    li.innerHTML = `<strong>${p.name}</strong>: En curs...`;
+                  }
+                  participantsList.appendChild(li);
+              });
+          }, (error) => {
+              console.error("Error al escuchar participantes:", error);
+              alert("Error al carregar els participants. Revisa la consola per a més detalls.");
+          });
+      };
+
+      // --- Gestión de Roles ---
       hostBtn.addEventListener('click', function() {
+        isHost = true;
         roleSelection.classList.add('hidden');
         hostInterface.classList.remove('hidden');
       });
 
       participantBtn.addEventListener('click', function() {
+        isHost = false;
         roleSelection.classList.add('hidden');
         participantInterface.classList.remove('hidden');
       });
 
-      generateCodeBtn.addEventListener('click', function() {
+      // --- Funcionalidad del Host ---
+      generateCodeBtn.addEventListener('click', async function() {
         currentActivityCode = generateRandomCode();
         generatedCodeSpan.innerText = currentActivityCode;
         generatedCodeDisplay.classList.remove('hidden');
+        hostResultsContainer.classList.remove('hidden'); // Mostrar el contenedor de resultados para el host
+
+        // Guardar la actividad en Firebase
+        try {
+          await setDoc(doc(db, "activities", currentActivityCode), {
+            createdAt: new Date(),
+            hostId: "someHostIdentifier" // Puedes añadir un ID de host si quieres, o simplemente el timestamp
+          });
+          console.log("Actividad creada en Firebase con código:", currentActivityCode);
+          startFirebaseListener(currentActivityCode); // Iniciar el listener para el host
+        } catch (e) {
+          console.error("Error al crear la actividad en Firebase:", e);
+          alert("No s'ha pogut generar el codi. Intenta-ho de nou.");
+        }
       });
 
-      startActivityBtn.addEventListener('click', function(event) {
+      showCodeFullscreenBtn.addEventListener('click', function() {
+        fullscreenCodeSpan.innerText = generatedCodeSpan.innerText;
+        fullscreenCodeOverlay.classList.remove('hidden');
+      });
+
+      closeFullscreenCodeBtn.addEventListener('click', function() {
+        fullscreenCodeOverlay.classList.add('hidden');
+      });
+
+      revealWinnerBtn.addEventListener('click', async function() {
+        if (!currentActivityCode) {
+            alert("Primer has de generar un codi d'activitat.");
+            return;
+        }
+
+        try {
+            const participantsRef = collection(db, "activities", currentActivityCode, "participants");
+            const q = query(participantsRef, orderBy("score", "desc"), limit(1)); // Ordena y coge el de mayor puntuación
+            const snapshot = await getDoc(q); // getDoc en este caso para obtener una sola vez
+
+            let winner = null;
+            let maxScore = -1;
+
+            // Recorre el snapshot si es una query de colección (aunque limit(1) te dará uno)
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                if (data.score > maxScore) {
+                    maxScore = data.score;
+                    winner = data.name;
+                }
+            });
+
+            if (winner) {
+                winnerDisplay.innerText = `El guanyador és: ${winner} amb ${maxScore} punts!`;
+                winnerDisplay.classList.remove('hidden');
+                confetti({
+                    particleCount: 200,
+                    spread: 120,
+                    origin: { y: 0.6 }
+                });
+                fanfareAudio.play();
+            } else {
+                winnerDisplay.innerText = 'Encara no hi ha participants o resultats per determinar un guanyador.';
+                winnerDisplay.classList.remove('hidden');
+            }
+
+        } catch (e) {
+            console.error("Error al revelar el guanyador:", e);
+            alert("No s'ha pogut determinar el guanyador. Revisa la consola.");
+        }
+      });
+
+      // --- Funcionalidad del Participante ---
+      startActivityBtn.addEventListener('click', async function(event) {
         event.preventDefault(); 
 
-        const name = participantNameInput.value.trim();
-        const code = activityCodeInput.value.trim();
+        participantName = participantNameInput.value.trim();
+        currentActivityCode = activityCodeInput.value.trim();
 
-        if (name === '') {
+        if (participantName === '') {
           alert('Per favor, introdueix el teu nom.');
           return;
         }
 
-        if (currentActivityCode !== '' && code !== currentActivityCode) {
-            alert('El codi d\'activitat introduït és incorrecte. Torna-ho a provar.');
-            return;
-        } else if (currentActivityCode === '' && code === '') {
-             alert('Per favor, introdueix un codi d\'activitat o genera-ne un com a host.');
+        if (currentActivityCode === '') {
+             alert('Per favor, introdueix un codi d\'activitat.');
              return;
         }
 
-        participantInterface.classList.add('hidden');
-        hostInterface.classList.add('hidden'); 
-        quizForm.classList.remove('hidden');
-        quizForm.classList.add('flex'); 
+        // Comprobar si la actividad existe en Firebase
+        try {
+            const activityDocRef = doc(db, "activities", currentActivityCode);
+            const activityDocSnap = await getDoc(activityDocRef);
+
+            if (!activityDocSnap.exists()) {
+                alert('El codi d\'activitat introduït no existeix. Torna-ho a provar o contacta amb l\'Host.');
+                return;
+            }
+
+            // Registrar el participante en la actividad
+            await setDoc(doc(db, "activities", currentActivityCode, "participants", participantName), {
+                name: participantName,
+                score: 0, // Puntuación inicial
+                completed: false, // Estado inicial
+                joinedAt: new Date()
+            });
+            console.log("Participant registrat:", participantName, "a l'activitat:", currentActivityCode);
+
+            participantInterface.classList.add('hidden');
+            quizForm.classList.remove('hidden');
+            quizForm.classList.add('flex'); 
+        } catch (e) {
+            console.error("Error al iniciar actividad como participante:", e);
+            alert("No s'ha pogut iniciar l'activitat. Potser el nom ja està en ús o hi ha un problema amb el codi.");
+        }
       });
 
-      submitQuizBtn.addEventListener('click', function() {
+      submitQuizBtn.addEventListener('click', async function() {
         let score = 0;
         const totalTestQuestions = 4;
 
@@ -378,10 +617,26 @@
           return;
         }
 
-        const scoreText = `Has encertat ${score} de ${totalTestQuestions} preguntes de tipus test.`;
-        scoreMessage.innerText = scoreText;
-        resultsContainer.classList.remove('hidden');
+        // Enviar la puntuación a Firebase (solo si es participante)
+        if (!isHost && participantName && currentActivityCode) {
+            try {
+                await setDoc(doc(db, "activities", currentActivityCode, "participants", participantName), {
+                    score: score,
+                    completed: true,
+                    completedAt: new Date()
+                }, { merge: true }); // 'merge: true' para solo actualizar los campos especificados
+                console.log("Puntuación del participante enviada a Firebase:", participantName, score);
+            } catch (e) {
+                console.error("Error al enviar la puntuación a Firebase:", e);
+                alert("No s'ha pogut enviar la teva puntuació. Si us plau, informa l'Host.");
+            }
+        }
+        
+        // Ocultar los resultados al participante
+        quizForm.classList.add('hidden');
+        participantResultsContainer.classList.remove('hidden');
 
+        // Deshabilitar el formulario para el participante
         quizForm.querySelectorAll('input, select, textarea, button').forEach(element => {
           element.disabled = true;
         });
