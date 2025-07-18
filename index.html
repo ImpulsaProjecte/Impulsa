@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IMPULSA - Inici</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+    .animate-spin-slow { animation: spin-slow 16s linear infinite; }
+  </style>
+</head>
+<body class="min-h-screen text-blau font-sans relative overflow-hidden">
+  <!-- Fons dinàmic amb gradient i glow -->
+  <div aria-hidden="true" class="absolute inset-0 -z-10">
+    <div class="w-full h-full bg-gradient-to-br from-[#1e3a8a] via-[#0f172a] to-black opacity-90 animate-pulse"></div>
+    <div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-taronja blur-3xl opacity-20 animate-spin-slow"></div>
+    <div class="absolute right-1/4 bottom-0 w-[300px] h-[300px] rounded-full bg-blau blur-2xl opacity-30 animate-pulse"></div>
+  </div>
+
+  <!-- Barra de navegació futurista -->
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <ul class="flex gap-6 text-white font-semibold">
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO: Secció inicial moderna -->
+  <header id="hero" class="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden">
+    <!-- Logo gran amb animació -->
+    <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
+    <!-- Missatge principal -->
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
+      Tecnologia amb ànima per al talent
+    </h1>
+    <!-- Paràgraf introductori IMPULSA IA -->
+    <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
+      IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
+    </p>
+    <!-- Descripció curta -->
+    <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
+      IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
+    </p>
+    <!-- Botó de crida a l'acció -->
+    <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja text-lg animate-bounce">
+      Descobreix el programa
+    </a>
+  </header>
+
+  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
+    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  </footer>
+</body>
+</html>

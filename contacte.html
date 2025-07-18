@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacte - IMPULSA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen text-blau font-sans relative overflow-hidden">
+  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
+    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+    opacity:0.9;"></div>
+  <!-- Aquí va la barra de navegació i el contingut -->
+  <!-- ... -->
+</body>
+  <!-- Barra de navegació futurista -->
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <ul class="flex gap-6 text-white font-semibold">
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="max-w-5xl mx-auto px-4 py-32">
+    <section id="contacte" aria-label="Contacte" class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Contacte</h2>
+      <!-- Formulari amb consulta/motiu d'interès -->
+      <form action="https://formspree.io/f/xwpqpnop" method="POST" class="bg-white bg-opacity-80 rounded-xl shadow-xl p-6 max-w-md mx-auto flex flex-col gap-4" aria-label="Formulari de contacte">
+        <!-- Camp Nom -->
+        <label for="nom" class="font-medium text-blau">Nom *</label>
+        <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom">
+        <!-- Camp Email -->
+        <label for="email" class="font-medium text-blau">Correu electrònic *</label>
+        <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu">
+        <!-- Camp Consulta/Motiu d'interès -->
+        <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
+        <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
+          <option value="">Selecciona una opció</option>
+          <option value="informacio">Vull més informació</option>
+          <option value="inscripcio">Vull inscriure'm al programa</option>
+          <option value="colaboracio">Vull col·laborar amb el projecte</option>
+          <option value="altres">Altres</option>
+        </select>
+        <!-- Camp Missatge -->
+        <label for="missatge" class="font-medium text-blau">Missatge</label>
+        <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
+        <!-- Botó Enviar -->
+        <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Envia
+        </button>
+      </form>
+      <!-- Dades de contacte -->
+      <div class="text-center mt-6">
+        <p class="text-taronja underline">Correu: <a href="mailto:impulsa+45@gmail.com" class="text-taronja underline">impulsa+45@gmail.com</a></p>
+        <p class="text-taronja underline">Telèfon: <a href="tel:+34627113914" class="text-taronja underline">+34 627 113 914</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
+    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  </footer>
+</body>
+</html>

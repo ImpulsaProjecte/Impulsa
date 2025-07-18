@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programa - IMPULSA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen text-blau font-sans relative overflow-x-hidden">
+  <!-- Fons futurista -->
+  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100%;
+    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+    opacity:0.9;"></div>
+
+  <!-- Barra de navegació -->
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <ul class="flex gap-6 text-white font-semibold">
+        <li><a href="#" class="hover:text-taronja transition-all">Programa</a></li>
+       <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 py-32">
+    <!-- PROGRAMA -->
+    <section aria-label="Programa" class="mb-24">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Programa IMPULSA</h2>
+      <p class="text-lg text-white text-center mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
+        El projecte ofereix una resposta pràctica i humana a una necessitat urgent: moltes persones amb talent i experiència acumulada se senten desconnectades tecnològicament i qüestionades professionalment en un món laboral que canvia massa de pressa.<br><br>
+        Amb un enfocament proper, pràctic i emocional, <strong>Impulsa+45</strong> combina diagnòstic personalitzat, tallers sobre IA i eines digitals, i la creació d’una comunitat +45 activa i empoderada.<br><br>
+        L’objectiu és establir una col·laboració amb l’Ajuntament per impulsar aquest projecte al municipi, generar impacte des del primer dia i convertir el municipi en exemple de lideratge social i innovació amb sentit humà.<br><br>
+        <em class="text-taronja">“Quan posem la tecnologia al servei de les persones, el futur es construeix amb justícia i dignitat.”</em>
+      </p>
+      
+   <!-- BLOCS DESPLEGABLES -->
+<div class="space-y-6 mb-24 max-w-4xl mx-auto">
+
+  <!-- Bloc 1: Diagnosi -->
+  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
+    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
+      Diagnosi inicial
+      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
+    </summary>
+    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
+      <p>Avaluació personalitzada per detectar necessitats digitals i emocionals.</p>
+    </div>
+  </details>
+
+  <!-- Bloc 2: Tallers -->
+  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
+    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
+      Tallers d’IA i Eines Digitals
+      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
+    </summary>
+    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
+      <p>Sessions pràctiques per aprendre a utilitzar IA i eines digitals útils al món laboral.</p>
+    </div>
+  </details>
+
+  <!-- Bloc 3: Comunitat -->
+  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
+    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
+      Comunitat
+      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
+    </summary>
+    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
+      <p>Grup de suport continu per compartir recursos, experiències i resoldre dubtes.</p>
+    </div>
+  </details>
+
+</div>
+
+<!-- OBJECTIUS -->
+<section aria-label="Objectius" class="mb-24">
+  <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Objectius del projecte</h2>
+  <p class="text-lg text-white text-center mb-10 max-w-2xl mx-auto font-medium">
+    Els objectius d’IMPULSA estan pensats per acompanyar persones adultes en un procés de transformació digital i personal.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
+      <img src="BRETXA DIGITAL.png" alt="Bretxa digital" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
+      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Reduir la bretxa digital</h3>
+      <p class="text-white text-center">Facilitem l’accés a la tecnologia amb eines pràctiques i suport emocional.</p>
+    </article>
+    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
+      <img src="AUTOESTIMA.png" alt="Autoestima" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
+      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Reforçar l’autoestima</h3>
+      <p class="text-white text-center">Acompanyem les persones per guanyar confiança en l’ús de la tecnologia.</p>
+    </article>
+    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
+      <img src="representaciones-de-ui-y-ux-con-smartphone.jpg" alt="Adaptació digital" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
+      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Facilitar l’adaptació</h3>
+      <p class="text-white text-center">Oferim recursos per adaptar-se als canvis digitals i laborals.</p>
+    </article>
+    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
+      <img src="COMUNITAT.png" alt="Comunitat" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
+      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Crear comunitat</h3>
+      <p class="text-white text-center">Fomentem el suport mutu i la creació de xarxa entre participants.</p>
+    </article>
+  </div>
+</section>
+
+<!-- IMPACTE ESPERAT (Dues columnes: persones a l'esquerra, municipi a la dreta) -->
+<section class="mt-24 relative">
+  <h3 class="text-3xl font-bold text-taronja text-center mb-4">Impacte esperat</h3>
+  <p class="text-white text-center max-w-3xl mx-auto mb-16 text-base">
+    Impulsa busca generar un impacte real en tres nivells: personal, comunitari i institucional. No només millora habilitats, sinó que activa confiança, dignitat i futur.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+    <!-- Columna esquerra -->
+    <div>
+      <h4 class="text-xl font-bold text-taronja mb-6 text-center uppercase">IMPACTE EN LES PERSONES</h4>
+      <div class="space-y-6">
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
+          <p class="font-bold">Augment de la confiança digital i autonomia en l’ús de noves tecnologies</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
+          <p class="font-bold">Millora de la percepció del propi valor professional i emocional</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
+          <p class="font-bold">Reducció del sentiment de desconnexió o por davant la intel·ligència artificial</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
+          <p class="font-bold">Activació d’un procés d’actualització contínua adaptat a la seva realitat</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna dreta -->
+    <div>
+      <h4 class="text-xl font-bold text-taronja text-center mb-6 uppercase">IMPACTE EN EL MUNICIPI</h4>
+      <div class="space-y-6">
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
+          <p class="font-bold">Reducció de la bretxa digital entre generacions</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
+          <p class="font-bold">Impuls de la innovació amb inclusió, posant al centre les persones</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
+          <p class="font-bold">Enfortiment del teixit social i creació d’una xarxa de suport local +45</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
+          <p class="font-bold">Reforç del lideratge del municipi com a pioner en acció social digital</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL DE PÀGINA -->
+<footer class="mt-24 py-10 border-t border-white/20 text-center text-white text-sm opacity-75">
+  <p>© 2025 IMPULSA. Dissenyat amb propòsit i passió</p>
+</footer>
+</main>
+</body>
+</html>

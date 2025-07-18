@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Col·laboració - IMPULSA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a',
+            blancsuau: '#f9fafb'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-blau font-sans relative overflow-y-scroll bg-gradient-to-br from-blau via-futur to-black">
+  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
+    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+    opacity:0.9;"></div>
+
+  <!-- Barra de navegació futurista -->
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-2">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <ul class="flex gap-6 text-white font-semibold">
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-40">
+    <section aria-label="Col·laboració" class="mb-16">
+      <h2 class="text-4xl font-extrabold mb-10 text-white text-center drop-shadow-lg tracking-wide">Proposta de col·laboració institucional <br><span class="text-taronja">model win-WIN</span></h2>
+
+      <div class="bg-futur bg-opacity-80 rounded-3xl shadow-2xl p-10 text-white text-lg space-y-8 backdrop-blur-md border border-white/10">
+        <p class="text-center font-medium text-xl">Impulsa+45 ha estat dissenyat com un projecte de col·laboració entre l’Ajuntament i un professional especialitzat, amb la voluntat de sumar forces i crear valor públic tangible i immediat.</p>
+        <p class="text-center text-lg">Proposem una col·laboració senzilla, escalable i viable, basada en la confiança i la complementarietat.</p>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-12">
+          <!-- Aportacions Ajuntament -->
+          <div class="bg-white bg-opacity-10 rounded-2xl p-8 shadow-xl hover:shadow-2xl border-t-4 border-taronja">
+            <h3 class="text-2xl text-taronja font-bold mb-6 text-center">Ajuntament</h3>
+            <div class="space-y-4">
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Espai municipal per a les sessions formatives i les trobades de grup.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Difusió del projecte a través de canals institucionals (web, xarxes, butlletins).</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Suport logístic bàsic (inscripcions, accés, material bàsic).</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Opció d’incloure el projecte en el pla local d’ocupació, serveis socials o formació contínua.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Possibilitat de formalitzar la col·laboració.</div>
+            </div>
+          </div>
+
+          <!-- Aportacions Dinamitzadors -->
+          <div class="bg-white bg-opacity-10 rounded-2xl p-8 shadow-xl hover:shadow-2xl border-t-4 border-taronja">
+            <h3 class="text-2xl text-taronja font-bold mb-6 text-center">Dinamitzador/a</h3>
+            <div class="space-y-4">
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Disseny del programa i dels materials formatius.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Dinamització de totes les sessions i seguiment personalitzat del grup.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Acompanyament emocional i facilitació participativa.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Valoració final i informe d’impacte amb propostes de continuitat.</div>
+              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Experiència professional reconeguda en àmbits de psicologia, benestar laboral i transformació digital.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
+    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  </footer>
+</body>
+</html>
