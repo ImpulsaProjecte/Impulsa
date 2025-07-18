@@ -21,12 +21,10 @@
   </script>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-hidden">
-  <!-- Fons decoratiu -->
   <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
     background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
     opacity:0.9;"></div>
 
-  <!-- Barra de navegació futurista -->
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2">
@@ -44,19 +42,15 @@
         class="bg-white bg-opacity-80 rounded-xl shadow-xl p-6 max-w-md mx-auto flex flex-col gap-4"
         aria-label="Formulari de contacte">
 
-        <!-- CAMPS OCULTS PER A FORM SUBMIT -->
         <input type="hidden" name="_next" value="https://impulsaprojecte.github.io/Impulsa/missatge-enviat.html" />
         <input type="hidden" name="_captcha" value="false" />
 
-        <!-- Nom -->
         <label for="nom" class="font-medium text-blau">Nom *</label>
         <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom" />
 
-        <!-- Email -->
         <label for="email" class="font-medium text-blau">Correu electrònic *</label>
         <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu" />
 
-        <!-- Motiu consulta -->
         <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
         <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
           <option value="">Selecciona una opció</option>
@@ -66,11 +60,9 @@
           <option value="altres">Altres</option>
         </select>
 
-        <!-- Missatge -->
         <label for="missatge" class="font-medium text-blau">Missatge</label>
         <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
 
-        <!-- Botó -->
         <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
           Envia
         </button>
