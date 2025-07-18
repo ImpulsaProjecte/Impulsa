@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Activitat - Competició IMPULSA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Estilos adicionales para un mejor aspecto del cuestionario */
+    body {
+      overflow-y: scroll; /* Força la barra de desplaçament vertical */
+    }
+    .question-card, .role-selection-card {
+      background-color: rgba(255, 255, 255, 0.9); /* Un poco más opaco que el formulario */
+      border-radius: 0.75rem; /* rounded-xl */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+      padding: 1.5rem; /* p-6 */
+      margin-bottom: 2rem; /* mb-8 */
+    }
+    .question-card h3 {
+      font-weight: 600; /* font-semibold */
+      color: #1e3a8a; /* text-blau */
+      margin-bottom: 0.75rem; /* mb-3 */
+      font-size: 1.125rem; /* text-lg */
+    }
+    .question-card label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: #1e3a8a;
+    }
+    .question-card input[type="radio"],
+    .question-card input[type="checkbox"] {
+      margin-right: 0.5rem;
+      accent-color: #f59e0b; /* Color taronja para los radios/checkbox */
+    }
+    .question-card textarea,
+    .role-selection-card input[type="text"] {
+      width: 100%;
+      min-height: 80px; /* Para textarea */
+      resize: vertical; /* Para textarea */
+      border: 1px solid #e5e7eb; /* border-gris */
+      border-radius: 0.25rem; /* rounded */
+      padding: 0.75rem; /* px-3 py-2 */
+      outline: none;
+      transition: all 0.2s;
+    }
+    .question-card textarea:focus,
+    .role-selection-card input[type="text"]:focus {
+      border-color: #f59e0b; /* focus:ring-taronja */
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5); /* focus:ring-2 focus:ring-taronja */
+    }
+    .results {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      color: #1e3a8a;
+    }
+    .results h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .results p {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-blau font-sans relative overflow-hidden">
+  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
+    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+    opacity:0.9;"></div>
+
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <ul class="flex space-x-6 text-white">
+        <li><a href="index.html" class="hover:text-taronja transition-all">Inici</a></li>
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+        <li><a href="activitat.html" class="hover:text-taronja transition-all font-bold">Activitat</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 pt-40 pb-20 pb-[300px]">
+    <section id="activitat" aria-label="Competició d'Activitat" class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Competició IMPULSA: Desafia el teu Enginy!</h2>
+
+      <div id="roleSelection" class="role-selection-card max-w-md mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-6">Escull el teu rol:</h3>
+        <button id="hostBtn" class="bg-blau text-white font-semibold px-8 py-3 rounded-full mr-4 transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja">
+          Soc l'Host
+        </button>
+        <button id="participantBtn" class="bg-blau text-white font-semibold px-8 py-3 rounded-full transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja">
+          Soc Participant
+        </button>
+      </div>
+
+      <div id="hostInterface" class="role-selection-card max-w-md mx-auto hidden">
+        <h3 class="text-2xl font-bold mb-4">Mode Host</h3>
+        <p class="mb-4 text-gray-700">Genera un codi per a que els participants s'uneixin a l'activitat.</p>
+        <button id="generateCodeBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-2 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Generar Codi d'Activitat
+        </button>
+        <div id="activityCodeDisplay" class="mt-4 text-lg font-bold text-blau hidden">
+          El teu codi és: <span id="generatedCode" class="text-taronja text-2xl"></span>
+          <p class="text-sm text-gray-600 mt-2">Aquest codi és només una simulació i no es guarda ni connecta a participants reals.</p>
+        </div>
+      </div>
+
+      <div id="participantInterface" class="role-selection-card max-w-md mx-auto hidden">
+        <h3 class="text-2xl font-bold mb-4">Mode Participant</h3>
+        <p class="mb-4 text-gray-700">Introdueix el teu nom i el codi de l'activitat per començar.</p>
+        <label for="participantName" class="font-medium text-blau block mb-2 text-left">El teu nom:</label>
+        <input type="text" id="participantName" placeholder="Escriu el teu nom" class="mb-4 px-3 py-2 border border-gris rounded focus:outline-none focus:ring-2 focus:ring-taronja" required>
+
+        <label for="activityCodeInput" class="font-medium text-blau block mb-2 text-left">Codi d'activitat:</label>
+        <input type="text" id="activityCodeInput" placeholder="Introdueix el codi" class="mb-6 px-3 py-2 border border-gris rounded focus:outline-none focus:ring-2 focus:ring-taronja" required>
+        
+        <button id="startActivityBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Començar Activitat
+        </button>
+      </div>
+
+      <form id="quizForm" class="max-w-3xl mx-auto flex-col gap-8 hidden">
+        <div class="question-card">
+          <h3>Pregunta 1 (Test): El Dilema del Drac i el Despertador</h3>
+          <p class="mb-4 text-gray-700">En un regne on els dracs eren més aficionats a les migdiades que als tresors, Sir Reginald, el cavaller més gandul, accidentalment es va empassar el seu despertador. Ara, cada vegada que eructa, sona l'alarma a les 6 AM. Per evitar el caos matinal, quina és la millor estratègia per a Sir Reginald?</p>
+          <label>
+            <input type="radio" name="q1" value="a"> A) Contractar un cor de gnoms per cantar "Despacito" a l'alba.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="b"> B) Entrenar el drac perquè només eructi després del migdia.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="c"> C) Convertir-se en forner nocturn, així el despertador és útil.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="d"> D) Canviar el despertador per un amb música d'ascensor.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 2 (Test): El Misteri del Mitjó Desaparegut</h3>
+          <p class="mb-4 text-gray-700">A la "Dimensió dels Mitjons Perduts", el mitjó esquerre d'un astronauta, anomenat Mitjó-5000, va desaparèixer misteriosament just abans de l'enlairament. La teoria principal és que va ser abduït per extraterrestres. Quina característica inusual tenien aquests extraterrestres, segons els informes no oficials?</p>
+          <label>
+            <input type="radio" name="q2" value="a"> A) Es comunicaven exclusivament a través de balls de claqué.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="b"> B) Tenien tres braços, però només dos peus, i sempre duien mitjons imparells.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="c"> C) La seva nau espacial funcionava amb energia de pelusses de melic.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="d"> D) Eren al·lèrgics al cotó i buscaven substituts de llana.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 3 (Test): El Hàmster Filòsof</h3>
+          <p class="mb-4 text-gray-700">En una gàbia de hàmsters, un d'ells, Hàmsteràtes, va desenvolupar una profunda obsessió pel significat de la vida mentre corria a la seva roda. Afirmava que la roda era una metàfora de l'existència. Quina era la seva conclusió més famosa?</p>
+          <label>
+            <input type="radio" name="q3" value="a"> A) La vida és una sínia, només importa on aterres el pinso.
+          </label>
+          <label>
+            <input type="radio" name="q3" value="b"> B) Si no hi ha formatge al final del túnel, per a què tanta pressa?
+          </label>
+          <label>
+            <input type="radio" name="q3" value="c"> C) Corro, llavors existeixo... o existeixo perquè corro? Quin dilema!
+          </label>
+          <label>
+            <input type="radio" name="q3" value="d"> D) La veritable llibertat està en aprendre a fer gimnàstica passiva.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 4 (Test): La Rebel·lió dels Clips</h3>
+          <p class="mb-4 text-gray-700">A l'oficina d'un comptable molt avorrit, els clips de paper van decidir formar un sindicat i declarar-se en vaga. La seva principal demanda era no ser usats només per a papers de factures. Quina activitat alternativa van proposar per sentir-se més realitzats?</p>
+          <label>
+            <input type="radio" name="q4" value="a"> A) Ser organitzadors de cables d'auriculars.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="b"> B) Convertir-se en escultures abstractes d'oficina.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="c"> C) Participar en concursos de llançament de clips al sostre.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="d"> D) Totes les anteriors, volien una vida multifacètica.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 5 (Oberta): El Viatge del Gat amb Botes (de pluja)</h3>
+          <p class="mb-4 text-gray-700">Un dia, el Gat amb Botes va decidir que les botes de mosqueter eren massa convencionals i es va posar unes botes de pluja grogues gegants. Va marxar a una aventura, però es va trobar amb un bassal tan gran que semblava un oceà. Com creus que el Gat amb Botes, amb la seva nova i peculiar indumentària, va aconseguir creuar el bassal i per què? Sigues creatiu.</p>
+          <textarea name="q5_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 6 (Oberta): La Nevera Parlant</h3>
+          <p class="mb-4 text-gray-700">Imagina que la teva nevera cobra vida i només sap parlar en rimes. Un matí, et despertes amb un vers que t'adverteix sobre la caducitat d'un producte. Què et diria la teva nevera i què faries al respecte? Inclou el producte i la rima.</p>
+          <textarea name="q6_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 7 (Oberta): El Superheroi Quotidià</h3>
+          <p class="mb-4 text-gray-700">La ciutat necessita un nou superheroi, però no un amb superpoders de volar o llançar raigs, sinó un amb un "superpoder" increïblement inútil en el dia a dia. Quin seria el seu superpoder i com l'utilitzaria per "salvar el dia" en una situació completament trivial? (Ex: Superpoder: saber quan la torradora saltarà. L'utilitza per...).</p>
+          <textarea name="q7_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 8 (Oberta): L'Espantaocells amb Crisi Existencial</h3>
+          <p class="mb-4 text-gray-700">Un espantaocells anomenat Palla-Man, fart de la seva monòtona vida al camp, decideix abandonar el seu lloc i buscar un nou propòsit. On aniria Palla-Man, quina nova "professió" adoptaria i per què creus que li aniria bé (o fatal) en ella?</p>
+          <textarea name="q8_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 9 (Oberta): La Màquina del Temps de Cuina</h3>
+          <p class="mb-4 text-gray-700">Has inventat una màquina del temps, però només funciona amb objectes de cuina. Quin objecte de cuina enviaries a quina època del passat o futur, i per què creus que causaria el major enrenou (o el major desastre culinari)?</p>
+          <textarea name="q9_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 10 (Oberta): El Llibre que s'Escriu Sol</h3>
+          <p class="mb-4 text-gray-700">Tens un llibre màgic que s'escriu sol, però només pot escriure sobre les aventures d'objectes inanimats de casa teva. Quin objecte de casa teva triaries com a protagonista per a la seva primera aventura, on aniria i quin seria el punt culminant de la seva història? (Ex: el comandament a distància perdut al sofà...).</p>
+          <textarea name="q10_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <button type="button" id="submitQuiz" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja mx-auto">
+          Finalitzar Cuestionari
+        </button>
+      </form>
+
+      <div id="resultsContainer" class="results hidden">
+        <h2>Resultats del Cuestionari</h2>
+        <p id="scoreMessage"></p>
+        <p class="mt-4 text-gray-700">Gràcies per participar! Esperem que t'hagis divertit amb aquestes preguntes.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
+    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  </footer>
+
+  <script>
+    function generateRandomCode() {
+      return Math.random().toString(36).substring(2, 8).toUpperCase(); // 6 caracteres alfanuméricos
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const roleSelection = document.getElementById('roleSelection');
+      const hostBtn = document.getElementById('hostBtn');
+      const participantBtn = document.getElementById('participantBtn');
+      const hostInterface = document.getElementById('hostInterface');
+      const participantInterface = document.getElementById('participantInterface');
+      const generateCodeBtn = document.getElementById('generateCodeBtn');
+      const generatedCodeDisplay = document.getElementById('activityCodeDisplay');
+      const generatedCodeSpan = document.getElementById('generatedCode');
+      const participantNameInput = document.getElementById('participantName');
+      const activityCodeInput = document.getElementById('activityCodeInput');
+      const startActivityBtn = document.getElementById('startActivityBtn');
+      const quizForm = document.getElementById('quizForm');
+      const submitQuizBtn = document.getElementById('submitQuiz');
+      const resultsContainer = document.getElementById('resultsContainer');
+      const scoreMessage = document.getElementById('scoreMessage');
+
+      let currentActivityCode = ''; // Simula el código de la actividad
+
+      hostBtn.addEventListener('click', function() {
+        roleSelection.classList.add('hidden');
+        hostInterface.classList.remove('hidden');
+      });
+
+      participantBtn.addEventListener('click', function() {
+        roleSelection.classList.add('hidden');
+        participantInterface.classList.remove('hidden');
+      });
+
+      generateCodeBtn.addEventListener('click', function() {
+        currentActivityCode = generateRandomCode();
+        generatedCodeSpan.innerText = currentActivityCode;
+        generatedCodeDisplay.classList.remove('hidden');
+      });
+
+      startActivityBtn.addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        const name = participantNameInput.value.trim();
+        const code = activityCodeInput.value.trim();
+
+        if (name === '') {
+          alert('Per favor, introdueix el teu nom.');
+          return;
+        }
+
+        if (currentActivityCode !== '' && code !== currentActivityCode) {
+            alert('El codi d\'activitat introduït és incorrecte. Torna-ho a provar.');
+            return;
+        } else if (currentActivityCode === '' && code === '') {
+             alert('Per favor, introdueix un codi d\'activitat o genera-ne un com a host.');
+             return;
+        }
+
+        participantInterface.classList.add('hidden');
+        hostInterface.classList.add('hidden'); 
+        quizForm.classList.remove('hidden');
+        quizForm.classList.add('flex'); 
+      });
+
+      submitQuizBtn.addEventListener('click', function() {
+        let score = 0;
+        const totalTestQuestions = 4;
+
+        const correctAnswers = {
+          q1: 'c',
+          q2: 'b',
+          q3: 'c',
+          q4: 'd'
+        };
+
+        let allTestAnswered = true;
+        for (let i = 1; i <= totalTestQuestions; i++) {
+          const questionName = 'q' + i;
+          const selectedOption = quizForm.elements[questionName].value;
+
+          if (!selectedOption) {
+            allTestAnswered = false;
+            break;
+          }
+
+          if (selectedOption === correctAnswers[questionName]) {
+            score++;
+          }
+        }
+
+        let allOpenAnswered = true;
+        for (let i = 5; i <= 10; i++) {
+          const questionName = 'q' + i + '_open';
+          const textArea = quizForm.elements[questionName];
+          if (textArea && textArea.value.trim() === '') {
+            allOpenAnswered = false;
+            break;
+          }
+        }
+
+        if (!allTestAnswered) {
+          alert('Per favor, respon totes les preguntes de tipus test abans de finalitzar.');
+          return;
+        }
+
+        if (!allOpenAnswered) {
+          alert('Per favor, respon totes les preguntes obertes abans de finalitzar.');
+          return;
+        }
+
+        const scoreText = `Has encertat ${score} de ${totalTestQuestions} preguntes de tipus test.`;
+        scoreMessage.innerText = scoreText;
+        resultsContainer.classList.remove('hidden');
+
+        quizForm.querySelectorAll('input, select, textarea, button').forEach(element => {
+          element.disabled = true;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
