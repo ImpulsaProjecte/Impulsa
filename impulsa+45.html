@@ -25,21 +25,17 @@
   </style>
 </head>
 <body class="min-h-screen text-white font-sans bg-gradient-to-br from-blau via-futur to-black">
-  <!-- Fons -->
   <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
     background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
     opacity:0.9;"></div>
 
-  <!-- Barra de navegació -->
- <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- LOGO -->
     <a href="index.html" class="flex items-center gap-2">
       <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
       <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
     </a>
 
-    <!-- Botó hamburguesa mòbil -->
     <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,7 +43,6 @@
       </svg>
     </button>
 
-    <!-- Menú normal (ocult en mòbil) -->
     <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
       <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
       <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
@@ -56,7 +51,6 @@
     </ul>
   </div>
 
-  <!-- Menú desplegable per mòbil -->
   <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
     <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
     <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
@@ -65,7 +59,6 @@
   </div>
 </nav>
 
-<!-- Script per al toggle del menú mòbil -->
 <script>
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -75,15 +68,12 @@
   });
 </script>
 
-  <!-- CONTINGUT PRINCIPAL -->
   <main class="max-w-6xl mx-auto px-6 py-40">
 
-    <!-- Logo IMPULSA+45 -->
-<div class="flex justify-center mb-12">
+    <div class="flex justify-center mb-12">
   <img src="logo_impulsa.png" alt="Logo Impulsa+45" class="w-40 md:w-56 drop-shadow-xl">
 </div>
 
-    <!-- Descripció de les persones destinatàries -->
     <section class="mb-24">
       <h2 class="text-4xl font-extrabold mb-10 text-center drop-shadow-lg">Persones destinatàries <span class="text-taronja">Impulsa+45</span></h2>
       <div class="bg-white bg-opacity-10 p-10 rounded-3xl border border-white/10 shadow-2xl space-y-6 text-lg leading-relaxed">
@@ -105,46 +95,36 @@
       </div>
     </section>
 
-<!-- Perfil tipus -->
 <section aria-label="Perfil tipus" class="mb-24">
   <h3 class="text-3xl font-bold text-white mb-10 text-center">Perfil tipus de participant</h3>
 
   <div class="flex flex-col items-center bg-white bg-opacity-5 rounded-3xl shadow-2xl p-10 border border-white/10 space-y-6 max-w-6xl mx-auto">
-    <!-- Imatge més gran (750px) -->
     <img src="participant.png" alt="Perfil Anna" class="rounded-xl w-full max-w-[750px] shadow-xl border-4 border-white/10">
   </div>
 </section>
 
-<!-- ESTRUCTURA DEL PROGRAMA -->
 <section class="mb-32">
   <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Estructura del <span class="text-taronja">programa</span></h2>
 
- <!-- Línia de passos visual amb punts i títols centrats -->
-<div class="mb-16 relative max-w-5xl mx-auto">
-  <!-- Línia de fons -->
+  <div class="mb-16 relative max-w-5xl mx-auto">
   <div class="absolute top-2 left-0 right-0 h-0.5 bg-white bg-opacity-30 z-0"></div>
 
-  <!-- Graella amb punts i títols -->
   <div class="grid grid-cols-4 text-center relative z-10">
-    <!-- Pas 1 -->
     <div class="flex flex-col items-center">
       <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
       <span class="text-white text-sm font-semibold">DIAGNÒSTIC</span>
     </div>
 
-    <!-- Pas 2 -->
     <div class="flex flex-col items-center">
       <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
       <span class="text-white text-sm font-semibold">TALLERS</span>
     </div>
 
-    <!-- Pas 3 -->
     <div class="flex flex-col items-center">
       <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
       <span class="text-white text-sm font-semibold">COMUNITAT</span>
     </div>
 
-    <!-- Pas 4 -->
     <div class="flex flex-col items-center">
       <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
       <span class="text-white text-sm font-semibold leading-tight">MILLORA<br>CONTINUA</span>
@@ -152,15 +132,12 @@
   </div>
 </div>
 
-  <!-- Introducció -->
   <div class="max-w-3xl mx-auto text-lg text-white text-center mb-12 leading-relaxed bg-white bg-opacity-5 p-6 rounded-2xl shadow-lg border border-white/10">
     El programa <strong class="text-taronja">Impulsa+45</strong> es desplega en tres blocs complementaris, pensats per oferir una experiència completa, útil i humana. Totes les sessions es realitzaran en grups reduïts, amb un enfocament proper, pràctic i adaptat al ritme dels participants.
   </div>
 
-  <!-- BLOCS DESPLEGABLES -->
   <div class="max-w-4xl mx-auto space-y-6">
 
-    <!-- Bloc 1 -->
     <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
       <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
         Bloc 1: Diagnòstic inicial i activació personal
@@ -176,7 +153,6 @@
       </div>
     </details>
 
-    <!-- Bloc 2 -->
     <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
       <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
         Bloc 2: Tallers pràctics amb IA i eines digitals
@@ -192,7 +168,6 @@
       </div>
     </details>
 
-    <!-- Bloc 3 -->
     <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
       <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
         Bloc 3: Comunitat +45 i reconeixement
@@ -211,10 +186,22 @@
   </div>
 </section>
 
+    <section class="max-w-3xl mx-auto px-6 py-16 bg-white bg-opacity-10 rounded-3xl shadow-2xl border border-white/10 text-center mb-24">
+      <h2 class="text-3xl font-bold mb-6 drop-shadow-lg">
+        <span class="text-taronja">Activitat</span> Impulsa+45
+      </h2>
+      <p class="text-lg leading-relaxed mb-8">
+        Posa a prova els teus coneixements i desafia el teu enginy amb la nostra activitat interactiva. Participa en un qüestionari divertit i competitiu!
+      </p>
+      <a href="activitat.html" class="inline-block bg-taronja text-blau font-semibold px-8 py-3 rounded-full transition-all hover:bg-white hover:text-taronja focus:outline-none focus:ring-2 focus:ring-taronja focus:ring-offset-2 focus:ring-offset-futur">
+        Accedir a l'Activitat
+      </a>
+    </section>
 
+  </main>
 
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
-    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió
+    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió</p>
   </footer>
 </body>
 </html>
