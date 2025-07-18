@@ -26,120 +26,63 @@
     background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
     opacity:0.9;"></div>
 
-  <!-- Barra de navegació -->
+  <!-- Barra de navegació futurista -->
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2">
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
       </a>
-
-      <!-- Botó menú mòbil -->
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      <!-- Menú desktop -->
-      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
-        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
-        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
-        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
-      </ul>
-    </div>
-
-    <!-- Menú mòbil desplegable -->
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
-      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
-      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
-      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
     </div>
   </nav>
 
-  <!-- Script menú mòbil -->
-  <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuToggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-  <!-- Cos principal -->
-  <main class="max-w-5xl mx-auto px-4 py-32">
+  <main class="max-w-5xl mx-auto px-4 pt-40 pb-20">
     <section id="contacte" aria-label="Contacte" class="mb-16">
       <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Contacte</h2>
 
-      <!-- Formulari -->
-     <form action="https://formspree.io/f/xwpqpnop" method="POST" class="bg-white bg-opacity-80 rounded-xl shadow-xl p-6 max-w-md mx-auto flex flex-col gap-4" aria-label="Formulari de contacte">
-  <!-- Redirecció personalitzada -->
-  <input type="hidden" name="_redirect" value="https://sergimpulsa.github.io/impulsa/missatge-enviat.html">
+      <form action="https://formsubmit.co/impulsa+45@gmail.com" method="POST"
+        class="bg-white bg-opacity-80 rounded-xl shadow-xl p-6 max-w-md mx-auto flex flex-col gap-4"
+        aria-label="Formulari de contacte">
 
-  <!-- Camp Nom -->
-  <label for="nom" class="font-medium text-blau">Nom *</label>
-  <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom">
+        <!-- CAMPS OCULTS PER A FORM SUBMIT -->
+        <input type="hidden" name="_next" value="https://impulsaprojecte.github.io/Impulsa/missatge-enviat.html" />
+        <input type="hidden" name="_captcha" value="false" />
 
-  <!-- Camp Email -->
-  <label for="email" class="font-medium text-blau">Correu electrònic *</label>
-  <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu">
+        <!-- Nom -->
+        <label for="nom" class="font-medium text-blau">Nom *</label>
+        <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom" />
 
-  <!-- Camp Motiu -->
-  <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
-  <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
-    <option value="">Selecciona una opció</option>
-    <option value="informacio">Vull més informació</option>
-    <option value="inscripcio">Vull inscriure'm al programa</option>
-    <option value="colaboracio">Vull col·laborar amb el projecte</option>
-    <option value="altres">Altres</option>
-  </select>
+        <!-- Email -->
+        <label for="email" class="font-medium text-blau">Correu electrònic *</label>
+        <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu" />
 
-  <!-- Camp Missatge -->
-  <label for="missatge" class="font-medium text-blau">Missatge</label>
-  <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
+        <!-- Motiu consulta -->
+        <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
+        <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
+          <option value="">Selecciona una opció</option>
+          <option value="informacio">Vull més informació</option>
+          <option value="inscripcio">Vull inscriure'm al programa</option>
+          <option value="colaboracio">Vull col·laborar amb el projecte</option>
+          <option value="altres">Altres</option>
+        </select>
 
-  <!-- Botó Enviar -->
-  <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-    Envia
-  </button>
-</form>
+        <!-- Missatge -->
+        <label for="missatge" class="font-medium text-blau">Missatge</label>
+        <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
 
-      <!-- Dades de contacte -->
+        <!-- Botó -->
+        <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Envia
+        </button>
+      </form>
+
       <div class="text-center mt-6">
-        <p class="text-taronja underline">Correu: <a href="mailto:impulsa+45@gmail.com"
-            class="text-taronja underline">impulsa+45@gmail.com</a></p>
-        <p class="text-taronja underline">Telèfon: <a href="tel:+34627113914"
-            class="text-taronja underline">+34 627 113 914</a></p>
+        <p class="text-taronja underline">Correu: <a href="mailto:impulsa+45@gmail.com" class="text-taronja underline">impulsa+45@gmail.com</a></p>
+        <p class="text-taronja underline">Telèfon: <a href="tel:+34627113914" class="text-taronja underline">+34 627 113 914</a></p>
       </div>
     </section>
   </main>
 
-  <!-- Script per interceptar l’enviament i redirigir -->
-  <script>
-    const form = document.getElementById('formulariContacte');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          window.location.href = "missatge-enviat.html";
-        } else {
-          alert("Error en enviar el formulari. Torna-ho a provar.");
-        }
-      }).catch(error => {
-        alert("Error de connexió. Torna-ho a provar més tard.");
-      });
-    });
-  </script>
-
-  <!-- Peu de pàgina -->
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
