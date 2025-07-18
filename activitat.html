@@ -347,18 +347,19 @@
   <script type="module">
     // Importa las funciones necesarias de Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // TODO: PEGA AQUÍ LA CONFIGURACIÓN DE TU PROYECTO FIREBASE (DESDE EL PASO 4 DE LA PARTE 1)
-    // Ejemplo (REEMPLAZA ESTO CON TUS PROPIOS VALORES):
+    // ✨✨✨ LA TEVA CONFIGURACIÓ DE FIREBASE INSERIDA AQUÍ ✨✨✨
     const firebaseConfig = {
-      apiKey: "TU_API_KEY_AQUI", // REEMPLAZA
-      authDomain: "TU_AUTH_DOMAIN_AQUI.firebaseapp.com", // REEMPLAZA
-      projectId: "TU_PROJECT_ID_AQUI", // REEMPLAZA
-      storageBucket: "TU_STORAGE_BUCKET_AQUI.appspot.com", // REEMPLAZA
-      messagingSenderId: "TU_MESSAGING_SENDER_ID_AQUI", // REEMPLAZA
-      appId: "TU_APP_ID_AQUI" // REEMPLAZA
+      apiKey: "AIzaSyAzJg8lRvOqDlqTSM-hg8Rnc3ATL7inXzk",
+      authDomain: "impulsacompeticio.firebaseapp.com",
+      projectId: "impulsacompeticio",
+      storageBucket: "impulsacompeticio.firebasestorage.app",
+      messagingSenderId: "895840795245",
+      appId: "1:895840795245:web:86931b9ea2f935ccc71d64",
+      // measurementId: "G-5YW6JVJBZY" // Aquest el podem treure si no fem servir Analytics
     };
+    // ✨✨✨ FI DE LA TEVA CONFIGURACIÓ DE FIREBASE ✨✨✨
 
     // Inicializa Firebase
     const app = initializeApp(firebaseConfig);
@@ -435,7 +436,7 @@
                   participantsList.appendChild(li);
               });
           }, (error) => {
-              console.error("Error al escuchar participantes:", error);
+              console.error("Error al escuchar participants:", error);
               alert("Error al carregar els participants. Revisa la consola per a més detalls.");
           });
       };
@@ -491,16 +492,15 @@
 
         try {
             const participantsRef = collection(db, "activities", currentActivityCode, "participants");
-            const q = query(participantsRef, orderBy("score", "desc"), limit(1)); // Ordena y coge el de mayor puntuación
-            const snapshot = await getDoc(q); // getDoc en este caso para obtener una sola vez
+            const q = query(participantsRef, orderBy("score", "desc")); // Ordena por puntuación descendente
+            const snapshot = await getDoc(q); // getDoc en este caso para obtener una sola vez, ya que onSnapshot ya está escuchando
 
             let winner = null;
             let maxScore = -1;
 
-            // Recorre el snapshot si es una query de colección (aunque limit(1) te dará uno)
             snapshot.forEach(doc => {
                 const data = doc.data();
-                if (data.score > maxScore) {
+                if (data.completed && data.score > maxScore) { // Solo consideramos a los que han completado
                     maxScore = data.score;
                     winner = data.name;
                 }
@@ -516,7 +516,7 @@
                 });
                 fanfareAudio.play();
             } else {
-                winnerDisplay.innerText = 'Encara no hi ha participants o resultats per determinar un guanyador.';
+                winnerDisplay.innerText = 'Encara no hi ha participants finalitzats per determinar un guanyador.';
                 winnerDisplay.classList.remove('hidden');
             }
 
