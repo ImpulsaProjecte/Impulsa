@@ -19,6 +19,129 @@
       }
     }
   </script>
+  <style>
+    body {
+      overflow-y: scroll; /* Força la barra de desplaçament vertical */
+    }
+    /* Estilos para el overlay del código grande */
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semitransparente */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Asegura que esté por encima de todo */
+      color: white;
+      font-size: 8em; /* Tamaño de fuente grande para el código */
+      font-weight: bold;
+      text-shadow: 0 0 10px #f59e0b; /* Sombra para el texto */
+    }
+    .fullscreen-overlay button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: #f59e0b;
+      color: #1e3a8a;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .fullscreen-overlay button:hover {
+      background-color: #e68a00;
+    }
+
+    /* Estilos adicionales para un mejor aspecto del cuestionario */
+    .question-card, .role-selection-card {
+      background-color: rgba(255, 255, 255, 0.9); /* Un poco más opaco que el formulario */
+      border-radius: 0.75rem; /* rounded-xl */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+      padding: 1.5rem; /* p-6 */
+      margin-bottom: 2rem; /* mb-8 */
+    }
+    .question-card h3 {
+      font-weight: 600; /* font-semibold */
+      color: #1e3a8a; /* text-blau */
+      margin-bottom: 0.75rem; /* mb-3 */
+      font-size: 1.125rem; /* text-lg */
+    }
+    .question-card label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: #1e3a8a;
+    }
+    .question-card input[type="radio"],
+    .question-card input[type="checkbox"] {
+      margin-right: 0.5rem;
+      accent-color: #f59e0b; /* Color taronja para los radios/checkbox */
+    }
+    .question-card textarea,
+    .role-selection-card input[type="text"] {
+      width: 100%;
+      min-height: 80px; /* Para textarea */
+      resize: vertical; /* Para textarea */
+      border: 1px solid #e5e7eb; /* border-gris */
+      border-radius: 0.25rem; /* rounded */
+      padding: 0.75rem; /* px-3 py-2 */
+      outline: none;
+      transition: all 0.2s;
+    }
+    .question-card textarea:focus,
+    .role-selection-card input[type="text"]:focus {
+      border-color: #f59e0b; /* focus:ring-taronja */
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5); /* focus:ring-2 focus:ring-taronja */
+    }
+    .results {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      color: #1e3a8a;
+    }
+    .results h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .results p {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .host-results-display {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        color: #1e3a8a;
+    }
+    .host-results-display ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    .host-results-display li {
+        font-size: 1.1em;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    .winner-message {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #f59e0b;
+        margin-top: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-hidden">
   <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
@@ -46,123 +169,516 @@
     <section id="activitat" aria-label="Competició d'Activitat" class="mb-16">
       <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Competició IMPULSA: Desafia el teu Enginy!</h2>
 
-      <!-- Afegeix aquí els components d'interfície de rol -->
-      <div id="roleSelection" class="text-center text-white space-y-4">
-        <h3 class="text-2xl font-bold mb-4">Escull el teu rol:</h3>
-        <button id="hostBtn" class="bg-blau text-white px-6 py-2 rounded hover:bg-taronja">Soc l'Host</button>
-        <button id="participantBtn" class="bg-blau text-white px-6 py-2 rounded hover:bg-taronja">Soc Participant</button>
+      <div id="roleSelection" class="role-selection-card max-w-md mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-6">Escull el teu rol:</h3>
+        <button id="hostBtn" class="bg-blau text-white font-semibold px-8 py-3 rounded-full mr-4 transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja">
+          Soc l'Host
+        </button>
+        <button id="participantBtn" class="bg-blau text-white font-semibold px-8 py-3 rounded-full transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja">
+          Soc Participant
+        </button>
       </div>
 
-      <div id="hostInterface" class="hidden mt-8 text-white text-center">
-        <button id="generateCodeBtn" class="bg-taronja text-blau px-6 py-2 rounded hover:bg-white">Generar Codi</button>
-        <div id="activityCodeDisplay" class="hidden mt-4">
-          <p>El teu codi és: <span id="generatedCode" class="text-2xl font-bold text-taronja"></span></p>
+      <div id="hostInterface" class="role-selection-card max-w-md mx-auto hidden">
+        <h3 class="text-2xl font-bold mb-4">Mode Host</h3>
+        <p class="mb-4 text-gray-700">Genera un codi per a que els participants s'uneixin a l'activitat.</p>
+        <button id="generateCodeBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-2 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Generar Codi d'Activitat
+        </button>
+        <div id="activityCodeDisplay" class="mt-4 text-lg font-bold text-blau hidden">
+          El teu codi és: <span id="generatedCode" class="text-taronja text-2xl"></span>
+          <button id="showCodeFullscreenBtn" class="bg-blau text-white font-semibold px-4 py-1 rounded-full ml-4 transition-all hover:bg-taronja hover:text-blau focus:outline-none focus:ring-2 focus:ring-taronja text-base">
+            Fer Codi Gran
+          </button>
         </div>
         <div id="hostResultsContainer" class="host-results-display hidden mt-8">
-          <h3 class="text-2xl font-bold mb-4">Resultats dels Participants</h3>
-          <ul id="participantsList" class="text-left max-h-60 overflow-y-auto px-4"></ul>
-          <button id="revealWinnerBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 hover:bg-blau hover:text-white">Revelar Guanyador</button>
-          <div id="winnerDisplay" class="winner-message hidden mt-4"></div>
+            <h3 class="text-2xl font-bold mb-4">Resultats dels Participants</h3>
+            <ul id="participantsList" class="text-left max-h-60 overflow-y-auto px-4">
+                <li>Esperant participants...</li>
+            </ul>
+            <button id="revealWinnerBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+                Revelar Guanyador
+            </button>
+            <div id="winnerDisplay" class="winner-message hidden"></div>
         </div>
       </div>
 
-      <div id="participantInterface" class="hidden mt-8 text-white text-center">
-        <input type="text" id="participantName" placeholder="El teu nom" class="mb-2 p-2 rounded text-black">
-        <input type="text" id="activityCodeInput" placeholder="Codi d'activitat" class="mb-2 p-2 rounded text-black">
-        <button id="startActivityBtn" class="bg-taronja text-blau px-6 py-2 rounded hover:bg-white">Començar</button>
+      <div id="participantInterface" class="role-selection-card max-w-md mx-auto hidden">
+        <h3 class="text-2xl font-bold mb-4">Mode Participant</h3>
+        <p class="mb-4 text-gray-700">Introdueix el teu nom i el codi de l'activitat per començar.</p>
+        <label for="participantName" class="font-medium text-blau block mb-2 text-left">El teu nom:</label>
+        <input type="text" id="participantName" placeholder="Escriu el teu nom" class="mb-4 px-3 py-2 border border-gris rounded focus:outline-none focus:ring-2 focus:ring-taronja" required>
+
+        <label for="activityCodeInput" class="font-medium text-blau block mb-2 text-left">Codi d'activitat:</label>
+        <input type="text" id="activityCodeInput" placeholder="Introdueix el codi" class="mb-6 px-3 py-2 border border-gris rounded focus:outline-none focus:ring-2 focus:ring-taronja" required>
+        
+        <button id="startActivityBtn" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Començar Activitat
+        </button>
       </div>
+
+      <form id="quizForm" class="max-w-3xl mx-auto flex-col gap-8 hidden">
+        <div class="question-card">
+          <h3>Pregunta 1 (Test): El Dilema del Drac i el Despertador</h3>
+          <p class="mb-4 text-gray-700">En un regne on els dracs eren més aficionats a les migdiades que als tresors, Sir Reginald, el cavaller més gandul, accidentalment es va empassar el seu despertador. Ara, cada vegada que eructa, sona l'alarma a les 6 AM. Per evitar el caos matinal, quina és la millor estratègia per a Sir Reginald?</p>
+          <label>
+            <input type="radio" name="q1" value="a"> A) Contractar un cor de gnoms per cantar "Despacito" a l'alba.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="b"> B) Entrenar el drac perquè només eructi després del migdia.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="c"> C) Convertir-se en forner nocturn, així el despertador és útil.
+          </label>
+          <label>
+            <input type="radio" name="q1" value="d"> D) Canviar el despertador per un amb música d'ascensor.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 2 (Test): El Misteri del Mitjó Desaparegut</h3>
+          <p class="mb-4 text-gray-700">A la "Dimensió dels Mitjons Perduts", el mitjó esquerre d'un astronauta, anomenat Mitjó-5000, va desaparèixer misteriosament just abans de l'enlairament. La teoria principal és que va ser abduït per extraterrestres. Quina característica inusual tenien aquests extraterrestres, segons els informes no oficials?</p>
+          <label>
+            <input type="radio" name="q2" value="a"> A) Es comunicaven exclusivament a través de balls de claqué.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="b"> B) Tenien tres braços, però només dos peus, i sempre duien mitjons imparells.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="c"> C) La seva nau espacial funcionava amb energia de pelusses de melic.
+          </label>
+          <label>
+            <input type="radio" name="q2" value="d"> D) Eren al·lèrgics al cotó i buscaven substituts de llana.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 3 (Test): El Hàmster Filòsof</h3>
+          <p class="mb-4 text-gray-700">En una gàbia de hàmsters, un d'ells, Hàmsteràtes, va desenvolupar una profunda obsessió pel significat de la vida mentre corria a la seva roda. Afirmava que la roda era una metàfora de l'existència. Quina era la seva conclusió més famosa?</p>
+          <label>
+            <input type="radio" name="q3" value="a"> A) La vida és una sínia, només importa on aterres el pinso.
+          </label>
+          <label>
+            <input type="radio" name="q3" value="b"> B) Si no hi ha formatge al final del túnel, per a què tanta pressa?
+          </label>
+          <label>
+            <input type="radio" name="q3" value="c"> C) Corro, llavors existeixo... o existeixo perquè corro? Quin dilema!
+          </label>
+          <label>
+            <input type="radio" name="q3" value="d"> D) La veritable llibertat està en aprendre a fer gimnàstica passiva.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 4 (Test): La Rebel·lió dels Clips</h3>
+          <p class="mb-4 text-gray-700">A l'oficina d'un comptable molt avorrit, els clips de paper van decidir formar un sindicat i declarar-se en vaga. La seva principal demanda era no ser usats només per a papers de factures. Quina activitat alternativa van proposar per sentir-se més realitzats?</p>
+          <label>
+            <input type="radio" name="q4" value="a"> A) Ser organitzadors de cables d'auriculars.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="b"> B) Convertir-se en escultures abstractes d'oficina.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="c"> C) Participar en concursos de llançament de clips al sostre.
+          </label>
+          <label>
+            <input type="radio" name="q4" value="d"> D) Totes les anteriors, volien una vida multifacètica.
+          </label>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 5 (Oberta): El Viatge del Gat amb Botes (de pluja)</h3>
+          <p class="mb-4 text-gray-700">Un dia, el Gat amb Botes va decidir que les botes de mosqueter eren massa convencionals i es va posar unes botes de pluja grogues gegants. Va marxar a una aventura, però es va trobar amb un bassal tan gran que semblava un oceà. Com creus que el Gat amb Botes, amb la seva nova i peculiar indumentària, va aconseguir creuar el bassal i per què? Sigues creatiu.</p>
+          <textarea name="q5_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 6 (Oberta): La Nevera Parlant</h3>
+          <p class="mb-4 text-gray-700">Imagina que la teva nevera cobra vida i només sap parlar en rimes. Un matí, et despertes amb un vers que t'adverteix sobre la caducitat d'un producte. Què et diria la teva nevera i què faries al respecte? Inclou el producte i la rima.</p>
+          <textarea name="q6_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 7 (Oberta): El Superheroi Quotidià</h3>
+          <p class="mb-4 text-gray-700">La ciutat necessita un nou superheroi, però no un amb superpoders de volar o llançar raigs, sinó un amb un "superpoder" increïblement inútil en el dia a dia. Quin seria el seu superpoder i com l'utilitzaria per "salvar el dia" en una situació completament trivial? (Ex: Superpoder: saber quan la torradora saltarà. L'utilitza per...).</p>
+          <textarea name="q7_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 8 (Oberta): L'Espantaocells amb Crisi Existencial</h3>
+          <p class="mb-4 text-gray-700">Un espantaocells anomenat Palla-Man, fart de la seva monòtona vida al camp, decideix abandonar el seu lloc i buscar un nou propòsit. On aniria Palla-Man, quina nova "professió" adoptaria i per què creus que li aniria bé (o fatal) en ella?</p>
+          <textarea name="q8_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 9 (Oberta): La Màquina del Temps de Cuina</h3>
+          <p class="mb-4 text-gray-700">Has inventat una màquina del temps, però només funciona amb objectes de cuina. Quin objecte de cuina enviaries a quina època del passat o futur, i per què creus que causaria el major enrenou (o el major desastre culinari)?</p>
+          <textarea name="q9_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <div class="question-card">
+          <h3>Pregunta 10 (Oberta): El Llibre que s'Escriu Sol</h3>
+          <p class="mb-4 text-gray-700">Tens un llibre màgic que s'escriu sol, però només pot escriure sobre les aventures d'objectes inanimats de casa teva. Quin objecte de casa teva triaries com a protagonista per a la seva primera aventura, on aniria i quin seria el punt culminant de la seva història? (Ex: el comandament a distància perdut al sofà...).</p>
+          <textarea name="q10_open" placeholder="Escriu la teva resposta aquí..."></textarea>
+        </div>
+
+        <button type="button" id="submitQuiz" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja mx-auto">
+          Finalitzar Cuestionari
+        </button>
+      </form>
+
+      <div id="participantResultsContainer" class="results hidden">
+        <h2>Resultats del Cuestionari</h2>
+        <p>Gràcies per participar! El Host revelarà els resultats.</p>
+      </div>
+
     </section>
   </main>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, doc, setDoc, getDocs, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    import confetti from 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.js';
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAzJg8lRvOqDlqTSM-hg8rnc3ATL7inXzk",
-      authDomain: "impulsacompeticio.firebaseapp.com",
-      projectId: "impulsacompeticio",
-      storageBucket: "impulsacompeticio.appspot.com",
-      messagingSenderId: "895840795245",
-      appId: "1:895840795245:web:86931b9ea2f935ccc71d64"
-    };
-
-    const fanfareAudio = new Audio('fanfare.mp3');
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const hostBtn = document.getElementById('hostBtn');
-    const participantBtn = document.getElementById('participantBtn');
-    const hostInterface = document.getElementById('hostInterface');
-    const participantInterface = document.getElementById('participantInterface');
-    const roleSelection = document.getElementById('roleSelection');
-    const generateCodeBtn = document.getElementById('generateCodeBtn');
-    const generatedCodeSpan = document.getElementById('generatedCode');
-    const activityCodeDisplay = document.getElementById('activityCodeDisplay');
-    const hostResultsContainer = document.getElementById('hostResultsContainer');
-    const participantsList = document.getElementById('participantsList');
-    const revealWinnerBtn = document.getElementById('revealWinnerBtn');
-    const winnerDisplay = document.getElementById('winnerDisplay');
-
-    let currentActivityCode = '';
-
-    hostBtn.addEventListener('click', () => {
-      roleSelection.classList.add('hidden');
-      hostInterface.classList.remove('hidden');
-    });
-
-    participantBtn.addEventListener('click', () => {
-      roleSelection.classList.add('hidden');
-      participantInterface.classList.remove('hidden');
-    });
-
-    generateCodeBtn.addEventListener('click', async () => {
-      currentActivityCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-      generatedCodeSpan.innerText = currentActivityCode;
-      activityCodeDisplay.classList.remove('hidden');
-      hostResultsContainer.classList.remove('hidden');
-      await setDoc(doc(db, "activities", currentActivityCode), { createdAt: new Date() });
-      const q = collection(db, "activities", currentActivityCode, "participants");
-      onSnapshot(q, (snapshot) => {
-        participantsList.innerHTML = '';
-        if (snapshot.empty) {
-          participantsList.innerHTML = '<li>Esperant participants...</li>';
-          return;
-        }
-        const participants = [];
-        snapshot.forEach(doc => participants.push(doc.data()));
-        participants.sort((a, b) => b.score - a.score);
-        participants.forEach(p => {
-          const li = document.createElement('li');
-          li.innerHTML = `<strong>${p.name}</strong>: ${p.completed ? p.score + ' punts' : 'En curs...'}`;
-          participantsList.appendChild(li);
-        });
-      });
-    });
-
-    revealWinnerBtn.addEventListener('click', async () => {
-      if (!currentActivityCode) return;
-      const ref = collection(db, "activities", currentActivityCode, "participants");
-      const snapshot = await getDocs(ref);
-      const participants = [];
-      snapshot.forEach(doc => participants.push(doc.data()));
-      participants.sort((a, b) => b.score - a.score);
-      const winner = participants[0];
-      if (winner) {
-        winnerDisplay.innerText = `🏆 Guanyador: ${winner.name} amb ${winner.score} punts!`;
-        winnerDisplay.classList.remove('hidden');
-        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-        fanfareAudio.play();
-      } else {
-        winnerDisplay.innerText = "No hi ha participants.";
-        winnerDisplay.classList.remove('hidden');
-      }
-    });
-  </script>
 
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
+
+  <div id="fullscreenCodeOverlay" class="fullscreen-overlay hidden">
+    <span id="fullscreenCode"></span>
+    <button id="closeFullscreenCodeBtn">Tancar</button>
+  </div>
+
+  <script type="module">
+    // Importa las funciones necesarias de Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ✨✨✨ LA TEVA CONFIGURACIÓ DE FIREBASE INSERIDA AQUÍ ✨✨✨
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzJg8lRvOqDlqTSM-hg8Rnc3ATL7inXzk",
+      authDomain: "impulsacompeticio.firebaseapp.com",
+      projectId: "impulsacompeticio",
+      storageBucket: "impulsacompeticio.firebasestorage.app",
+      messagingSenderId: "895840795245",
+      appId: "1:895840795245:web:86931b9ea2f935ccc71d64",
+    };
+    // ✨✨✨ FI DE LA TEVA CONFIGURACIÓ DE FIREBASE ✨✨✨
+
+    // Inicializa Firebase
+    let app;
+    let db;
+    try {
+        app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        console.log("Firebase inicialitzat correctament.");
+    } catch (error) {
+        console.error("Error a l'inicialitzar Firebase:", error);
+        alert("Hi ha hagut un error en carregar la configuració de Firebase. Consulta la consola del navegador.");
+    }
+
+    // Importa la biblioteca de confetti
+    import confetti from 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.js';
+
+    // Para el audio de fanfarria
+    const fanfareAudio = new Audio('fanfare.mp3'); // Asegúrate de tener este archivo en tu carpeta
+
+
+    function generateRandomCode() {
+      return Math.random().toString(36).substring(2, 8).toUpperCase(); // 6 caracteres alfanuméricos
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const roleSelection = document.getElementById('roleSelection');
+      const hostBtn = document.getElementById('hostBtn');
+      const participantBtn = document.getElementById('participantBtn');
+      const hostInterface = document.getElementById('hostInterface');
+      const participantInterface = document.getElementById('participantInterface');
+      const generateCodeBtn = document.getElementById('generateCodeBtn');
+      const generatedCodeDisplay = document.getElementById('activityCodeDisplay');
+      const generatedCodeSpan = document.getElementById('generatedCode');
+      const showCodeFullscreenBtn = document.getElementById('showCodeFullscreenBtn');
+      const fullscreenCodeOverlay = document.getElementById('fullscreenCodeOverlay');
+      const fullscreenCodeSpan = document.getElementById('fullscreenCode');
+      const closeFullscreenCodeBtn = document.getElementById('closeFullscreenCodeBtn');
+      const participantNameInput = document.getElementById('participantName');
+      const activityCodeInput = document.getElementById('activityCodeInput');
+      const startActivityBtn = document.getElementById('startActivityBtn');
+      const quizForm = document.getElementById('quizForm');
+      const submitQuizBtn = document.getElementById('submitQuiz');
+      const participantResultsContainer = document.getElementById('participantResultsContainer');
+      const hostResultsContainer = document.getElementById('hostResultsContainer');
+      const participantsList = document.getElementById('participantsList');
+      const revealWinnerBtn = document.getElementById('revealWinnerBtn');
+      const winnerDisplay = document.getElementById('winnerDisplay');
+
+      let currentActivityCode = '';
+      let isHost = false;
+      let participantName = ''; // Para guardar el nombre del participante actual
+
+      // --- Firebase Listeners y Funciones ---
+      let unsubscribeFromParticipants = null; // Para desuscribirse del listener de Firebase
+
+      // Función para iniciar el listener de Firebase (solo para el host)
+      const startFirebaseListener = (code) => {
+          if (!db) { // Verificación si db se inicializó correctamente
+              console.error("Firestore no inicialitzat, no es pot iniciar el listener.");
+              return;
+          }
+          const q = collection(db, "activities", code, "participants");
+          // onSnapshot es un listener en tiempo real. Se ejecuta cada vez que hay un cambio en la colección.
+          unsubscribeFromParticipants = onSnapshot(q, (snapshot) => {
+              participantsList.innerHTML = ''; // Limpia la lista
+              if (snapshot.empty) {
+                  participantsList.innerHTML = '<li>Esperant participants...</li>';
+                  return;
+              }
+              const participantsData = [];
+              snapshot.forEach((doc) => {
+                  participantsData.push(doc.data());
+              });
+
+              // Ordenar participantes por puntuación (del más alto al más bajo)
+              participantsData.sort((a, b) => b.score - a.score);
+
+              participantsData.forEach(p => {
+                  const li = document.createElement('li');
+                  // Mostramos el nombre y la puntuación si ya ha finalizado
+                  if (p.completed) {
+                    li.innerHTML = `<strong>${p.name}</strong>: ${p.score} punts (Finalitzat)`;
+                  } else {
+                    li.innerHTML = `<strong>${p.name}</strong>: En curs...`;
+                  }
+                  participantsList.appendChild(li);
+              });
+          }, (error) => {
+              console.error("Error al escuchar participants:", error);
+              alert("Error al carregar els participants. Revisa la consola per a més detalls.");
+          });
+      };
+
+      // --- Gestión de Roles ---
+      hostBtn.addEventListener('click', function() {
+        console.log("Clic a 'Soc l'Host'"); // Para depuración
+        isHost = true;
+        roleSelection.classList.add('hidden');
+        hostInterface.classList.remove('hidden');
+        participantInterface.classList.add('hidden'); // Ensure participant interface is hidden
+        quizForm.classList.add('hidden'); // Ensure quiz form is hidden
+        participantResultsContainer.classList.add('hidden'); // Ensure participant results are hidden
+      });
+
+      participantBtn.addEventListener('click', function() {
+        console.log("Clic a 'Soc Participant'"); // Para depuración
+        isHost = false;
+        roleSelection.classList.add('hidden');
+        participantInterface.classList.remove('hidden');
+        hostInterface.classList.add('hidden'); // Ensure host interface is hidden
+        quizForm.classList.add('hidden'); // Ensure quiz form is hidden
+        hostResultsContainer.classList.add('hidden'); // Ensure host results are hidden
+      });
+
+      // --- Funcionalidad del Host ---
+      generateCodeBtn.addEventListener('click', async function() {
+        if (!db) {
+            alert("Firebase no inicialitzat. No es pot generar el codi.");
+            return;
+        }
+        currentActivityCode = generateRandomCode();
+        generatedCodeSpan.innerText = currentActivityCode;
+        generatedCodeDisplay.classList.remove('hidden');
+        hostResultsContainer.classList.remove('hidden'); // Mostrar el contenedor de resultados para el host
+
+        // Guardar la actividad en Firebase
+        try {
+          await setDoc(doc(db, "activities", currentActivityCode), {
+            createdAt: new Date(),
+            hostId: "someHostIdentifier" // Puedes añadir un ID de host si quieres, o simplemente el timestamp
+          });
+          console.log("Actividad creada en Firebase con código:", currentActivityCode);
+          startFirebaseListener(currentActivityCode); // Iniciar el listener para el host
+        } catch (e) {
+          console.error("Error al crear la actividad en Firebase:", e);
+          alert("No s'ha pogut generar el codi. Intenta-ho de nou. Revisa la consola per a més informació.");
+        }
+      });
+
+      showCodeFullscreenBtn.addEventListener('click', function() {
+        fullscreenCodeSpan.innerText = generatedCodeSpan.innerText;
+        fullscreenCodeOverlay.classList.remove('hidden');
+      });
+
+      closeFullscreenCodeBtn.addEventListener('click', function() {
+        fullscreenCodeOverlay.classList.add('hidden');
+      });
+
+      revealWinnerBtn.addEventListener('click', async function() {
+        if (!db) {
+            alert("Firebase no inicialitzat. No es pot revelar el guanyador.");
+            return;
+        }
+        if (!currentActivityCode) {
+            alert("Primer has de generar un codi d'activitat.");
+            return;
+        }
+
+        try {
+            const participantsRef = collection(db, "activities", currentActivityCode, "participants");
+            const q = query(participantsRef, orderBy("score", "desc")); // Ordena por puntuación descendente
+            const snapshot = await getDoc(q); // getDoc en este caso para obtener una sola vez, ya que onSnapshot ya está escuchando
+
+            let winner = null;
+            let maxScore = -1;
+
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                if (data.completed && data.score > maxScore) { // Solo consideramos a los que han completado
+                    maxScore = data.score;
+                    winner = data.name;
+                }
+            });
+
+            if (winner) {
+                winnerDisplay.innerText = `El guanyador és: ${winner} amb ${maxScore} punts!`;
+                winnerDisplay.classList.remove('hidden');
+                confetti({
+                    particleCount: 200,
+                    spread: 120,
+                    origin: { y: 0.6 }
+                });
+                fanfareAudio.play();
+            } else {
+                winnerDisplay.innerText = 'Encara no hi ha participants finalitzats per determinar un guanyador.';
+                winnerDisplay.classList.remove('hidden');
+            }
+
+        } catch (e) {
+            console.error("Error al revelar el guanyador:", e);
+            alert("No s'ha pogut determinar el guanyador. Revisa la consola per a més informació.");
+        }
+      });
+
+      // --- Funcionalidad del Participante ---
+      startActivityBtn.addEventListener('click', async function(event) {
+        event.preventDefault(); 
+
+        if (!db) {
+            alert("Firebase no inicialitzat. No es pot iniciar l'activitat.");
+            return;
+        }
+
+        participantName = participantNameInput.value.trim();
+        currentActivityCode = activityCodeInput.value.trim();
+
+        if (participantName === '') {
+          alert('Per favor, introdueix el teu nom.');
+          return;
+        }
+
+        if (currentActivityCode === '') {
+             alert('Per favor, introdueix un codi d\'activitat.');
+             return;
+        }
+
+        // Comprobar si la actividad existe en Firebase
+        try {
+            const activityDocRef = doc(db, "activities", currentActivityCode);
+            const activityDocSnap = await getDoc(activityDocRef);
+
+            if (!activityDocSnap.exists()) {
+                alert('El codi d\'activitat introduït no existeix. Torna-ho a provar o contacta amb l\'Host.');
+                return;
+            }
+
+            // Registrar el participante en la actividad
+            await setDoc(doc(db, "activities", currentActivityCode, "participants", participantName), {
+                name: participantName,
+                score: 0, // Puntuación inicial
+                completed: false, // Estado inicial
+                joinedAt: new Date()
+            });
+            console.log("Participant registrat:", participantName, "a l'activitat:", currentActivityCode);
+
+            participantInterface.classList.add('hidden');
+            quizForm.classList.remove('hidden');
+            quizForm.classList.add('flex'); // Ensure it displays as flex
+        } catch (e) {
+            console.error("Error al iniciar actividad como participante:", e);
+            alert("No s'ha pogut iniciar l'activitat. Potser el nom ja està en ús o hi ha un problema amb el codi. Revisa la consola per a més informació.");
+        }
+      });
+
+      submitQuizBtn.addEventListener('click', async function() {
+        if (!db) {
+            alert("Firebase no inicialitzat. No es pot enviar el qüestionari.");
+            return;
+        }
+
+        let score = 0;
+        const totalTestQuestions = 4;
+
+        const correctAnswers = {
+          q1: 'c',
+          q2: 'b',
+          q3: 'c',
+          q4: 'd'
+        };
+
+        let allTestAnswered = true;
+        for (let i = 1; i <= totalTestQuestions; i++) {
+          const questionName = 'q' + i;
+          const selectedOption = quizForm.elements[questionName]?.value; // Usa '?.value' para seguridad
+
+          if (!selectedOption) {
+            allTestAnswered = false;
+            break;
+          }
+
+          if (selectedOption === correctAnswers[questionName]) {
+            score++;
+          }
+        }
+
+        let allOpenAnswered = true;
+        for (let i = 5; i <= 10; i++) {
+          const questionName = 'q' + i + '_open';
+          const textArea = quizForm.elements[questionName];
+          if (textArea && textArea.value.trim() === '') {
+            allOpenAnswered = false;
+            break;
+          }
+        }
+
+        if (!allTestAnswered) {
+          alert('Per favor, respon totes les preguntes de tipus test abans de finalitzar.');
+          return;
+        }
+
+        if (!allOpenAnswered) {
+          alert('Per favor, respon totes les preguntes obertes abans de finalitzar.');
+          return;
+        }
+
+        // Enviar la puntuación a Firebase (solo si es participante)
+        if (!isHost && participantName && currentActivityCode) {
+            try {
+                await setDoc(doc(db, "activities", currentActivityCode, "participants", participantName), {
+                    score: score,
+                    completed: true,
+                    completedAt: new Date()
+                }, { merge: true }); // 'merge: true' para solo actualizar los campos especificados
+                console.log("Puntuación del participante enviada a Firebase:", participantName, score);
+            } catch (e) {
+                console.error("Error al enviar la puntuación a Firebase:", e);
+                alert("No s'ha pogut enviar la teva puntuació. Si us plau, informa l'Host. Revisa la consola.");
+            }
+        }
+        
+        // Ocultar el formulario y mostrar resultados al participante
+        quizForm.classList.add('hidden');
+        participantResultsContainer.classList.remove('hidden');
+
+        // Deshabilitar el formulario para el participante
+        quizForm.querySelectorAll('input, select, textarea, button').forEach(element => {
+          element.disabled = true;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
