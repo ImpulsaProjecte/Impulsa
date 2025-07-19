@@ -22,82 +22,156 @@
   <style>
     @keyframes spin-slow { 100% { transform: rotate(360deg); } }
     .animate-spin-slow { animation: spin-slow 16s linear infinite; }
+
+    /* Estils per al vídeo responsive */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* Relació d'aspecte 16:9 (altura / amplada * 100) */
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Assegura que el vídeo ompli el contenidor */
+    }
   </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-hidden">
-  <!-- Fons dinàmic amb gradient i glow -->
   <div aria-hidden="true" class="absolute inset-0 -z-10">
     <div class="w-full h-full bg-gradient-to-br from-[#1e3a8a] via-[#0f172a] to-black opacity-90 animate-pulse"></div>
-    <div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-taronja blur-3xl opacity-20 animate-spin-slow"></div>
-    <div class="absolute right-1/4 bottom-0 w-[300px] h-[300px] rounded-full bg-blau blur-2xl opacity-30 animate-pulse"></div>
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-taronja blur-3xl opacity-20 animate-spin-slow"></div>
+    <div class="absolute right-1/4 bottom-1/4 w-72 h-72 rounded-full bg-blau blur-3xl opacity-20 animate-spin-slow animation-delay-2000"></div>
   </div>
 
-  <!-- Barra de navegació futurista -->
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- LOGO -->
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
-      <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
-    </a>
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
+      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
+      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
+      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
+      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
+    </div>
+  </nav>
 
-    <!-- Botó hamburguesa mòbil -->
-    <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    <!-- Menú normal (ocult en mòbil) -->
-    <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
-      <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
-      <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
-      <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-      <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
-    </ul>
-  </div>
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
 
-  <!-- Menú desplegable per mòbil -->
-  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
-    <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
-    <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
-    <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-    <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
-  </div>
-</nav>
+  <main class="max-w-5xl mx-auto px-4 py-32">
+    <section class="flex flex-col items-center justify-center min-h-[80vh] overflow-hidden">
+      <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
+        Tecnologia amb ànima per al talent
+      </h1>
+      <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
+        IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
+      </p>
+      <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
+        IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
+      </p>
+      <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+        Descobreix el programa
+      </a>
+    </section>
 
-<!-- Script per al toggle del menú mòbil -->
-<script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
+    <section class="mt-24 mb-24">
+      <h2 class="text-3xl font-bold text-white text-center mb-10 drop-shadow-lg">
+        Què és IMPULSA? Descobreix-ho en aquest vídeo
+      </h2>
+      <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-white/10">
+        <div class="video-container">
+          <video controls playsinline poster="imatge_previa_video.jpg">
+            <source src="videoarrel.mp4" type="video/mp4">
+            El teu navegador no suporta l'etiqueta de vídeo.
+          </video>
+        </div>
+      </div>
+      <p class="text-white text-center mt-8 max-w-2xl mx-auto text-lg">
+        Un cop vegis aquest vídeo, tindràs una idea clara de la nostra missió i impacte.
+      </p>
+    </section>
+    <section aria-label="Què fem?" class="mb-24">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Què fem?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+          <img src="transicio.jpg" alt="Persones en transició" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+          <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
+          <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
+        </article>
+        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+          <img src="professionals.jpg" alt="Professionals" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+          <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
+          <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
+        </article>
+        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+          <img src="actius.jpg" alt="Participació activa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+          <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
+          <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
+        </article>
+      </div>
+    </section>
 
-  menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-</script>
-
-  <!-- HERO: Secció inicial moderna -->
-  <header id="hero" class="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden">
-    <!-- Logo gran amb animació -->
-    <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
-    <!-- Missatge principal -->
-    <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
-      Tecnologia amb ànima per al talent
-    </h1>
-    <!-- Paràgraf introductori IMPULSA IA -->
-    <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
-      IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
-    </p>
-    <!-- Descripció curta -->
-    <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
-      IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
-    </p>
-    <!-- Botó de crida a l'acció -->
-    <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja text-lg animate-bounce">
-      Descobreix el programa
-    </a>
-  </header>
+    <section aria-label="Programa i Impacte" class="mb-24">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">El nostre impacte</h2>
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
+          <h3 class="text-2xl font-bold text-taronja mb-4">El nostre Programa</h3>
+          <p class="text-lg text-white mb-4 leading-relaxed">
+            Un itinerari complet dissenyat per acompanyar-te en cada pas, des dels fonaments digitals fins a l'ús avançat de la Intel·ligència Artificial.
+          </p>
+          <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+            <li>Formació pràctica i personalitzada.</li>
+            <li>Suport continuat i resolució de dubtes.</li>
+            <li>Integració en una comunitat de suport.</li>
+          </ul>
+          <a href="programa.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+            Més detalls del programa
+          </a>
+        </div>
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
+          <h3 class="text-2xl font-bold text-taronja mb-4">Impacte esperat</h3>
+          <p class="text-lg text-white mb-4 leading-relaxed">
+            Amb IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
+          </p>
+          <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+            <li>Reducció de la bretxa digital.</li>
+            <li>Augment de l'ocupabilitat en majors de 45 anys.</li>
+            <li>Enfortiment del sentit de comunitat.</li>
+            <li>Impuls de la innovació local.</li>
+          </ul>
+          <a href="colaboracio.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+            Vull col·laborar
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
