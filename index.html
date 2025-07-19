@@ -115,8 +115,8 @@
 
     /* NOU: Estil per al menú mòbil (pestanya de contacte) */
     #mobile-menu {
-        max-height: calc(100vh - 64px); /* Altura màxima, restant l'altura de la navbar */
-        overflow-y: auto; /* Permet el scroll dins del menú si el contingut és llarg */
+      max-height: calc(100vh - 64px); /* Altura màxima, restant l'altura de la navbar */
+      overflow-y: auto; /* Permet el scroll dins del menú si el contingut és llarg */
     }
     /* NOU: Classe per bloquejar l'scroll del body quan el menú mòbil està obert */
     body.no-scroll {
@@ -131,10 +131,21 @@
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <div class="flex items-center gap-2"> 
+        <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
+          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
+          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+      </div>
+
       <a href="index.html" class="flex items-center gap-2">
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
       </a>
+
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -176,14 +187,9 @@
         const viewportWidth = window.innerWidth;
 
         if (viewportWidth >= 1024) { // Activa la lògica de fixed només per a pantalles >= lg (1024px)
-            const contentAreaWidth = 1152; // max-w-6xl
-            const totalPagePadding = 16 * 2; // px-4 a cada costat del main-content-wrapper (32px)
-            // L'amplada real que el contingut amb padding ocupa a la vista d'escriptori
-            // No hi ha un padding-right fixat de 340px aquí, el padding el crea el "wrapper"
-            // La sidebar es posiciona a la dreta del contingut principal centrat.
-            
+            const contentAreaWidth = 1152; // max-w-6xl del main-content-wrapper i la sidebar plegada
             // Calcul de l'espai que queda a la dreta i esquerra del contingut principal
-            const remainingSpace = viewportWidth - contentAreaWidth; // Si no tingués px-4
+            const remainingSpace = viewportWidth - contentAreaWidth; 
 
             // Volem la sidebar centrada en l'espai que queda a la dreta
             const sidebarWidth = 300; // ample fix de la sidebar
@@ -220,14 +226,17 @@
     <main class="w-full">
       <section class="flex flex-col items-center justify-center min-h-[60vh] overflow-hidden mb-16">
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-taronja text-center mb-4 drop-shadow-lg">
           Tecnologia amb ànima per al talent
         </h1>
-        <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
+        <p class="text-base text-white text-center max-w-2xl mx-auto mb-6 leading-relaxed">
           IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
         </p>
-        <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
+        <p class="text-base text-white text-center mb-8 max-w-xl font-medium leading-relaxed">
           IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
+        </p>
+        <p class="text-xl md:text-2xl font-bold text-taronja text-center mb-6 drop-shadow italic">
+          "Prepara el teu futur. Avui comença la teva transformació."
         </p>
         <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
           Descobreix el programa
@@ -243,49 +252,50 @@
               <div class="absolute inset-0 bg-black opacity-50"></div>
           </div>
           <div class="relative z-10 text-white text-center p-8 max-w-2xl mx-auto">
-              <h2 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 drop-shadow-lg">
                   Descobreix el nostre cor
               </h2>
-              <p class="text-lg md:text-xl leading-relaxed drop-shadow-md">
+              <p class="text-base leading-relaxed drop-shadow-md">
+                En IMPULSA, la tecnologia és una eina per al creixement humà. El nostre projecte va més enllà de la formació, creant un espai on la saviesa de l'experiència es fusiona amb les noves oportunitats digitals. Som el pont cap a un futur on ningú queda enrere.
               </p>
           </div>
       </section>
       <section aria-label="Què fem?" class="mb-24">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Què fem?</h2>
+        <h2 class="text-3xl font-bold mb-8 text-taronja text-center drop-shadow">Què fem?</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaimag.jpg" alt="Persones en transició digital amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
             <div>
               <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
-              <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
+              <p class="text-white text-opacity-80 text-base leading-relaxed">Acompanyem la teva adaptació al món digital.</p>
             </div>
           </article>
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaima.jpg" alt="Desenvolupament professional amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
             <div>
               <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
-              <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
+              <p class="text-white text-opacity-80 text-base leading-relaxed">Potencia les teves habilitats amb IA per al mercat laboral.</p>
             </div>
           </article>
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaimage.jpg" alt="Cohesió Social amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
             <div>
               <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
-              <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
+              <p class="text-white text-opacity-80 text-base leading-relaxed">Connectem persones per construir una comunitat digital activa.</p>
             </div>
           </article>
         </div>
       </section>
 
       <section aria-label="Programa i Impacte" class="mb-24">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">IMPULSA</h2>
+        <h2 class="text-3xl font-bold mb-8 text-taronja text-center drop-shadow">IMPULSA</h2>
         <div class="grid md:grid-cols-2 gap-8 items-start">
           <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
             <h3 class="text-2xl font-bold text-taronja mb-4">El nostre Programa</h3>
-            <p class="text-lg text-white mb-4 leading-relaxed">
+            <p class="text-base text-white mb-4 leading-relaxed">
               Un itinerari complet dissenyat per acompanyar-te en cada pas, des dels fonaments digitals fins a l'ús avançat de la Intel·ligència Artificial.
             </p>
-            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2 text-base">
               <li>Formació pràctica i personalitzada.</li>
               <li>Suport continuat i resolució de dubtes.</li>
               <li>Integració en una comunitat de suport.</li>
@@ -296,10 +306,10 @@
           </div>
           <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
             <h3 class="text-2xl font-bold text-taronja mb-4">Impacte esperat</h3>
-            <p class="text-lg text-white mb-4 leading-relaxed">
-              Con IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
+            <p class="text-base text-white mb-4 leading-relaxed">
+              Amb IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
             </p>
-            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2 text-base">
               <li>Reducció de la bretxa digital.</li>
               <li>Augment de l'ocupabilitat en majors de 45 anys.</li>
               <li>Enfortiment del sentit de comunitat.</li>
@@ -308,6 +318,24 @@
             <a href="contacte.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
               Vull col·laborar
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Testimonis" class="mb-24">
+        <h2 class="text-3xl font-bold mb-12 text-taronja text-center drop-shadow">Testimonis</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white bg-opacity-10 border border-white/10 rounded-2xl p-6 shadow-xl text-white">
+            <p class="italic mb-4 text-base leading-relaxed">
+              "Gràcies a Impulsa, he recuperat la confiança en mi mateixa i he après eines digitals que em semblaven impossibles. Ara em sento preparada per als nous reptes!"
+            </p>
+            <p class="font-bold text-taronja">- Maria G., 52 anys</p>
+          </div>
+          <div class="bg-white bg-opacity-10 border border-white/10 rounded-2xl p-6 shadow-xl text-white">
+            <p class="italic mb-4 text-base leading-relaxed">
+              "La comunitat és increïble. Compartim coneixements i ens donem suport. Impulsa és molt més que un curs, és una família!"
+            </p>
+            <p class="font-bold text-taronja">- Joan R., 48 anys</p>
           </div>
         </div>
       </section>
@@ -369,8 +397,16 @@
     </div>
   </aside>
 
-  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
-    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
+    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
+        <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
+            <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+        <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
+            <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+    </div>
+    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
 </body>
 </html>
