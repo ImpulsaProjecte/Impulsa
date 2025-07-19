@@ -20,17 +20,14 @@
     }
   </script>
   <style>
-    @keyframes spin-slow { 100% { transform: rotate(360deg); } }
-    .animate-spin-slow { animation: spin-slow 16s linear infinite; }
-
-    /* L'antic .video-container ja no el necessitem així. Ara l'estil va directament al vídeo o a un nou contenidor */
+    /* Estils per al vídeo de fons */
     .video-background-container {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden; /* Per si el vídeo desborda, es retalla */
+      overflow: hidden;
     }
     .video-background-container video {
       position: absolute;
@@ -38,16 +35,67 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Assegura que el vídeo ompli el contenidor sense distorsió */
+      object-fit: cover;
     }
+
+    /* Fons futurista amb patrons inspirats en la imatge */
+    .futuristic-pattern-background {
+      position: absolute;
+      inset: 0;
+      z-index: -20;
+      background-image:
+        linear-gradient(45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%),
+        linear-gradient(-45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%),
+        radial-gradient(circle, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+      
+      background-size:
+        40px 40px,
+        40px 40px,
+        8px 8px,
+        50px 50px,
+        50px 50px;
+      
+      background-position: 0 0;
+      opacity: 1;
+    }
+
+    /* Estil per al degradat principal del body */
+    .body-gradient {
+        background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+        opacity: 0.9;
+        position: absolute;
+        inset: 0;
+        z-index: -10;
+    }
+
+    /* Estil per a la barra de notícies en mòbil (desactiva el fixed) */
+    @media (max-width: 1023px) { /* Breakpoint 'lg' de Tailwind, per fer-ho consistent amb el disseny */
+      .news-sidebar {
+        width: 100%; /* Ocupa tot l'ample en mòbil */
+        position: relative; /* Torna a posició normal en el flux */
+        top: auto;
+        right: auto;
+        left: auto; /* Reseteja left per mòbils */
+        transform: none !important; /* Desactiva el transform fixed */
+        margin-top: 2rem; /* Espai entre el contingut principal i les notícies */
+        padding-bottom: 2rem;
+        border-radius: 0.75rem; /* Reseta el border-radius per si era rounded-l-xl */
+      }
+      .main-content-wrapper {
+          padding-right: 0 !important; /* Elimina el padding si hi hagués en mòbils */
+          max-width: 100% !important; /* Assegura que el main ocupi tot l'ample disponible */
+      }
+    }
+    /* El valor de 'right' per a la barra lateral fixa es calcularà amb JavaScript per ser més precís */
+    /* Ho posarem directament a l'estil inline perquè pugui accedir al 'calc' dinàmicament */
   </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-y-scroll">
-  <div aria-hidden="true" class="absolute inset-0 -z-10">
-    <div class="w-full h-full bg-gradient-to-br from-[#1e3a8a] via-[#0f172a] to-black opacity-90 animate-pulse"></div>
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-taronja blur-3xl opacity-20 animate-spin-slow"></div>
-    <div class="absolute right-1/4 bottom-1/4 w-72 h-72 rounded-full bg-blau blur-3xl opacity-20 animate-spin-slow animation-delay-2000"></div>
-  </div>
+  <div aria-hidden="true" class="body-gradient"></div>
+
+  <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -82,97 +130,197 @@
     menuToggle.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
+
+    // Funció per actualitzar la posició de la barra lateral
+    function updateSidebarPosition() {
+      const mainContentWrapper = document.querySelector('.main-content-wrapper');
+      const newsSidebar = document.querySelector('.news-sidebar');
+
+      if (mainContentWrapper && newsSidebar) {
+        // Obtenir l'ample real del contenidor principal
+        const mainWidth = mainContentWrapper.offsetWidth; // Inclou padding i border
+        const viewportWidth = window.innerWidth;
+        const sidebarWidth = newsSidebar.offsetWidth; // 300px
+
+        // Calcul de l'espai total a cada banda del contenidor principal centrat
+        const totalMarginSpace = (viewportWidth - mainWidth) / 2;
+
+        // Posicionar la barra lateral:
+        // El seu 'left' serà l'ample del main + el marge esquerre del main
+        // Però per centrar-la en l'espai dret:
+        // right = (marge dret de la pantalla) - (ample de la sidebar / 2) - (marge_desitjat_entre_sidebar_i_marge_pagina)
+        // O millor: left = vora dreta del main + marge_entre_main_i_sidebar
+        // I després ajustar amb transformX per centrar-la al marge restant
+        
+        // Càlcul més directe per centrar-la en l'espai dret:
+        // right = (ample total de la pantalla - ample del main) / 2 - ample de la sidebar / 2
+        // Aquesta és la distància de la vora dreta a la meitat de la sidebar
+        
+        // Distància des de la vora dreta de la finestra fins al centre de la barra lateral
+        const desiredRightPosition = totalMarginSpace - (sidebarWidth / 2) - 20; // 20px de marge des de la vora
+
+        // Assegurar que no es desbordi cap a l'esquerra
+        const finalRight = Math.max(0, desiredRightPosition);
+
+        // Apliquem la posició (en píxels per precisió)
+        if (viewportWidth >= 1024) { // Només en pantalles grans on és fixed
+            newsSidebar.style.right = `${finalRight}px`;
+        } else {
+            newsSidebar.style.right = `auto`; // Reseteja en mòbils
+        }
+      }
+    }
+
+    // Executar en carregar la pàgina i en redimensionar
+    window.addEventListener('load', updateSidebarPosition);
+    window.addEventListener('resize', updateSidebarPosition);
   </script>
 
-  <main class="max-w-5xl mx-auto px-4 py-32">
-    <section class="flex flex-col items-center justify-center min-h-[80vh] overflow-hidden">
-      <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
-        Tecnologia amb ànima per al talent
-      </h1>
-      <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
-        IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
-      </p>
-      <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
-        IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
-      </p>
-      <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-        Descobreix el programa
-      </a>
-    </section>
+  <div class="main-content-wrapper max-w-6xl mx-auto px-4 py-32 md:pr-[340px]">
+    <main class="w-full">
+      <section class="flex flex-col items-center justify-center min-h-[60vh] overflow-hidden mb-16">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
+          Tecnologia amb ànima per al talent
+        </h1>
+        <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
+          IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
+        </p>
+        <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
+          IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
+        </p>
+        <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Descobreix el programa
+        </a>
+      </section>
 
-    <section class="relative mt-24 mb-24 flex items-center justify-center min-h-[500px] overflow-hidden rounded-xl shadow-2xl border border-white/10">
-        <div class="video-background-container">
-            <video autoplay loop muted playsinline poster="image_previa_video.png">
-                <source src="videoarrel.mp4" type="video/mp4">
-                El teu navegador no suporta l'etiqueta de vídeo.
-            </video>
-            <div class="absolute inset-0 bg-black opacity-50"></div>
+      <section class="relative mt-24 mb-24 flex items-center justify-center min-h-[500px] overflow-hidden rounded-xl shadow-2xl border border-white/10">
+          <div class="video-background-container">
+              <video autoplay loop muted playsinline poster="image_previa_video.png">
+                  <source src="videoarrel.mp4" type="video/mp4">
+                  El teu navegador no suporta l'etiqueta de vídeo.
+              </video>
+              <div class="absolute inset-0 bg-black opacity-50"></div>
+          </div>
+          <div class="relative z-10 text-white text-center p-8 max-w-2xl mx-auto">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
+                  Descobreix el nostre cor
+              </h2>
+              <p class="text-lg md:text-xl leading-relaxed drop-shadow-md">
+              </p>
+          </div>
+      </section>
+      <section aria-label="Què fem?" class="mb-24">
+        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Què fem?</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+            <img src="iaimag.jpg" alt="Persones en transició digital amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+            <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
+            <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
+          </article>
+          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+            <img src="iaima.jpg" alt="Desenvolupament professional amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+            <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
+            <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
+          </article>
+          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
+            <img src="iaimage.jpg" alt="Cohesió Social amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
+            <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
+            <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
+          </article>
         </div>
-        <div class="relative z-10 text-white text-center p-8 max-w-2xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-                Descobreix el nostre cor
-            </h2>
-            <p class="text-lg md:text-xl leading-relaxed drop-shadow-md">
+      </section>
+
+      <section aria-label="Programa i Impacte" class="mb-24">
+        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">IMPULSA</h2>
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
+            <h3 class="text-2xl font-bold text-taronja mb-4">El nostre Programa</h3>
+            <p class="text-lg text-white mb-4 leading-relaxed">
+              Un itinerari complet dissenyat per acompanyar-te en cada pas, des dels fonaments digitals fins a l'ús avançat de la Intel·ligència Artificial.
             </p>
+            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+              <li>Formació pràctica i personalitzada.</li>
+              <li>Suport continuat i resolució de dubtes.</li>
+              <li>Integració en una comunitat de suport.</li>
+            </ul>
+            <a href="programa.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+              Més detalls del programa
+            </a>
+          </div>
+          <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
+            <h3 class="text-2xl font-bold text-taronja mb-4">Impacte esperat</h3>
+            <p class="text-lg text-white mb-4 leading-relaxed">
+              Con IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
+            </p>
+            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
+              <li>Reducció de la bretxa digital.</li>
+              <li>Augment de l'ocupabilitat en majors de 45 anys.</li>
+              <li>Enfortiment del sentit de comunitat.</li>
+              <li>Impuls de la innovació local.</li>
+            </ul>
+            <a href="contacte.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+              Vull col·laborar
+            </a>
+          </div>
         </div>
-    </section>
-    <section aria-label="Què fem?" class="mb-24">
-      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Què fem?</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-          <img src="iaimag.jpg" alt="Persones en transició digital amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-          <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
-          <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
-        </article>
-        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-          <img src="iaima.jpg" alt="Desenvolupament professional amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-          <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
-          <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
-        </article>
-        <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-          <img src="iaimage.jpg" alt="Cohesió Social amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-          <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
-          <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
-        </article>
-      </div>
-    </section>
-
-    <section aria-label="Programa i Impacte" class="mb-24">
-      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">IMPULSA</h2>
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
-          <h3 class="text-2xl font-bold text-taronja mb-4">El nostre Programa</h3>
-          <p class="text-lg text-white mb-4 leading-relaxed">
-            Un itinerari complet dissenyat per acompanyar-te en cada pas, des dels fonaments digitals fins a l'ús avançat de la Intel·ligència Artificial.
+      </section>
+    </main>
+  </div> <aside class="news-sidebar fixed top-32 w-[300px] h-[calc(100vh-130px)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
+    <h3 class="text-2xl font-bold text-taronja mb-6 text-center">Últimes Notícies IA</h3>
+    <div class="space-y-6">
+      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
+        <img src="6.jpg" alt="Netflix El eternauta IA" class="w-24 h-24 rounded-lg object-cover" />
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-1">Netflix utilitza IA generativa per a la sèrie "El eternauta"</h4>
+          <p class="text-sm text-white text-opacity-80 leading-snug">
+            Netflix ha confirmat l’ús d’IA generativa en aquesta sèrie argentina per generar efectes visuals de forma deu vegades més ràpida que amb mètodes tradicionals.
           </p>
-          <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
-            <li>Formació pràctica i personalitzada.</li>
-            <li>Suport continuat i resolució de dubtes.</li>
-            <li>Integració en una comunitat de suport.</li>
-          </ul>
-          <a href="programa.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-            Més detalls del programa
-          </a>
+          <a href="https://elpais.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
         </div>
-        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
-          <h3 class="text-2xl font-bold text-taronja mb-4">Impacte esperat</h3>
-          <p class="text-lg text-white mb-4 leading-relaxed">
-            Amb IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
+      </article>
+      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
+        <img src="2.jpg" alt="Meta inverteix en IA" class="w-24 h-24 rounded-lg object-cover" />
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-1">Meta amplia massivament la inversió en infraestructura d’IA</h4>
+          <p class="text-sm text-white text-opacity-80 leading-snug">
+            El CEO Mark Zuckerberg anuncia una inversió de "centenars de milers de milions de dòlars" per reforçar la infraestructura d’IA de Meta.
           </p>
-          <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
-            <li>Reducció de la bretxa digital.</li>
-            <li>Augment de l'ocupabilitat en majors de 45 anys.</li>
-            <li>Enfortiment del sentit de comunitat.</li>
-            <li>Impuls de la innovació local.</li>
-          </ul>
-          <a href="contacte.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-            Vull col·laborar
-          </a>
+          <a href="https://es.wired.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
         </div>
-      </div>
-    </section>
-  </main>
+      </article>
+      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
+        <img src="3.jpg" alt="Google IA Harley-Davidson" class="w-24 h-24 rounded-lg object-cover" />
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-1">Google anima fotos centenàries amb IA a Harley‑Davidson</h4>
+          <p class="text-sm text-white text-opacity-80 leading-snug">
+            El projecte "Moving Archives" de Google utilitza IA generativa per portar a la vida imatges històriques del museu Harley‑Davidson amb animacions subtils.
+          </p>
+          <a href="https://cincodias.elpais.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
+        </div>
+      </article>
+      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
+        <img src="ai.jpeg" alt="FakeTechFeed IA" class="w-24 h-24 rounded-lg object-cover" />
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-1">Plataforma FakeTechFeed denúncia l’ús indegut de contingut humà per IA</h4>
+          <p class="text-sm text-white text-opacity-80 leading-snug">
+            FakeTechFeed sorgeix per denunciar IA que reutilitza contingut humà sense permís ni retribució, generant debat ètic i legal.
+          </p>
+          <a href="https://okdiario.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
+        </div>
+      </article>
+      <article class="pb-4 flex flex-col items-center text-center gap-3">
+        <img src="ia.jpg" alt="SembrAI 2025" class="w-24 h-24 rounded-lg object-cover" />
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-1">SembrAI 2025: Congrés d’IA agroalimentària a Còrdova</h4>
+          <p class="text-sm text-white text-opacity-80 leading-snug">
+            El congrés internacional se celebrarà el 25 i 26 de setembre del 2025 a Còrdova, enfocant-se en solucions d’IA per al sector agrari, amb simposis i startups emergents.
+          </p>
+          <a href="https://redhotcyber.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </aside>
 
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
