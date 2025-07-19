@@ -34,6 +34,16 @@
   <!-- Barra de navegació futurista -->
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+    <div class="flex items-center gap-2"> 
+        <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
+          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
+          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+      </div>
+
     <!-- LOGO -->
     <a href="index.html" class="flex items-center gap-2">
       <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
@@ -113,8 +123,16 @@
     </section>
   </main>
 
-  <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
-    <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+  <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
+    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
+        <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
+            <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+        <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
+            <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+    </div>
+    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
 </body>
 </html>
