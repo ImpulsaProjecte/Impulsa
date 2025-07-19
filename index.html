@@ -112,6 +112,16 @@
           max-width: 100% !important; /* Assegura que el main ocupi tot l'ample disponible */
       }
     }
+
+    /* NOU: Estil per al menú mòbil (pestanya de contacte) */
+    #mobile-menu {
+        max-height: calc(100vh - 64px); /* Altura màxima, restant l'altura de la navbar */
+        overflow-y: auto; /* Permet el scroll dins del menú si el contingut és llarg */
+    }
+    /* NOU: Classe per bloquejar l'scroll del body quan el menú mòbil està obert */
+    body.no-scroll {
+      overflow: hidden;
+    }
   </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-y-scroll">
@@ -148,9 +158,13 @@
   <script>
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
+    const body = document.body; // Referència al body
 
     menuToggle.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
+      // Controla l'overflow del body quan el menú mòbil s'obre/tanca
+      // Afegeix o treu la classe 'no-scroll' al body
+      body.classList.toggle("no-scroll");
     });
 
     // Funció per actualitzar la posició de la barra lateral (només per escriptori)
@@ -161,99 +175,38 @@
       if (mainContentWrapper && newsSidebar) {
         const viewportWidth = window.innerWidth;
 
-        if (viewportWidth >= 1024) { // Activa la lògica de fixed només per a pantalles >= lg
-            const mainWidth = mainContentWrapper.offsetWidth; 
-            const sidebarWidth = newsSidebar.offsetWidth; // 300px
-            
-            // Calcul de l'espai total de marge a cada banda del contingut principal centrat
-            const totalMarginSpace = (viewportWidth - mainWidth) / 2;
-
-            // Posició ideal per al costat dret de la barra lateral
-            // right = distància des de la vora dreta de la pantalla fins al centre de la sidebar
-            // Volem que estigui a la dreta del main content.
-            // Si el mainContentWrapper té un ample de 'X' i està centrat, la seva vora esquerra és (viewportWidth - X) / 2.
-            // La seva vora dreta és (viewportWidth - X) / 2 + X.
-            // Volem que la sidebar estigui a la dreta d'aquesta vora dreta.
-
-            // La vora dreta del contingut principal és (viewportWidth - mainWidth) / 2 + mainWidth.
-            // Per centrar la sidebar en l'espai que queda a la dreta del main,
-            // la posició 'right' de la sidebar hauria de ser:
-            // (amplada del marge dret) - (ample de la sidebar / 2)
-            
-            // L'ample del main-content-wrapper inclou el seu padding.
-            // L'ample que realment ocupa el text dins del main-content-wrapper (sense padding-right)
-            // és aproximadament max-w-6xl (1152px)
-            const mainContentRealWidth = 1152; // Valor de max-w-6xl
-            const mainContentLeftOffset = (viewportWidth - mainContentRealWidth) / 2;
-            const mainContentRightEdge = mainContentLeftOffset + mainContentRealWidth;
-
-            // L'espai disponible a la dreta per a la sidebar, des de la vora del contingut principal
-            // fins a la vora de la pantalla, menys el padding-right del main-content-wrapper (que és 340px)
-            const availableSpaceRightOfMain = (viewportWidth - mainContentRightEdge);
-
-            // Per centrar la sidebar (300px) en aquest espai disponible, el 'right' ha de ser:
-            // right = (availableSpaceRightOfMain - sidebarWidth) / 2
-            
-            // Marge entre el main content i la sidebar: 40px (el que afegim al pr-[340px] a part dels 300 de sidebar)
-            const desiredGap = 40;
-            const calculatedRight = (viewportWidth - mainContentRealWidth) / 2 - sidebarWidth - desiredGap;
-            
-            // Ajustar el 'right' de la sidebar de manera que la seva vora esquerra es situï just a la dreta del main-content-wrapper
-            // i alhora estigui centrada respecte al marge dret.
-            // Aquesta és la part més complicada del posicionament perfecte.
-            // Una forma senzilla per la dreta és:
-            // la sidebar es troba a la distància 'right' de la vora dreta de la pantalla.
-            // Volem que estigui "centrada" en la secció dreta.
-            // Total ample de l'espai dret = (viewportWidth - 1152px) / 2 (si el main és 1152px)
-            // Si el sidebar és 300px.
-            // El seu centre seria a ((viewportWidth - 1152px) / 2) / 2
-            
-            const rightMarginSpace = (viewportWidth - mainContentRealWidth - (2 * 16)) / 2; // - 2 * px-4 (32px total)
-            
-            // right = (espai_total_a_la_dreta_del_main) / 2 - (ample_sidebar / 2)
-            // right = ( viewportWidth - (mainContentRealWidth + 32) - sidebarWidth ) / 2
-            // Simplificació per que quedi bé visualment:
-            const rightOffset = (viewportWidth - mainContentRealWidth - sidebarWidth) / 2;
-            // Aquest 'rightOffset' es el marge que hi hauria si el contingut principal fos només de 1152px i no tingués padding
-            // I la sidebar estigués al costat.
-            // Com que el mainContentWrapper ja té padding-right: 340px, el seu ample real és 1152 + 340 = 1492
-            // No, el mainContentWrapper té max-w-6xl (1152) i un padding-right de 340px. Això vol dir que el contingut text va fins a 1152-340.
-            // Però l'element com a tal fa 1152px de màxim.
-
-            // Tornem a la base: mainContentWrapper.offsetWidth és l'ample real ocupat pel contingut principal a la pantalla.
-            // ( viewportWidth - mainContentWrapper.offsetWidth ) / 2  -> Marge lateral esquerra/dreta del main content.
-            // La sidebar ha d'estar a la dreta del mainContentWrapper.
-            // La vora esquerra de la sidebar hauria de ser mainContentWrapper.offsetLeft + mainContentWrapper.offsetWidth + gap.
-            // O, si fem 'right':
-            // right = (viewportWidth - (mainContentWrapper.offsetLeft + mainContentWrapper.offsetWidth)) - (sidebarWidth / 2)
-            // No, el més fàcil és: la vora dreta de la sidebar ha d'estar centrada al marge dret disponible.
-            // Marge dret disponible = (viewportWidth - ample real de contingut principal) / 2
-            // right = (Marge dret disponible - ample de la sidebar) / 2.
-            
-            // Ample del main content (sense padding horitzontal, que ja s'encarrega el max-w-6xl + mx-auto)
+        if (viewportWidth >= 1024) { // Activa la lògica de fixed només per a pantalles >= lg (1024px)
             const contentAreaWidth = 1152; // max-w-6xl
-            const totalPagePadding = 16 * 2; // px-4 a cada costat del main-content-wrapper
-            const contentWithPadding = contentAreaWidth + totalPagePadding;
-
-            const remainingSpace = viewportWidth - contentWithPadding;
+            const totalPagePadding = 16 * 2; // px-4 a cada costat del main-content-wrapper (32px)
+            // L'amplada real que el contingut amb padding ocupa a la vista d'escriptori
+            // No hi ha un padding-right fixat de 340px aquí, el padding el crea el "wrapper"
+            // La sidebar es posiciona a la dreta del contingut principal centrat.
             
-            // La barra lateral ha d'estar dins del 'remainingSpace' de la dreta.
-            // L'ample de la barra lateral és 300px.
-            // Volem que estigui centrada en el 'remainingSpace'.
-            const sidebarPositionFromRight = (remainingSpace / 2) - (sidebarWidth / 2);
+            // Calcul de l'espai que queda a la dreta i esquerra del contingut principal
+            const remainingSpace = viewportWidth - contentAreaWidth; // Si no tingués px-4
 
-            // Ajusta el padding-right del main-content-wrapper per assegurar que la sidebar no se solapi
-            // if (mainContentWrapper.style.paddingRight !== '340px') {
-            //     mainContentWrapper.style.paddingRight = '340px';
-            // }
+            // Volem la sidebar centrada en l'espai que queda a la dreta
+            const sidebarWidth = 300; // ample fix de la sidebar
+            const rightOffset = (remainingSpace / 2) - (sidebarWidth / 2);
 
-            newsSidebar.style.right = `${sidebarPositionFromRight}px`;
+            newsSidebar.style.right = `${rightOffset}px`;
             newsSidebar.style.left = `auto`; // Assegurar que no té un left residual
+            newsSidebar.style.position = 'fixed'; // Assegurar que és fix a escriptori
+            newsSidebar.style.height = 'calc(100vh - 130px)'; // Assegurar altura fixa
+            newsSidebar.style.marginTop = '0'; // Eliminar margin-top de mòbil
+            newsSidebar.style.borderRadius = '0.75rem 0 0 0.75rem'; // Rounded-l-xl
         } else {
-            // Per mòbils, reseteja els estils fixed
-            newsSidebar.style.right = `auto`;
-            newsSidebar.style.left = `auto`;
-            // El `position: relative` i `width: 100%` ja estan al CSS de @media
+            // Per mòbils (pantalles < 1024px), reseteja els estils fixed i la posa en el flux normal
+            newsSidebar.style.position = 'relative';
+            newsSidebar.style.width = '100%'; /* Ocupa tot l'ample en mòbil */
+            newsSidebar.style.top = 'auto';
+            newsSidebar.style.right = 'auto';
+            newsSidebar.style.left = 'auto';
+            newsSidebar.style.transform = 'none'; /* Desactiva el transform fixed */
+            newsSidebar.style.marginTop = '2rem'; /* Espai entre el contingut principal i les notícies */
+            newsSidebar.style.paddingBottom = '2rem';
+            newsSidebar.style.borderRadius = '0.75rem'; /* Reseta el border-radius per si era rounded-l-xl */
+            newsSidebar.style.height = 'auto'; // Permet que l'altura s'ajusti al contingut
         }
       }
     }
@@ -302,18 +255,24 @@
         <div class="grid md:grid-cols-3 gap-8">
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaimag.jpg" alt="Persones en transició digital amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
-            <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
+              <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
+            </div>
           </article>
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaima.jpg" alt="Desenvolupament professional amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
-            <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
+              <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
+            </div>
           </article>
           <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
             <img src="iaimage.jpg" alt="Cohesió Social amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
-            <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
+              <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
+            </div>
           </article>
         </div>
       </section>
@@ -353,7 +312,8 @@
         </div>
       </section>
     </main>
-  </div> <aside class="news-sidebar fixed top-32 w-[300px] h-[calc(100vh-130px)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
+  </div> 
+  <aside class="news-sidebar fixed top-32 w-[300px] h-[calc(100vh-130px)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
     <h3 class="text-2xl font-bold text-taronja mb-6 text-center">Últimes Notícies IA</h3>
     <div class="space-y-6">
       <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
