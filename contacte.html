@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IMPULSA - Inici</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacte - IMPULSA</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,111 +20,25 @@
     }
   </script>
   <style>
-    /* Estils per al vídeo de fons */
-    .video-background-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    /* Permet l'scroll a la pàgina principal per defecte */
+    body {
+      overflow-y: scroll;
+    }
+    /* Classe per bloquejar l'scroll del body quan el menú mòbil està obert */
+    body.no-scroll {
       overflow: hidden;
     }
-    .video-background-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Fons futurista amb patrons inspirats en la imatge */
-    .futuristic-pattern-background {
-      position: absolute;
-      inset: 0;
-      z-index: -20;
-      background-image:
-        linear-gradient(45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%),
-        linear-gradient(-45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%),
-        radial-gradient(circle, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
-        linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-      
-      background-size:
-        40px 40px,
-        40px 40px,
-        8px 8px,
-        50px 50px,
-        50px 50px;
-      
-      background-position: 0 0;
-      opacity: 1;
-    }
-
-    /* Estil per al degradat principal del body */
-    .body-gradient {
-        background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
-        opacity: 0.9;
-        position: absolute;
-        inset: 0;
-        z-index: -10;
-    }
-
-    /* Estils personalitzats per a la barra de desplaçament (WebKit/Chrome/Safari) */
-    .news-sidebar::-webkit-scrollbar {
-      width: 10px;
-    }
-    .news-sidebar::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 5px;
-    }
-    .news-sidebar::-webkit-scrollbar-thumb {
-      background: #f59e0b;
-      border-radius: 5px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-    .news-sidebar::-webkit-scrollbar-thumb:hover {
-      background: #e08e00;
-    }
-
-    /* Estils personalitzats per a la barra de desplaçament (Firefox) */
-    .news-sidebar {
-      scrollbar-color: #f59e0b rgba(255, 255, 255, 0.05);
-      scrollbar-width: thin;
-    }
-
-    /* Estils per a la barra de notícies en mòbil (desactiva el fixed) */
-    @media (max-width: 1023px) { /* Breakpoint 'lg' de Tailwind, per fer-ho consistent amb el disseny */
-      .news-sidebar {
-        width: 100%; /* Ocupa tot l'ample en mòbil */
-        position: relative; /* Torna a posició normal en el flux */
-        top: auto;
-        right: auto;
-        left: auto; /* Reseteja left per mòbils */
-        transform: none !important; /* Desactiva el transform fixed */
-        margin-top: 2rem; /* Espai entre el contingut principal i les notícies */
-        padding-bottom: 2rem;
-        border-radius: 0.75rem; /* Reseta el border-radius per si era rounded-l-xl */
-      }
-      .main-content-wrapper {
-          padding-right: 1rem !important; /* Elimina el padding-right extra en mòbils, mantenint el padding default de px-4 */
-          padding-left: 1rem !important; /* Assegura que hi ha padding també a l'esquerra */
-          max-width: 100% !important; /* Assegura que el main ocupi tot l'ample disponible */
-      }
-    }
-
-    /* NOU: Estil per a la pestanya de contacte (menú mòbil) */
-    /* Per assegurar que el menú mòbil pot fer scroll si és molt llarg */
+    /* Fa que el menú mòbil pugui fer scroll internament si el seu contingut és llarg */
     #mobile-menu {
-        max-height: calc(100vh - 64px); /* Altura màxima, restant l'altura de la navbar */
-        overflow-y: auto; /* Permet el scroll dins del menú si el contingut és llarg */
+      max-height: calc(100vh - 64px); /* Ajusta a l'altura de la teva barra de navegació */
+      overflow-y: auto;
     }
   </style>
 </head>
-<body class="min-h-screen text-blau font-sans relative overflow-y-scroll">
-  <div aria-hidden="true" class="body-gradient"></div>
-
-  <div aria-hidden="true" class="futuristic-pattern-background"></div>
+<body class="min-h-screen text-blau font-sans relative">
+  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
+    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
+    opacity:0.9;"></div>
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -132,23 +46,27 @@
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
       </a>
+
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
+
       <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
         <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
         <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
         <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all font-bold">Contacte</a></li>
       </ul>
     </div>
+
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
       <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
       <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
       <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
+      <a href="contacte.html" class="block py-2 hover:text-taronja font-bold">Contacte</a>
     </div>
   </nav>
 
@@ -159,197 +77,51 @@
 
     menuToggle.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
-      // Controla l'overflow del body quan el menú mòbil s'obre/tanca
-      if (mobileMenu.classList.contains("hidden")) {
-        body.style.overflowY = "scroll"; // Permet el scroll si el menú està tancat
-      } else {
-        body.style.overflowY = "hidden"; // Deshabilita el scroll si el menú està obert (per no poder desplaçar el contingut de darrere)
-      }
+      // Afegeix o treu la classe 'no-scroll' al body
+      body.classList.toggle("no-scroll");
     });
-
-    // Funció per actualitzar la posició de la barra lateral (només per escriptori)
-    function updateSidebarPosition() {
-      const mainContentWrapper = document.querySelector('.main-content-wrapper');
-      const newsSidebar = document.querySelector('.news-sidebar');
-
-      if (mainContentWrapper && newsSidebar) {
-        const viewportWidth = window.innerWidth;
-
-        if (viewportWidth >= 1024) { // Activa la lògica de fixed només per a pantalles >= lg
-            const contentAreaWidth = 1152; // max-w-6xl
-            const totalPagePadding = 16 * 2; // px-4 a cada costat del main-content-wrapper
-            const contentWithPadding = contentAreaWidth + totalPagePadding;
-            const remainingSpace = viewportWidth - contentWithPadding;
-            const sidebarWidth = newsSidebar.offsetWidth; // 300px
-            const sidebarPositionFromRight = (remainingSpace / 2) - (sidebarWidth / 2);
-
-            newsSidebar.style.right = `${sidebarPositionFromRight}px`;
-            newsSidebar.style.left = `auto`; // Assegurar que no té un left residual
-        } else {
-            // Per mòbils, reseteja els estils fixed
-            newsSidebar.style.right = `auto`;
-            newsSidebar.style.left = `auto`;
-            // El `position: relative` i `width: 100%` ja estan al CSS de @media
-        }
-      }
-    }
-
-    // Executar en carregar la pàgina i en redimensionar
-    window.addEventListener('load', updateSidebarPosition);
-    window.addEventListener('resize', updateSidebarPosition);
   </script>
 
-  <div class="main-content-wrapper max-w-6xl mx-auto px-4 py-32 md:pr-[340px]">
-    <main class="w-full">
-      <section class="flex flex-col items-center justify-center min-h-[60vh] overflow-hidden mb-16">
-        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-44 h-44 mb-8 animate-pulse drop-shadow-xl" />
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-lg">
-          Tecnologia amb ànima per al talent
-        </h1>
-        <p class="text-xl text-white text-center max-w-2xl mx-auto mb-6">
-          IMPULSA utilitza eines d’intel·ligència artificial per acompanyar persones adultes en la millora del seu perfil competencial i laboral, facilitant l’adaptació als nous reptes digitals amb suport personalitzat i inspirador.
-        </p>
-        <p class="text-lg md:text-xl text-white text-center mb-8 max-w-xl font-medium">
-          IMPULSA acompanya persones adultes en la seva adaptació als canvis digitals, emocionals i laborals. Un projecte tecnològic-social pensat per a tu.
-        </p>
-        <a href="programa.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-          Descobreix el programa
-        </a>
-      </section>
+  <main class="max-w-5xl mx-auto px-4 pt-40 pb-20">
+    <section id="contacte" aria-label="Contacte" class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Contacte</h2>
 
-      <section class="relative mt-24 mb-24 flex items-center justify-center min-h-[500px] overflow-hidden rounded-xl shadow-2xl border border-white/10">
-          <div class="video-background-container">
-              <video autoplay loop muted playsinline poster="image_previa_video.png">
-                  <source src="videoarrel.mp4" type="video/mp4">
-                  El teu navegador no suporta l'etiqueta de vídeo.
-              </video>
-              <div class="absolute inset-0 bg-black opacity-50"></div>
-          </div>
-          <div class="relative z-10 text-white text-center p-8 max-w-2xl mx-auto">
-              <h2 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-                  Descobreix el nostre cor
-              </h2>
-              <p class="text-lg md:text-xl leading-relaxed drop-shadow-md">
-              </p>
-          </div>
-      </section>
-      <section aria-label="Què fem?" class="mb-24">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Què fem?</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-            <img src="iaimag.jpg" alt="Persones en transició digital amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <div>
-              <h3 class="text-xl font-bold text-white mb-2">Transició digital</h3>
-              <p class="text-white text-opacity-80">Acompanyem la teva adaptació al món digital.</p>
-            </div>
-          </article>
-          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-            <img src="iaima.jpg" alt="Desenvolupament professional amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <div>
-              <h3 class="text-xl font-bold text-white mb-2">Desenvolupament professional</h3>
-              <p class="text-white text-opacity-80">Potencia les teves habilitats amb IA per al mercat laboral.</p>
-            </div>
-          </article>
-          <article class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02]">
-            <img src="iaimage.jpg" alt="Cohesió Social amb IA" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-taronja object-cover" />
-            <div>
-              <h3 class="text-xl font-bold text-white mb-2">Cohesió Social</h3>
-              <p class="text-white text-opacity-80">Connectem persones per construir una comunitat digital activa.</p>
-            </div>
-          </article>
-        </div>
-      </section>
+      <form action="https://formsubmit.co/impulsames45@gmail.com" method="POST"
+        class="bg-white bg-opacity-80 rounded-xl shadow-xl p-6 max-w-md mx-auto flex flex-col gap-4"
+        aria-label="Formulari de contacte">
 
-      <section aria-label="Programa i Impacte" class="mb-24">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">IMPULSA</h2>
-        <div class="grid md:grid-cols-2 gap-8 items-start">
-          <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
-            <h3 class="text-2xl font-bold text-taronja mb-4">El nostre Programa</h3>
-            <p class="text-lg text-white mb-4 leading-relaxed">
-              Un itinerari complet dissenyat per acompanyar-te en cada pas, des dels fonaments digitals fins a l'ús avançat de la Intel·ligència Artificial.
-            </p>
-            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
-              <li>Formació pràctica i personalitzada.</li>
-              <li>Suport continuat i resolució de dubtes.</li>
-              <li>Integració en una comunitat de suport.</li>
-            </ul>
-            <a href="programa.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-              Més detalls del programa
-            </a>
-          </div>
-          <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6">
-            <h3 class="text-2xl font-bold text-taronja mb-4">Impacte esperat</h3>
-            <p class="text-lg text-white mb-4 leading-relaxed">
-              Con IMPULSA, busquem generar un canvi real a nivell individual i col·lectiu, reforçant el teixit social i la innovació al municipi.
-            </p>
-            <ul class="list-disc list-inside text-white text-opacity-80 space-y-2">
-              <li>Reducció de la bretxa digital.</li>
-              <li>Augment de l'ocupabilitat en majors de 45 anys.</li>
-              <li>Enfortiment del sentit de comunitat.</li>
-              <li>Impuls de la innovació local.</li>
-            </ul>
-            <a href="contacte.html" class="inline-block bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-6 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-              Vull col·laborar
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div> <aside class="news-sidebar fixed top-32 w-[300px] h-[calc(100vh-130px)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
-    <h3 class="text-2xl font-bold text-taronja mb-6 text-center">Últimes Notícies IA</h3>
-    <div class="space-y-6">
-      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
-        <img src="6.jpg" alt="Netflix El eternauta IA" class="w-24 h-24 rounded-lg object-cover" />
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-1">Netflix utilitza IA generativa per a la sèrie "El eternauta"</h4>
-          <p class="text-sm text-white text-opacity-80 leading-snug">
-            Netflix ha confirmat l’ús d’IA generativa en aquesta sèrie argentina per generar efectes visuals de forma deu vegades més ràpida que amb mètodes tradicionals.
-          </p>
-          <a href="https://elpais.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
-      </article>
-      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
-        <img src="2.jpg" alt="Meta inverteix en IA" class="w-24 h-24 rounded-lg object-cover" />
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-1">Meta amplia massivament la inversió en infraestructura d’IA</h4>
-          <p class="text-sm text-white text-opacity-80 leading-snug">
-            El CEO Mark Zuckerberg anuncia una inversió de "centenars de milers de milions de dòlars" per reforçar la infraestructura d’IA de Meta.
-          </p>
-          <a href="https://es.wired.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
-      </article>
-      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
-        <img src="3.jpg" alt="Google IA Harley-Davidson" class="w-24 h-24 rounded-lg object-cover" />
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-1">Google anima fotos centenàries amb IA a Harley‑Davidson</h4>
-          <p class="text-sm text-white text-opacity-80 leading-snug">
-            El projecte "Moving Archives" de Google utilitza IA generativa per portar a la vida imatges històriques del museu Harley‑Davidson amb animacions subtils.
-          </p>
-          <a href="https://cincodias.elpais.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
-      </article>
-      <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
-        <img src="ai.jpeg" alt="FakeTechFeed IA" class="w-24 h-24 rounded-lg object-cover" />
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-1">Plataforma FakeTechFeed denúncia l’ús indegut de contingut humà per IA</h4>
-          <p class="text-sm text-white text-opacity-80 leading-snug">
-            FakeTechFeed sorgeix per denunciar IA que reutilitza contingut humà sense permís ni retribució, generant debat ètic i legal.
-          </p>
-          <a href="https://okdiario.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
-      </article>
-      <article class="pb-4 flex flex-col items-center text-center gap-3">
-        <img src="ia.jpg" alt="SembrAI 2025" class="w-24 h-24 rounded-lg object-cover" />
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-1">SembrAI 2025: Congrés d’IA agroalimentària a Còrdova</h4>
-          <p class="text-sm text-white text-opacity-80 leading-snug">
-            El congrés internacional se celebrarà el 25 i 26 de setembre del 2025 a Còrdova, enfocant-se en solucions d’IA per al sector agrari, amb simposis i startups emergents.
-          </p>
-          <a href="https://redhotcyber.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
-      </article>
-    </div>
-  </aside>
+        <input type="hidden" name="_next" value="https://impulsaprojecte.github.io/Impulsa/missatge-enviat.html" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <label for="nom" class="font-medium text-blau">Nom *</label>
+        <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom" />
+
+        <label for="email" class="font-medium text-blau">Correu electrònic *</label>
+        <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu" />
+
+        <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
+        <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
+          <option value="">Selecciona una opció</option>
+          <option value="informacio">Vull més informació</option>
+          <option value="inscripcio">Vull inscriure'm al programa</option>
+          <option value="colaboracio">Vull col·laborar amb el projecte</option>
+          <option value="altres">Altres</option>
+        </select>
+
+        <label for="missatge" class="font-medium text-blau">Missatge</label>
+        <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
+
+        <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
+          Envia
+        </button>
+      </form>
+
+      <div class="text-center mt-6">
+        <p class="text-taronja underline">Correu: <a href="mailto:impulsames45@gmail.com" class="text-taronja underline">impulsames45@gmail.com</a></p>
+        <p class="text-taronja underline">Telèfon: <a href="tel:+34627113914" class="text-taronja underline">+34 627 113 914</a></p>
+      </div>
+    </section>
+  </main>
 
   <footer class="bg-futur text-white text-center py-6" aria-label="Peu de pàgina">
     <p>&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
