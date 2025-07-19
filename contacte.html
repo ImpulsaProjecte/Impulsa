@@ -31,14 +31,38 @@
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
       </a>
-      <ul class="flex space-x-6 text-white">
+
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
         <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
         <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
         <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
         <li><a href="contacte.html" class="hover:text-taronja transition-all font-bold">Contacte</a></li>
       </ul>
     </div>
+
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
+      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
+      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
+      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
+      <a href="contacte.html" class="block py-2 hover:text-taronja font-bold">Contacte</a>
+    </div>
   </nav>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
 
   <main class="max-w-5xl mx-auto px-4 pt-40 pb-20">
     <section id="contacte" aria-label="Contacte" class="mb-16">
