@@ -70,7 +70,30 @@
         z-index: -10;
     }
 
-    /* Estil per a la barra de notícies en mòbil (desactiva el fixed) */
+    /* Estils personalitzats per a la barra de desplaçament (WebKit/Chrome/Safari) */
+    .news-sidebar::-webkit-scrollbar {
+      width: 10px;
+    }
+    .news-sidebar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+    .news-sidebar::-webkit-scrollbar-thumb {
+      background: #f59e0b;
+      border-radius: 5px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .news-sidebar::-webkit-scrollbar-thumb:hover {
+      background: #e08e00;
+    }
+
+    /* Estils personalitzats per a la barra de desplaçament (Firefox) */
+    .news-sidebar {
+      scrollbar-color: #f59e0b rgba(255, 255, 255, 0.05);
+      scrollbar-width: thin;
+    }
+
+    /* NOU: Estils per a la barra de notícies en mòbil (desactiva el fixed) */
     @media (max-width: 1023px) { /* Breakpoint 'lg' de Tailwind, per fer-ho consistent amb el disseny */
       .news-sidebar {
         width: 100%; /* Ocupa tot l'ample en mòbil */
@@ -84,12 +107,11 @@
         border-radius: 0.75rem; /* Reseta el border-radius per si era rounded-l-xl */
       }
       .main-content-wrapper {
-          padding-right: 0 !important; /* Elimina el padding si hi hagués en mòbils */
+          padding-right: 1rem !important; /* Elimina el padding-right extra en mòbils, mantenint el padding default de px-4 */
+          padding-left: 1rem !important; /* Assegura que hi ha padding també a l'esquerra */
           max-width: 100% !important; /* Assegura que el main ocupi tot l'ample disponible */
       }
     }
-    /* El valor de 'right' per a la barra lateral fixa es calcularà amb JavaScript per ser més precís */
-    /* Ho posarem directament a l'estil inline perquè pugui accedir al 'calc' dinàmicament */
   </style>
 </head>
 <body class="min-h-screen text-blau font-sans relative overflow-y-scroll">
@@ -131,42 +153,107 @@
       mobileMenu.classList.toggle("hidden");
     });
 
-    // Funció per actualitzar la posició de la barra lateral
+    // Funció per actualitzar la posició de la barra lateral (només per escriptori)
     function updateSidebarPosition() {
       const mainContentWrapper = document.querySelector('.main-content-wrapper');
       const newsSidebar = document.querySelector('.news-sidebar');
 
       if (mainContentWrapper && newsSidebar) {
-        // Obtenir l'ample real del contenidor principal
-        const mainWidth = mainContentWrapper.offsetWidth; // Inclou padding i border
         const viewportWidth = window.innerWidth;
-        const sidebarWidth = newsSidebar.offsetWidth; // 300px
 
-        // Calcul de l'espai total a cada banda del contenidor principal centrat
-        const totalMarginSpace = (viewportWidth - mainWidth) / 2;
+        if (viewportWidth >= 1024) { // Activa la lògica de fixed només per a pantalles >= lg
+            const mainWidth = mainContentWrapper.offsetWidth; 
+            const sidebarWidth = newsSidebar.offsetWidth; // 300px
+            
+            // Calcul de l'espai total de marge a cada banda del contingut principal centrat
+            const totalMarginSpace = (viewportWidth - mainWidth) / 2;
 
-        // Posicionar la barra lateral:
-        // El seu 'left' serà l'ample del main + el marge esquerre del main
-        // Però per centrar-la en l'espai dret:
-        // right = (marge dret de la pantalla) - (ample de la sidebar / 2) - (marge_desitjat_entre_sidebar_i_marge_pagina)
-        // O millor: left = vora dreta del main + marge_entre_main_i_sidebar
-        // I després ajustar amb transformX per centrar-la al marge restant
-        
-        // Càlcul més directe per centrar-la en l'espai dret:
-        // right = (ample total de la pantalla - ample del main) / 2 - ample de la sidebar / 2
-        // Aquesta és la distància de la vora dreta a la meitat de la sidebar
-        
-        // Distància des de la vora dreta de la finestra fins al centre de la barra lateral
-        const desiredRightPosition = totalMarginSpace - (sidebarWidth / 2) - 20; // 20px de marge des de la vora
+            // Posició ideal per al costat dret de la barra lateral
+            // right = distància des de la vora dreta de la pantalla fins al centre de la sidebar
+            // Volem que estigui a la dreta del main content.
+            // Si el mainContentWrapper té un ample de 'X' i està centrat, la seva vora esquerra és (viewportWidth - X) / 2.
+            // La seva vora dreta és (viewportWidth - X) / 2 + X.
+            // Volem que la sidebar estigui a la dreta d'aquesta vora dreta.
 
-        // Assegurar que no es desbordi cap a l'esquerra
-        const finalRight = Math.max(0, desiredRightPosition);
+            // La vora dreta del contingut principal és (viewportWidth - mainWidth) / 2 + mainWidth.
+            // Per centrar la sidebar en l'espai que queda a la dreta del main,
+            // la posició 'right' de la sidebar hauria de ser:
+            // (amplada del marge dret) - (ample de la sidebar / 2)
+            
+            // L'ample del main-content-wrapper inclou el seu padding.
+            // L'ample que realment ocupa el text dins del main-content-wrapper (sense padding-right)
+            // és aproximadament max-w-6xl (1152px)
+            const mainContentRealWidth = 1152; // Valor de max-w-6xl
+            const mainContentLeftOffset = (viewportWidth - mainContentRealWidth) / 2;
+            const mainContentRightEdge = mainContentLeftOffset + mainContentRealWidth;
 
-        // Apliquem la posició (en píxels per precisió)
-        if (viewportWidth >= 1024) { // Només en pantalles grans on és fixed
-            newsSidebar.style.right = `${finalRight}px`;
+            // L'espai disponible a la dreta per a la sidebar, des de la vora del contingut principal
+            // fins a la vora de la pantalla, menys el padding-right del main-content-wrapper (que és 340px)
+            const availableSpaceRightOfMain = (viewportWidth - mainContentRightEdge);
+
+            // Per centrar la sidebar (300px) en aquest espai disponible, el 'right' ha de ser:
+            // right = (availableSpaceRightOfMain - sidebarWidth) / 2
+            
+            // Marge entre el main content i la sidebar: 40px (el que afegim al pr-[340px] a part dels 300 de sidebar)
+            const desiredGap = 40;
+            const calculatedRight = (viewportWidth - mainContentRealWidth) / 2 - sidebarWidth - desiredGap;
+            
+            // Ajustar el 'right' de la sidebar de manera que la seva vora esquerra es situï just a la dreta del main-content-wrapper
+            // i alhora estigui centrada respecte al marge dret.
+            // Aquesta és la part més complicada del posicionament perfecte.
+            // Una forma senzilla per la dreta és:
+            // la sidebar es troba a la distància 'right' de la vora dreta de la pantalla.
+            // Volem que estigui "centrada" en la secció dreta.
+            // Total ample de l'espai dret = (viewportWidth - 1152px) / 2 (si el main és 1152px)
+            // Si el sidebar és 300px.
+            // El seu centre seria a ((viewportWidth - 1152px) / 2) / 2
+            
+            const rightMarginSpace = (viewportWidth - mainContentRealWidth - (2 * 16)) / 2; // - 2 * px-4 (32px total)
+            
+            // right = (espai_total_a_la_dreta_del_main) / 2 - (ample_sidebar / 2)
+            // right = ( viewportWidth - (mainContentRealWidth + 32) - sidebarWidth ) / 2
+            // Simplificació per que quedi bé visualment:
+            const rightOffset = (viewportWidth - mainContentRealWidth - sidebarWidth) / 2;
+            // Aquest 'rightOffset' es el marge que hi hauria si el contingut principal fos només de 1152px i no tingués padding
+            // I la sidebar estigués al costat.
+            // Com que el mainContentWrapper ja té padding-right: 340px, el seu ample real és 1152 + 340 = 1492
+            // No, el mainContentWrapper té max-w-6xl (1152) i un padding-right de 340px. Això vol dir que el contingut text va fins a 1152-340.
+            // Però l'element com a tal fa 1152px de màxim.
+
+            // Tornem a la base: mainContentWrapper.offsetWidth és l'ample real ocupat pel contingut principal a la pantalla.
+            // ( viewportWidth - mainContentWrapper.offsetWidth ) / 2  -> Marge lateral esquerra/dreta del main content.
+            // La sidebar ha d'estar a la dreta del mainContentWrapper.
+            // La vora esquerra de la sidebar hauria de ser mainContentWrapper.offsetLeft + mainContentWrapper.offsetWidth + gap.
+            // O, si fem 'right':
+            // right = (viewportWidth - (mainContentWrapper.offsetLeft + mainContentWrapper.offsetWidth)) - (sidebarWidth / 2)
+            // No, el més fàcil és: la vora dreta de la sidebar ha d'estar centrada al marge dret disponible.
+            // Marge dret disponible = (viewportWidth - ample real de contingut principal) / 2
+            // right = (Marge dret disponible - ample de la sidebar) / 2.
+            
+            // Ample del main content (sense padding horitzontal, que ja s'encarrega el max-w-6xl + mx-auto)
+            const contentAreaWidth = 1152; // max-w-6xl
+            const totalPagePadding = 16 * 2; // px-4 a cada costat del main-content-wrapper
+            const contentWithPadding = contentAreaWidth + totalPagePadding;
+
+            const remainingSpace = viewportWidth - contentWithPadding;
+            
+            // La barra lateral ha d'estar dins del 'remainingSpace' de la dreta.
+            // L'ample de la barra lateral és 300px.
+            // Volem que estigui centrada en el 'remainingSpace'.
+            const sidebarPositionFromRight = (remainingSpace / 2) - (sidebarWidth / 2);
+
+            // Ajusta el padding-right del main-content-wrapper per assegurar que la sidebar no se solapi
+            // if (mainContentWrapper.style.paddingRight !== '340px') {
+            //     mainContentWrapper.style.paddingRight = '340px';
+            // }
+
+            newsSidebar.style.right = `${sidebarPositionFromRight}px`;
+            newsSidebar.style.left = `auto`; // Assegurar que no té un left residual
         } else {
-            newsSidebar.style.right = `auto`; // Reseteja en mòbils
+            // Per mòbils, reseteja els estils fixed
+            newsSidebar.style.right = `auto`;
+            newsSidebar.style.left = `auto`;
+            // El `position: relative` i `width: 100%` ja estan al CSS de @media
         }
       }
     }
