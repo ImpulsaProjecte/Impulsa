@@ -14,12 +14,40 @@
             taronja: '#f59e0b',
             gris: '#f3f4f6',
             futur: '#0f172a',
-            blancsuau: '#f9fafb'
           }
         }
       }
     }
   </script>
+  <style>
+  .body-gradient {
+    background: radial-gradient(circle at 60% 40%, #2f4eb1 0%, #1e3a8a 40%, #0f172a 100%);
+    opacity: 0.6;
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+  }
+
+  .futuristic-pattern-background {
+    position: absolute;
+    inset: 0;
+    z-index: -20;
+    background-image:
+      linear-gradient(45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
+      linear-gradient(-45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
+      radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size:
+      40px 40px,
+      40px 40px,
+      8px 8px,
+      50px 50px,
+      50px 50px;
+    background-position: 0 0;
+    opacity: 1;
+  }
+</style>
   <style>
     body { overflow-y: scroll; }
 
@@ -40,12 +68,30 @@
       height: 100%;
       object-fit: cover;
     }
+    body {
+  position: relative;
+  background-color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.body-gradient,
+.futuristic-pattern-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+    
   </style>
 </head>
 <body class="min-h-screen text-white font-sans bg-futur">
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>  
   
+
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
