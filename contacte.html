@@ -34,8 +34,78 @@
       overflow-y: auto;
     }
   </style>
+    <style>
+  .body-gradient {
+    background: radial-gradient(circle at 60% 40%, #2f4eb1 0%, #1e3a8a 40%, #0f172a 100%);
+    opacity: 0.6;
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+  }
+
+  .futuristic-pattern-background {
+    position: absolute;
+    inset: 0;
+    z-index: -20;
+    background-image:
+      linear-gradient(45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
+      linear-gradient(-45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
+      radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size:
+      40px 40px,
+      40px 40px,
+      8px 8px,
+      50px 50px,
+      50px 50px;
+    background-position: 0 0;
+    opacity: 1;
+  }
+</style>
+  <style>
+    body { overflow-y: scroll; }
+
+    /* Estils per al vídeo de fons */
+    .video-background-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .video-background-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    body {
+  position: relative;
+  background-color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.body-gradient,
+.futuristic-pattern-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+ </style>
 </head>
-<body class="min-h-screen text-blau font-sans relative">
+<body class="min-h-screen text-white font-sans bg-futur">
+  <div aria-hidden="true" class="body-gradient"></div>
+  <div aria-hidden="true" class="futuristic-pattern-background"></div>
+</head>
   <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
     background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
     opacity:0.9;"></div>
@@ -104,13 +174,13 @@
         <input type="hidden" name="_captcha" value="false" />
 
         <label for="nom" class="font-medium text-blau">Nom *</label>
-        <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom" />
+        <input type="text" id="nom" name="nom" required class="border border-gris rounded px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu nom" />
 
         <label for="email" class="font-medium text-blau">Correu electrònic *</label>
-        <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu" />
+        <input type="email" id="email" name="email" required class="border border-gris rounded px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu el teu correu" />
 
         <label for="motiu" class="font-medium text-blau">Motiu de la consulta *</label>
-        <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja">
+        <select id="motiu" name="motiu" required class="border border-gris rounded px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-taronja">
           <option value="">Selecciona una opció</option>
           <option value="informacio">Vull més informació</option>
           <option value="inscripcio">Vull inscriure'm al programa</option>
@@ -119,7 +189,7 @@
         </select>
 
         <label for="missatge" class="font-medium text-blau">Missatge</label>
-        <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
+        <textarea id="missatge" name="missatge" rows="3" class="border border-gris rounded px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-taronja" placeholder="Escriu la teva consulta"></textarea>
 
         <button type="submit" class="bg-taronja text-blau font-semibold px-6 py-2 rounded-full mt-4 transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
           Envia
@@ -142,7 +212,7 @@
             <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
     </div>
-    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Acompanyem camins, obrim futurs.</p>
+    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
 </body>
 </html>
