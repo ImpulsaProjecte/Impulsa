@@ -91,34 +91,34 @@
     .news-sidebar {
       scrollbar-color: #f59e0b rgba(255, 255, 255, 0.05);
       scrollbar-width: thin;
+      margin-bottom: 2rem; /* ✅ MARGE AL FINAL DE LA SIDEBAR */
     }
 
     /* NOU: Estils per a la barra de notícies en mòbil (desactiva el fixed) */
-    @media (max-width: 1023px) { /* Breakpoint 'lg' de Tailwind, per fer-ho consistent amb el disseny */
+    @media (max-width: 1023px) {
       .news-sidebar {
-        width: 100%; /* Ocupa tot l'ample en mòbil */
-        position: relative; /* Torna a posició normal en el flux */
+        width: 100%;
+        position: relative;
         top: auto;
         right: auto;
-        left: auto; /* Reseteja left per mòbils */
-        transform: none !important; /* Desactiva el transform fixed */
-        margin-top: 2rem; /* Espai entre el contingut principal i les notícies */
+        left: auto;
+        transform: none !important;
+        margin-top: 2rem;
         padding-bottom: 2rem;
-        border-radius: 0.75rem; /* Reseta el border-radius per si era rounded-l-xl */
+        border-radius: 0.75rem;
+        margin-bottom: 2rem;
       }
       .main-content-wrapper {
-          padding-right: 1rem !important; /* Elimina el padding-right extra en mòbils, mantenint el padding default de px-4 */
-          padding-left: 1rem !important; /* Assegura que hi ha padding també a l'esquerra */
-          max-width: 100% !important; /* Assegura que el main ocupi tot l'ample disponible */
+          padding-right: 1rem !important;
+          padding-left: 1rem !important;
+          max-width: 100% !important;
       }
     }
 
-    /* NOU: Estil per al menú mòbil (pestanya de contacte) */
     #mobile-menu {
-      max-height: calc(100vh - 64px); /* Altura màxima, restant l'altura de la navbar */
-      overflow-y: auto; /* Permet el scroll dins del menú si el contingut és llarg */
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
     }
-    /* NOU: Classe per bloquejar l'scroll del body quan el menú mòbil està obert */
     body.no-scroll {
       overflow: hidden;
     }
@@ -341,7 +341,7 @@
       </section>
     </main>
   </div> 
-  <aside class="news-sidebar fixed top-32 w-[300px] h-[calc(100vh-130px)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
+<aside class="news-sidebar fixed top-32 bottom-6 w-[300px] max-h-[calc(100vh-10rem)] bg-white bg-opacity-10 rounded-l-xl shadow-lg border border-white/10 p-6 overflow-y-auto z-40">
     <h3 class="text-2xl font-bold text-taronja mb-6 text-center">Últimes Notícies IA</h3>
     <div class="space-y-6">
       <article class="border-b border-white/20 pb-4 flex flex-col items-center text-center gap-3">
@@ -392,7 +392,6 @@
             El congrés internacional se celebrarà el 25 i 26 de setembre del 2025 a Còrdova, enfocant-se en solucions d’IA per al sector agrari, amb simposis i startups emergents.
           </p>
           <a href="https://redhotcyber.com" target="_blank" rel="noopener noreferrer" class="text-taronja hover:text-white text-sm mt-2 block font-semibold">Continuar llegint &rarr;</a>
-        </div>
       </article>
     </div>
   </aside>
