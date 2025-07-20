@@ -23,19 +23,22 @@
   <style>
     body {
       overflow-y: scroll;
+      background-color: #0f172a;
+    }
+    details[open] summary ~ * {
+      animation: sweep 0.5s ease-in-out;
+    }
+    @keyframes sweep {
+      0%    {opacity: 0; transform: translateY(-10px);}
+      100%  {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
-<body class="min-h-screen text-blau font-sans relative overflow-y-scroll bg-gradient-to-br from-blau via-futur to-black">
-  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
-    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
-    opacity:0.9;"></div>
-
+<body class="min-h-screen text-blau font-sans relative overflow-y-scroll">
   <!-- Barra de navegació futurista -->
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-
-    <div class="flex items-center gap-2"> 
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2"> 
         <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
           <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
@@ -43,94 +46,96 @@
           <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
       </div>
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
+        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
+        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
+        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
+        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+      </ul>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
+      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
+      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
+      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
+      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
+    </div>
+  </nav>
 
-    <!-- LOGO -->
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
-      <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
-    </a>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
 
-    <!-- Botó hamburguesa mòbil -->
-    <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+  <main class="max-w-7xl mx-auto px-6 pt-40 pb-32">
+    <section class="text-white max-w-7xl mx-auto text-center mb-16">
+      <h2 class="text-4xl font-extrabold mb-10 text-white drop-shadow-lg tracking-wide">Proposta de col·laboració institucional <br><span class="text-taronja">model WIN-WIN</span></h2>
+    </section>
 
-    <!-- Menú normal (ocult en mòbil) -->
-    <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
-      <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
-      <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
-      <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-      <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
-    </ul>
-  </div>
+    <section class="my-24">
+      <video src="colaboracio.mp4" autoplay muted loop playsinline class="rounded-3xl shadow-2xl w-full max-w-4xl aspect-[16/9] object-cover object-top mx-auto"></video>
+    </section>
 
-  <!-- Menú desplegable per mòbil -->
-  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
-    <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
-    <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
-    <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-    <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
-  </div>
-</nav>
-
-<!-- Script per al toggle del menú mòbil -->
-<script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-</script>
-
-  <main class="max-w-7xl mx-auto px-6 py-40">
-    <section aria-label="Col·laboració" class="mb-16">
-      <h2 class="text-4xl font-extrabold mb-10 text-white text-center drop-shadow-lg tracking-wide">Proposta de col·laboració institucional <br><span class="text-taronja">model win-WIN</span></h2>
-
-      <div class="bg-futur bg-opacity-80 rounded-3xl shadow-2xl p-10 text-white text-lg space-y-8 backdrop-blur-md border border-white/10">
-        <p class="text-center font-medium text-xl">Impulsa+45 ha estat dissenyat com un projecte de col·laboració entre l’Ajuntament i un professional especialitzat, amb la voluntat de sumar forces i crear valor públic tangible i immediat.</p>
-        <p class="text-center text-lg">Proposem una col·laboració senzilla, escalable i viable, basada en la confiança i la complementarietat.</p>
-
-        <div class="grid md:grid-cols-2 gap-10 mt-12">
-          <!-- Aportacions Ajuntament -->
-          <div class="bg-white bg-opacity-10 rounded-2xl p-8 shadow-xl hover:shadow-2xl border-t-4 border-taronja">
-            <h3 class="text-2xl text-taronja font-bold mb-6 text-center">Ajuntament</h3>
-            <div class="space-y-4">
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Espai municipal per a les sessions formatives i les trobades de grup.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Difusió del projecte a través de canals institucionals (web, xarxes, butlletins).</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Suport logístic bàsic (inscripcions, accés, material bàsic).</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Opció d’incloure el projecte en el pla local d’ocupació, serveis socials o formació contínua.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Possibilitat de formalitzar la col·laboració.</div>
-            </div>
-          </div>
-
-          <!-- Aportacions Dinamitzadors -->
-          <div class="bg-white bg-opacity-10 rounded-2xl p-8 shadow-xl hover:shadow-2xl border-t-4 border-taronja">
-            <h3 class="text-2xl text-taronja font-bold mb-6 text-center">Dinamitzador/a</h3>
-            <div class="space-y-4">
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Disseny del programa i dels materials formatius.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Dinamització de totes les sessions i seguiment personalitzat del grup.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Acompanyament emocional i facilitació participativa.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Valoració final i informe d’impacte amb propostes de continuitat.</div>
-              <div class="bg-white bg-opacity-20 text-white rounded-xl px-5 py-4 shadow-lg border-l-4 border-taronja hover:scale-[1.01] transition-all">Experiència professional reconeguda en àmbits de psicologia, benestar laboral i transformació digital.</div>
-            </div>
-          </div>
+    <section class="mt-32 text-white max-w-7xl mx-auto text-center">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white bg-opacity-10 rounded-2xl px-6 py-12 shadow-xl flex flex-col items-center">
+          <h3 class="text-2xl font-bold text-taronja mb-4">Reforça la innovació local</h3>
+          <p class="text-white text-lg text-center">Posiciona el teu municipi com a referent en transformació digital i social.</p>
+        </div>
+        <div class="bg-white bg-opacity-10 rounded-2xl px-6 py-12 shadow-xl flex flex-col items-center">
+          <h3 class="text-2xl font-bold text-taronja mb-4">Impacte social directe</h3>
+          <p class="text-white text-lg text-center">Millora la qualitat de vida i ocupabilitat de persones +45 del teu territori.</p>
+        </div>
+        <div class="bg-white bg-opacity-10 rounded-2xl px-6 py-12 shadow-xl flex flex-col items-center">
+          <h3 class="text-2xl font-bold text-taronja mb-4">Model flexible i senzill</h3>
+          <p class="text-white text-lg text-center">Adaptem el projecte a les necessitats del teu ajuntament.</p>
         </div>
       </div>
+    </section>
+
+    <section class="mt-32 pb-32 max-w-4xl mx-auto text-white">
+      <details class="bg-white bg-opacity-10 rounded-xl p-8 shadow-xl mb-8">
+        <summary class="cursor-pointer text-2xl font-bold text-taronja">▸ Aportacions de l'Ajuntament</summary>
+        <ul class="mt-6 list-disc list-inside space-y-3 text-lg">
+          <li>Espai municipal per a les sessions formatives i trobades de grup.</li>
+          <li>Difusió del projecte als canals institucionals (web, xarxes, butlletins).</li>
+          <li>Suport logístic bàsic (inscripcions, accés, material).</li>
+          <li>Opció d’incloure el projecte en plans locals d’ocupació o serveis socials.</li>
+          <li>Possibilitat de formalitzar la col·laboració institucional.</li>
+        </ul>
+      </details>
+      <details class="bg-white bg-opacity-10 rounded-xl p-8 shadow-xl">
+        <summary class="cursor-pointer text-2xl font-bold text-taronja">▸ Aportacions del dinamitzador/a</summary>
+        <ul class="mt-6 list-disc list-inside space-y-3 text-lg">
+          <li>Disseny del programa i materials formatius.</li>
+          <li>Dinamització i seguiment personalitzat de les sessions.</li>
+          <li>Acompanyament emocional i facilitació participativa.</li>
+          <li>Valoració final i informe d’impacte amb propostes de continuïtat.</li>
+          <li>Experiència professional reconeguda en psicologia i transformació digital.</li>
+        </ul>
+      </details>
     </section>
   </main>
 
   <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
     <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
-        <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
+      <a href="#" aria-label="Instagram" class="hover:opacity-75 transition-opacity">
+        <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+      </a>
+      <a href="#" aria-label="Facebook" class="hover:opacity-75 transition-opacity">
+        <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+      </a>
     </div>
     <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
