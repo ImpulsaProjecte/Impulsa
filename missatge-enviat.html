@@ -3,109 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Missatge enviat - IMPULSA</title>
+  <!-- Aquesta línia redirigirà a 'index.html' després de 7 segons com a fallback si JavaScript falla -->
+  <meta http-equiv="refresh" content="7;url=index.html">
+  <title>Missatge Enviat - IMPULSA</title>
   <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-  .body-gradient {
-    background: radial-gradient(circle at 60% 40%, #2f4eb1 0%, #1e3a8a 40%, #0f172a 100%);
-    opacity: 0.6;
-    position: absolute;
-    inset: 0;
-    z-index: -10;
-  }
-
-  .futuristic-pattern-background {
-    position: absolute;
-    inset: 0;
-    z-index: -20;
-    background-image:
-      linear-gradient(45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
-      linear-gradient(-45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
-      radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
-    background-size:
-      40px 40px,
-      40px 40px,
-      8px 8px,
-      50px 50px,
-      50px 50px;
-    background-position: 0 0;
-    opacity: 1;
-  }
-</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#1e3a8a',
+            taronja: '#f59e0b',
+            gris: '#f3f4f6',
+            futur: '#0f172a'
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'draw-check': 'drawCheck 1s ease-in-out forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            drawCheck: {
+              '0%': { 'stroke-dashoffset': '1' },
+              '100%': { 'stroke-dashoffset': '0' },
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { overflow-y: scroll; }
-
-    /* Estils per al vídeo de fons */
+    body {
+      background-color: #0f172a;
+      overflow: hidden; /* Evita l'scroll en aquesta pàgina */
+    }
+    
     .video-background-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
+      z-index: -20;
     }
     .video-background-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    body {
-  position: relative;
-  background-color: #0f172a;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 
-.body-gradient,
-.futuristic-pattern-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+    .body-gradient-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 60% 40%, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.8) 60%, #000 100%);
+      opacity: 0.9;
+    }
 
- </style>
+    /* Estils per a l'animació del 'check' */
+    .checkmark__path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: drawCheck 0.8s 0.3s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="min-h-screen text-white font-sans bg-futur">
-  <div aria-hidden="true" class="body-gradient"></div>
-  <div aria-hidden="true" class="futuristic-pattern-background"></div>
-</head>
-<body class="min-h-screen text-white font-sans bg-gradient-to-br from-blau via-futur to-black relative overflow-hidden">
-  <!-- Fons decoratiu -->
-  <div style="position:absolute;inset:0;z-index:-10;width:100vw;height:100vh;
-    background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%);
-    opacity:0.9;"></div>
+<body class="min-h-screen text-white font-sans flex items-center justify-center">
 
-  <!-- Contingut principal -->
-  <main class="max-w-4xl mx-auto px-4 pt-40 pb-20 text-center">
-    <h1 class="text-4xl font-extrabold mb-6 text-taronja">Gràcies per contactar!</h1>
-    <p class="text-xl text-white max-w-2xl mx-auto mb-8">
-      Hem rebut el teu missatge correctament. Ens posarem en contacte amb tu pròximament.
-    </p>
-<a href="contacte.html" class="bg-taronja text-blau font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:bg-[#fcd34d] hover:text-futur transition-all duration-300">
-  ← Tornar a la pàgina de contacte
-</a>
-    </a>
+  <!-- Fons de Vídeo -->
+  <div class="video-background-container">
+    <video playsinline autoplay muted loop>
+      <source src="https://cdn.pixabay.com/video/2020/03/02/33238-401494953.mp4" type="video/mp4">
+      El teu navegador no suporta vídeos HTML5.
+    </video>
+  </div>
+  <div class="body-gradient-overlay"></div>
+
+  <!-- Contingut Principal -->
+  <main class="max-w-md w-full mx-auto px-4 py-10 text-center">
+    <div class="bg-blau/20 backdrop-blur-md border border-blau/30 rounded-2xl shadow-2xl p-8 animate-fade-in-up opacity-0">
+      
+      <!-- Icona Animada -->
+      <div class="mx-auto mb-6 h-24 w-24">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="stroke-current text-taronja/30" fill="none" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+            <polyline class="checkmark__path stroke-current text-taronja" fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+        </svg>
+      </div>
+
+      <h1 class="text-3xl font-extrabold mb-4 text-white">Missatge Enviat!</h1>
+      <p class="text-lg text-gris max-w-sm mx-auto mb-8">
+        Gràcies per contactar amb IMPULSA. Hem rebut el teu missatge i et respondrem aviat.
+      </p>
+
+      <a href="index.html" class="bg-taronja text-blau font-bold text-lg px-8 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:bg-blau hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-taronja focus:ring-offset-2 focus:ring-offset-futur">
+        Tornar a l'inici
+      </a>
+      
+      <p id="countdown-message" class="text-sm text-gray-400 mt-8">
+        Seràs redirigit automàticament en 7 segons...
+      </p>
+    </div>
   </main>
 
-  <!-- Peu de pàgina -->
- <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
-    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
-        <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-    </div>
-    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
-  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let countdownSeconds = 7;
+      const countdownElement = document.getElementById('countdown-message');
+      const redirectUrl = 'index.html'; // Pàgina a la que redirigir
+
+      const interval = setInterval(() => {
+        countdownSeconds--;
+        countdownElement.textContent = `Seràs redirigit automàticament en ${countdownSeconds} segons...`;
+
+        if (countdownSeconds <= 0) {
+          clearInterval(interval);
+          window.location.href = redirectUrl;
+        }
+      }, 1000);
+    });
+  </script>
+
 </body>
 </html>
