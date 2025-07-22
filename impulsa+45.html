@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Impulsa+45 - Destinataris</title>
+  <title>Impulsa+45 - Talent Sense Edat</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,317 +20,305 @@
     }
   </script>
   <style>
-  .body-gradient {
-    background: radial-gradient(circle at 60% 40%, #2f4eb1 0%, #1e3a8a 40%, #0f172a 100%);
-    opacity: 0.6;
-    position: absolute;
-    inset: 0;
-    z-index: -10;
-  }
-
-  .futuristic-pattern-background {
-    position: absolute;
-    inset: 0;
-    z-index: -20;
-    background-image:
-      linear-gradient(45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
-      linear-gradient(-45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%),
-      radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
-    background-size:
-      40px 40px,
-      40px 40px,
-      8px 8px,
-      50px 50px,
-      50px 50px;
-    background-position: 0 0;
-    opacity: 1;
-  }
-</style>
-  <style>
-    body { overflow-y: scroll; }
-
-    /* Estils per al vídeo de fons */
-    .video-background-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .video-background-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    body {
-  position: relative;
-  background-color: #0f172a;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.body-gradient,
-.futuristic-pattern-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+    .body-gradient { background: radial-gradient(circle at 60% 40%, #2f4eb1 0%, #1e3a8a 40%, #0f172a 100%); opacity: 0.6; position: absolute; inset: 0; z-index: -10; }
+    .futuristic-pattern-background { position: absolute; inset: 0; z-index: -20; background-image: linear-gradient(45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%), linear-gradient(-45deg, rgba(30, 58, 138, 0.05) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.05) 75%, rgba(30, 58, 138, 0.05) 100%), radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px), linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px); background-size: 40px 40px, 40px 40px, 8px 8px, 50px 50px, 50px 50px; background-position: 0 0; opacity: 1; }
+    body { overflow-y: scroll; position: relative; background-color: #0f172a; min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
+    .video-background-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+    .video-background-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .body-gradient, .futuristic-pattern-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    .nav-active { background-color: #f59e0b !important; transform: scale(1.1); }
+    .nav-active div { background-color: #1e3a8a !important; }
+    summary::-webkit-details-marker { display: none; }
     
+    .text-gradient-orange {
+      background: linear-gradient(45deg, #f59e0b, #ffc837);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .card-glow:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 40px rgba(30, 58, 138, 0.2);
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
+    }
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="min-h-screen text-white font-sans bg-futur">
   <div aria-hidden="true" class="body-gradient"></div>
-  <div aria-hidden="true" class="futuristic-pattern-background"></div>  
-  
+  <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
-
-  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50 backdrop-blur-sm" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-
-      <div class="flex items-center gap-2"> 
-        <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
-          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
-          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
+      <div class="flex items-center gap-2"> <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity"><img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a> <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity"><img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a></div>
+      <a href="index.html" class="flex items-center gap-3"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /> <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span></a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+     <div class="hidden md:flex items-center gap-6 text-white font-semibold">
+        <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
+        <a href="impulsa+45.html" class="hover:text-taronja transition-colors duration-300">Impulsa+45</a>
+        <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
+        <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
+        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all duration-300">Contacte</a>
       </div>
-      
-    <!-- LOGO -->
-    <a href="index.html" class="flex items-center gap-2">
-      <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
-      <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
-    </a>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Programa</a>
+        <a href="impulsa+45.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Impulsa+45</a>
+        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
+        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
+      </div>
+  </nav>
 
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
-        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
-        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
-        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
+  <aside aria-label="Navegació ràpida" class="hidden lg:block fixed top-1/2 left-6 transform -translate-y-1/2 z-40">
+    <div class="bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-lg p-4">
+      <ul class="space-y-4">
+        <li><a href="#Programa" title="Anar a Sobre el projecte" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Programa</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#destinataris" title="Anar a Persones destinatàries" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Destinataris</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#beneficis" title="Anar als Beneficis" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Beneficis</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#estructura" title="Anar a l'Estructura" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Estructura</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#testimonis" title="Anar als Testimonis" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Testimonis</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#contacte" title="Anar a Contacte" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Contacte</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
       </ul>
     </div>
+  </aside>
 
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
-      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
-      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
-      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
-    </div>
-  </nav>
+  <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+    <section id="Programa" class="relative flex items-center justify-center min-h-[400px] md:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl mb-24">
+      <div class="video-background-container"><video autoplay loop muted playsinline poster="image_previa_impulsa45.png"><source src="avanzandoIA.mp4" type="video/mp4">El teu navegador no suporta l'etiqueta de vídeo.</video><div class="absolute inset-0 bg-black opacity-60"></div></div>
+      <div class="relative z-10 text-white text-center p-8">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gradient-orange mb-4 leading-tight drop-shadow-lg animate-on-scroll">Impulsa+45: Talent sense edat</h1>
+        <p class="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto drop-shadow-md animate-on-scroll" style="transition-delay: 0.2s;">Un programa dissenyat per a persones majors de 45 anys que volen reimpulsar-se en el món digital i laboral.</p>
+      </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto py-16 mb-16 animate-on-scroll" id="sobre-projecte">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl font-bold text-taronja mb-6 drop-shadow">Sobre el projecte <span class="text-white">Impulsa+45</span></h2>
+                <div class="text-lg text-white/90 font-light text-justify leading-relaxed space-y-4">
+                    <p><strong>IMPULSA+45</strong> és un projecte d’innovació social que acompanya persones adultes, especialment majors de 45 anys, en processos de transició digital, emocional i laboral.</p>
+                    <p>Neix de la necessitat de generar espais on <strong class="font-medium text-white">la tecnologia estigui al servei de les persones</strong>. A través d’un enfocament pràctic, oferim recursos i suport per recuperar la confiança i preparar-se per als reptes actuals.</p>
+                    <p><strong>IMPULSA+45</strong> és més que un curs: <strong class="font-medium text-white">és un espai de trobada, comunitat i creixement compartit.</strong></p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <img src="https://images.pexels.com/photos/4344860/pexels-photo-4344860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Persona major de 45 anys aprenent a utilitzar un ordinador amb un somriure" class="rounded-2xl shadow-2xl w-full h-full object-cover border-4 border-white/10">
+            </div>
+        </div>
+    </section>
+    
+    <section id="destinataris" class="mb-24 animate-on-scroll">
+      <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Persones destinatàries <span class="text-taronja">Impulsa+45</span></h2>
+      <div class="grid md:grid-cols-2 gap-8 text-lg leading-relaxed">
+        <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6 transition-all duration-300 card-glow">
+          <h3 class="text-2xl font-bold text-taronja flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>Públic destinatari</h3>
+          <p class="text-white/90 font-light">Persones entre <strong>45 i 65 anys</strong>, residents al municipi, que es troben en alguna d’aquestes situacions:</p>
+          <ul class="space-y-3 text-white/90 font-light">
+            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>En actiu, però amb dificultats per seguir el ritme tecnològic.</span></li>
+            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>A l’atur o en transició professional i volen adaptar-se.</span></li>
+            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Amb experiència tècnica però sense formació digital recent.</span></li>
+            <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Senten desconnexió amb el món digital o la IA.</span></li>
+          </ul>
+        </div>
+        <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6 transition-all duration-300 card-glow">
+          <h3 class="text-2xl font-bold text-taronja flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>Valor afegit del programa</h3>
+          <p class="text-white/90 font-light">El perfil destinatari té molt valor i experiència, però sovint no se sent reconegut.</p>
+          <p class="text-white/90 font-light"><strong class="font-medium text-white">Impulsa+45</strong> no només forma, sinó que <strong class="font-medium text-white">reforça l’autoestima</strong> i <strong class="font-medium text-white">reconnecta les persones amb el seu potencial</strong>.</p>
+          <p class="text-white/90 font-light">La tecnologia es planteja com <strong class="font-medium text-white">una aliada, no una amenaça</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficis" class="mb-24 animate-on-scroll">
+        <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Per què <span class="text-taronja">Impulsa+45?</span></h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <!-- Benefici 1 -->
+            <div class="bg-white bg-opacity-5 p-8 rounded-2xl border border-white/10 shadow-lg transition-all duration-300 card-glow">
+                <div class="mb-4 inline-block p-4 bg-taronja/10 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" /></svg></div>
+                <h3 class="text-xl font-bold text-white mb-2">Recupera la Confiança</h3>
+                <p class="text-white/70">Reforça la teva autoestima i el teu valor professional en un entorn de suport.</p>
+            </div>
+            <!-- Benefici 2 -->
+            <div class="bg-white bg-opacity-5 p-8 rounded-2xl border border-white/10 shadow-lg transition-all duration-300 card-glow">
+                <div class="mb-4 inline-block p-4 bg-taronja/10 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg></div>
+                <h3 class="text-xl font-bold text-white mb-2">Eines Pràctiques amb IA</h3>
+                <p class="text-white/70">Aprèn a utilitzar la intel·ligència artificial per ser més eficient i creatiu a la feina.</p>
+            </div>
+            <!-- Benefici 3 -->
+            <div class="bg-white bg-opacity-5 p-8 rounded-2xl border border-white/10 shadow-lg transition-all duration-300 card-glow">
+                <div class="mb-4 inline-block p-4 bg-taronja/10 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
+                <h3 class="text-xl font-bold text-white mb-2">Comunitat i Suport</h3>
+                <p class="text-white/70">Forma part d'un grup de professionals com tu, comparteix experiències i creix.</p>
+            </div>
+            <!-- Benefici 4 -->
+            <div class="bg-white bg-opacity-5 p-8 rounded-2xl border border-white/10 shadow-lg transition-all duration-300 card-glow">
+                 <div class="mb-4 inline-block p-4 bg-taronja/10 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                <h3 class="text-xl font-bold text-white mb-2">Actualització Real</h3>
+                <p class="text-white/70">Posa't al dia amb les competències digitals que el mercat laboral actual demana.</p>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="Perfil tipus" class="mb-24 animate-on-scroll">
+      <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl text-center">
+        <h3 class="text-3xl font-bold text-white mb-6">Un perfil com el teu té molt a aportar</h3>
+        <p class="max-w-3xl mx-auto text-white/80 mb-8">Hem creat una petita història en vídeo per representar el tipus de perfil que busquem. Persones amb experiència, ganes d'aprendre i de superar la barrera digital.</p>
+        <video autoplay loop muted playsinline class="mx-auto rounded-xl w-full max-w-[750px] shadow-xl border-4 border-white/10"><source src="participant.mp4" type="video/mp4">El teu navegador no suporta l'etiqueta de vídeo.</video>
+      </div>
+    </section>
+
+    <section id="estructura" class="mb-24 animate-on-scroll">
+      <h2 class="text-4xl font-extrabold mt-16 mb-12 text-center drop-shadow-lg">Estructura del <span class="text-taronja">programa</span></h2>
+      <div class="max-w-3xl mx-auto text-lg text-white/90 font-light text-center mb-12 leading-relaxed bg-white bg-opacity-5 p-6 rounded-2xl shadow-lg border border-white/10">
+        El programa es desplega en tres blocs, pensats per oferir una experiència completa i humana. Totes les sessions són en grups reduïts, amb un enfocament proper, pràctic i adaptat al teu ritme.
+      </div>
+      <div class="max-w-4xl mx-auto space-y-6">
+        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
+          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
+            Bloc 1: Diagnòstic inicial i activació personal
+            <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
+          </summary>
+          <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Prendre consciència del punt de partida i començar a trencar la barrera psicològica cap a la tecnologia.</p>
+          </div>
+        </details>
+        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
+          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
+            Bloc 2: Tallers pràctics amb IA i eines digitals
+            <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
+          </summary>
+          <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Oferir eines útils immediates i canviar la percepció de la tecnologia des de l’experiència pròpia.</p>
+          </div>
+        </details>
+        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
+          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
+            Bloc 3: Comunitat +45 i reconeixement
+            <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
+          </summary>
+          <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Mantenir el vincle, fomentar l’autoestima i donar visibilitat al talent sènior digitalment actiu.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+    
+    <section id="testimonis" class="mb-24 animate-on-scroll">
+        <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Què diuen els <span class="text-taronja">nostres participants</span></h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Testimoni 1 -->
+            <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl flex flex-col transition-all duration-300 card-glow">
+                <div class="flex-grow">
+                    <div class="flex text-taronja mb-2">★★★★★</div>
+                    <p class="text-white/90 italic mb-4">"No només he après a utilitzar eines que no sabia ni que existien, sinó que he recuperat la confiança en les meves capacitats. Ha estat un impuls de veritat."</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white/10">
+                    <p class="font-bold text-white">Carme R.</p>
+                    <p class="text-sm text-white/60">Administrativa</p>
+                </div>
+            </div>
+            <!-- Testimoni 2 -->
+            <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl flex flex-col transition-all duration-300 card-glow">
+                <div class="flex-grow">
+                    <div class="flex text-taronja mb-2">★★★★★</div>
+                    <p class="text-white/90 italic mb-4">"El millor ha estat la comunitat. Adonar-me que no estava sol en això i aprendre dels meus companys ha sigut clau. Recomano el programa al 100%."</p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-white/10">
+                    <p class="font-bold text-white">Jordi P.</p>
+                    <p class="text-sm text-white/60">Responsable de Magatzem</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacte" class="max-w-3xl mx-auto px-6 py-16 bg-white bg-opacity-10 rounded-3xl shadow-2xl border border-white/10 text-center animate-on-scroll">
+      <h2 class="text-4xl font-extrabold mb-8 text-center drop-shadow-lg">És el teu moment. <span class="text-taronja">Uneix-te a Impulsa+45</span></h2>
+      <p class="text-lg text-white/90 font-light mb-10 leading-relaxed">Si tens més de 45 anys i vols potenciar el teu talent a l'era digital, estem aquí per acompanyar-te. Fes el pas.</p>
+      <a href="contacte.html" class="bg-taronja text-blau font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-blau hover:text-white hover:scale-105 focus:outline-none focus:ring-4 focus:ring-taronja focus:ring-opacity-50">Vull més informació</a>
+    </section>
+  </main>
+
+  <footer class="bg-futur text-white py-8 border-t border-white/10" aria-label="Peu de pàgina">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p class="text-center text-white/70 order-2 md:order-1">© 2025 IMPULSA. Acompanyem camins, obrim futurs.</p>
+        <div class="flex items-center gap-4 order-1 md:order-2">
+            <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity"><img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
+            <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity"><img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        </div>
+      </div>
+  </footer>
 
   <script>
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
+    menuToggle.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
+  </script>
 
-    menuToggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navegació lateral
+      const navLinks = document.querySelectorAll('a.nav-lateral');
+      const header = document.querySelector('nav');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = header ? header.offsetHeight : 0;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 40;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Indicador actiu a la navegació lateral
+      const sections = document.querySelectorAll('section[id]');
+      if (sections.length > 0 && navLinks.length > 0) {
+        const observerOptions = { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const activeId = entry.target.id;
+              navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${activeId}`) {
+                  link.classList.add('nav-active');
+                }
+              });
+            }
+          });
+        }, observerOptions);
+        sections.forEach(section => { observer.observe(section); });
+      }
+
+      // Animacions en desplaçar-se
+      const scrollElements = document.querySelectorAll('.animate-on-scroll');
+      const elementObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      scrollElements.forEach(el => {
+        elementObserver.observe(el);
+      });
     });
   </script>
 
-  <main class="max-w-6xl mx-auto px-6 py-40">
-
-    <section class="relative flex items-center justify-center min-h-[400px] md:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl mb-12">
-      <div class="video-background-container">
-        <video autoplay loop muted playsinline poster="image_previa_impulsa45.png"> <source src="avanzandoIA.mp4" type="video/mp4">
-          El teu navegador no suporta l'etiqueta de vídeo.
-        </video>
-        <div class="absolute inset-0 bg-black opacity-60"></div>
-      </div>
-      <div class="relative z-10 text-white text-center p-8">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-taronja mb-4 leading-tight drop-shadow-lg">
-          Impulsa+45: Talent sense edat
-        </h1>
-        <p class="text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-md">
-          Un programa dissenyat per a persones majors de 45 anys que volen reimpulsar-se en el món digital i laboral.
-        </p>
-      </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto px-6 py-20">
-  <h2 class="text-3xl font-bold text-white text-center mb-10 drop-shadow">Sobre el projecte <span class="text-taronja">Impulsa+45</span></h2>
-  <p class="text-lg text-white text-justify leading-relaxed space-y-4 font-medium">
-    <strong>IMPULSA+45</strong> és un projecte d’innovació social que acompanya persones adultes, especialment majors de 45 anys, en processos de transició digital, emocional i laboral.  
-    Neix de la necessitat de generar espais on la tecnologia estigui al servei de les persones, i no al revés.  
-    A través d’un enfocament pràctic i transformador, oferim recursos, formació i suport personalitzat per recuperar la confiança, ampliar competències i preparar-se per als reptes actuals.  
-    Utilitzem eines d’intel·ligència artificial com a palanca d’oportunitats, tot respectant el ritme, la diversitat i l’experiència vital de cada persona.  
-    <strong>IMPULSA+45</strong> és més que un curs: és un espai de trobada, de comunitat i de creixement compartit.
-  </p>
-</section>
-    
-<section class="mb-24">
-  <h2 class="text-4xl font-extrabold mb-10 text-center drop-shadow-lg">Persones destinatàries <span class="text-taronja">Impulsa+45</span></h2>
-
-  <div class="grid md:grid-cols-2 gap-8 text-lg leading-relaxed">
-
-    <!-- 🎯 Públic destinatari -->
-    <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6">
-      <h3 class="text-2xl font-bold text-taronja">🎯 Públic destinatari</h3>
-      <p>
-        Persones entre <strong>45 i 65 anys</strong>, residents al municipi, que es troben en alguna d’aquestes situacions:
-      </p>
-      <ul class="list-inside space-y-2">
-        <li>✔️ Estan en actiu, però amb dificultats per seguir el ritme tecnològic.</li>
-        <li>✔️ Estan a l’atur o en transició professional i volen adaptar-se.</li>
-        <li>✔️ Han estat tècnics o responsables però sense formació digital recent.</li>
-        <li>✔️ Senten desconnexió emocional i pràctica amb el món digital o la IA.</li>
-      </ul>
-    </div>
-
-    <!-- 💡 Valor afegit del programa -->
-    <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6">
-      <h3 class="text-2xl font-bold text-taronja">💡 Valor afegit del programa</h3>
-      <p>
-        El perfil destinatari té molt valor i experiència, però sovint no se sent reconegut.
-      </p>
-      <p>
-        <strong>Impulsa+45</strong> no només forma, sinó que <strong>reforça l’autoestima</strong> i <strong>reconnecta les persones amb el seu potencial</strong>.
-      </p>
-      <p>
-        La tecnologia es planteja com <strong>una aliada, no una amenaça</strong>.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-    <section aria-label="Perfil tipus" class="mb-24">
-      <h3 class="text-3xl font-bold text-white mb-10 text-center">Perfil tipus de participant</h3>
-
-<video autoplay loop muted playsinline class="mx-auto rounded-xl w-full max-w-[750px] shadow-xl border-4 border-white/10">
-  <source src="participant.mp4" type="video/mp4">
-  El teu navegador no suporta l'etiqueta de vídeo.
-</video>
-
-    <section class="mb-16">
-      <h2 class="text-4xl font-extrabold mt-16 mb-12 text-center drop-shadow-lg">Estructura del <span class="text-taronja">programa</span></h2>
-
-      <div class="mb-16 relative max-w-5xl mx-auto">
-        <div class="absolute top-2 left-0 right-0 h-0.5 bg-white bg-opacity-30 z-0"></div>
-
-        <div class="grid grid-cols-4 text-center relative z-10">
-          <div class="flex flex-col items-center">
-            <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
-            <span class="text-white text-sm font-semibold">DIAGNÒSTIC</span>
-          </div>
-
-          <div class="flex flex-col items-center">
-            <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
-            <span class="text-white text-sm font-semibold">TALLERS</span>
-          </div>
-
-          <div class="flex flex-col items-center">
-            <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
-            <span class="text-white text-sm font-semibold">COMUNITAT</span>
-          </div>
-
-          <div class="flex flex-col items-center">
-            <div class="w-4 h-4 bg-white border-2 border-black rounded-full mb-2"></div>
-            <span class="text-white text-sm font-semibold leading-tight">MILLORA<br>CONTINUA</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-3xl mx-auto text-lg text-white text-center mb-12 leading-relaxed bg-white bg-opacity-5 p-6 rounded-2xl shadow-lg border border-white/10">
-        El programa <strong class="text-taronja">Impulsa+45</strong> es desplega en tres blocs complementaris, pensats per oferir una experiència completa, útil i humana. Totes les sessions es realitzaran en grups reduïts, amb un enfocament proper, pràctic i adaptat al ritme dels participants.
-      </div>
-
-      <div class="max-w-4xl mx-auto space-y-6">
-
-        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-            Bloc 1: Diagnòstic inicial i activació personal
-            <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-          </summary>
-          <div class="mt-4 text-white text-lg space-y-4">
-            <ul class="list-disc list-inside space-y-1">
-              <li>Breu enquesta d’autoavaluació digital i emocional.</li>
-              <li>Espai per identificar fortaleses personals, habilitats i expectatives.</li>
-              <li>Activació del grup com a espai de confiança.</li>
-            </ul>
-            <p><strong class="text-taronja">Objectiu:</strong> prendre consciència del punt de partida i començar a trencar la barrera psicològica cap a la tecnologia.</p>
-          </div>
-        </details>
-
-        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-            Bloc 2: Tallers pràctics amb IA i eines digitals
-            <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-          </summary>
-          <div class="mt-4 text-white text-lg space-y-4">
-            <ul class="list-disc list-inside space-y-1">
-              <li><strong>Desmitificant la IA:</strong> què és, com funciona, i com afecta la feina diària.</li>
-              <li><strong>IA com a aliada:</strong> ús de ChatGPT per escriure correus, informes, organitzar tasques.</li>
-              <li><strong>El valor humà:</strong> allò que la màquina no pot replicar: experiència + IA.</li>
-            </ul>
-            <p><strong class="text-taronja">Objectiu:</strong> oferir eines útils immediates i canviar la percepció de la tecnologia des de l’experiència pròpia.</p>
-          </div>
-        </details>
-
-        <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-          <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-            Bloc 3: Comunitat +45 i reconeixement
-            <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-          </summary>
-          <div class="mt-4 text-white text-lg space-y-4">
-            <ul class="list-disc list-inside space-y-1">
-              <li>Creació d’un grup de suport i aprenentatge entre iguals.</li>
-              <li>Tutorització bàsica per a dubtes.</li>
-              <li>Acte de tancament amb reconeixement simbòlic als participants.</li>
-            </ul>
-            <p><strong class="text-taronja">Objectiu:</strong> mantenir el vincle, fomentar l’autoestima i donar visibilitat al talent sènior digitalment actiu.</p>
-          </div>
-        </details>
-
-<div style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; margin-bottom: 2rem; gap: 1rem;">
-  <a href="Impulsa45.pdf" download title="Descarrega el PDF" style="display: flex; align-items: center; text-decoration: none; color: #f59e0b; font-weight: bold; font-size: 1.25rem;">
-    <img src="https://www.pngkey.com/png/detail/196-1963426_small-pdf-icon-png-images-pictures-vector-pdf.png" 
-         alt="Descarrega PDF" 
-         width="32" 
-         height="32" 
-         style="border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); margin-right: 0.5rem;">
-    Descarrega't el Projecte Impulsa
-  </a>
-</div>
-      </div>
-    </section>
-
-    <section class="max-w-3xl mx-auto px-6 py-16 bg-white bg-opacity-10 rounded-3xl shadow-2xl border border-white/10 text-center mb-24">
-      <h2 class="text-4xl font-extrabold mb-10 text-center drop-shadow-lg">Uneix-te a <span class="text-taronja">Impulsa+45</span></h2>
-      <p class="text-lg text-white mb-8 leading-relaxed">
-        Estem aquí per acompanyar-te en la teva evolució digital i professional. Si tens més de 45 anys i vols potenciar el teu talent, aquest és el teu lloc.
-      </p>
-      <a href="contacte.html" class="bg-taronja text-blau font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:bg-blau hover:text-white focus:outline-none focus:ring-2 focus:ring-taronja">
-        Contacta'ns per a més informació
-      </a>
-    </section>
-  </main>
-
- <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
-    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
-        <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
-            <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-    </div>
-    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Acompanyem camins, obrim futurs.</p>
-  </footer>
 </body>
 </html>
