@@ -47,44 +47,23 @@
     background-position: 0 0;
     opacity: 1;
   }
-</style>
-  <style>
-    body { overflow-y: scroll; }
 
-    /* Estils per al vídeo de fons */
-    .video-background-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .video-background-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
     body {
-  position: relative;
-  background-color: #0f172a;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+      position: relative;
+      background-color: #0f172a;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-.body-gradient,
-.futuristic-pattern-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
+    .body-gradient,
+    .futuristic-pattern-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
  </style>
 </head>
 <body class="min-h-screen text-white font-sans bg-futur">
@@ -92,8 +71,8 @@
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50" aria-label="Navegació principal">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"> 
-      <div class="flex items-center gap-2"> 
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
         <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
           <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
@@ -114,21 +93,63 @@
         </svg>
       </button>
 
-      <ul id="menu" class="hidden md:flex gap-6 text-white font-semibold">
-        <li><a href="programa.html" class="hover:text-taronja transition-all">Programa</a></li>
-        <li><a href="impulsa+45.html" class="hover:text-taronja transition-all">Impulsa+45</a></li>
-        <li><a href="colaboracio.html" class="hover:text-taronja transition-all">Col·laboració</a></li>
-        <li><a href="contacte.html" class="hover:text-taronja transition-all">Contacte</a></li>
-      </ul>
+      <div class="hidden md:flex items-center gap-6 text-white font-semibold">
+        <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
+        <a href="impulsa+45.html" class="hover:text-taronja transition-colors duration-300">Impulsa+45</a>
+        <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
+        <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
+        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all duration-300">Contacte</a>
+      </div>
     </div>
 
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 text-white text-base font-semibold bg-futur">
-      <a href="programa.html" class="block py-2 hover:text-taronja">Programa</a>
-      <a href="impulsa+45.html" class="block py-2 hover:text-taronja">Impulsa+45</a>
-      <a href="colaboracio.html" class="block py-2 hover:text-taronja">Col·laboració</a>
-      <a href="contacte.html" class="block py-2 hover:text-taronja">Contacte</a>
-    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Programa</a>
+        <a href="impulsa+45.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Impulsa+45</a>
+        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
+        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
+      </div>
   </nav>
+
+  <aside aria-label="Navegació ràpida" class="hidden lg:block fixed top-1/2 left-6 transform -translate-y-1/2 z-40">
+    <div class="bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-lg p-4">
+      <ul class="space-y-4">
+        <li>
+          <a href="#programa" title="Anar al Programa" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300">
+            <span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
+              Programa
+            </span>
+            <div class="w-2 h-2 bg-taronja group-hover:bg-blau rounded-full transition-all"></div>
+          </a>
+        </li>
+        <li>
+          <a href="#objectius" title="Anar als Objectius" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300">
+            <span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
+              Objectius
+            </span>
+            <div class="w-2 h-2 bg-taronja group-hover:bg-blau rounded-full transition-all"></div>
+          </a>
+        </li>
+        <li>
+          <a href="#impacte" title="Anar a l'Impacte" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300">
+            <span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
+              Impacte
+            </span>
+            <div class="w-2 h-2 bg-taronja group-hover:bg-blau rounded-full transition-all"></div>
+          </a>
+        </li>
+         <li>
+          <a href="#destinataris" title="Anar a Destinataris" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300">
+            <span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">
+              Destinataris
+            </span>
+            <div class="w-2 h-2 bg-taronja group-hover:bg-blau rounded-full transition-all"></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
 
 <script>
   const menuToggle = document.getElementById("menu-toggle");
@@ -139,181 +160,178 @@
   });
 </script>
 
-  <main class="max-w-5xl mx-auto px-4 py-32">
-    <section aria-label="Programa" class="mb-24">
-      <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Programa IMPULSA</h2>
-      <p class="text-lg text-white text-justify mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
-        El projecte ofereix una resposta pràctica i humana a una necessitat urgent: moltes persones amb talent i experiència acumulada se senten desconnectades tecnològicament i qüestionades professionalment en un món laboral que canvia massa de pressa.<br><br>
-        Amb un enfocament proper, pràctic i emocional, **Impulsa+45** combina diagnòstic personalitzat, tallers sobre IA i eines digitals, i la creació d’una comunitat +45 activa i empoderada.<br><br>
-        L’objectiu és establir una col·laboració amb l’Ajuntament per impulsar aquest projecte al municipi, generar impacte des del primer dia i convertir el municipi en exemple de lideratge social i innovació amb sentit humà.<br><br>
-        <em class="text-taronja">“Quan posem la tecnologia al servei de les persones, el futur es construeix amb justícia i dignitat.”</em>
+  <main class="max-w-5xl mx-auto px-4 pt-32 pb-16">
+    <section id="programa" aria-label="Programa" class="text-center mb-24">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Programa <span class="text-taronja">IMPULSA</span></h1>
+      <p class="text-lg text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+        Un projecte per a persones amb experiència que volen reconnectar amb el món digital, guanyar confiança i obrir noves portes professionals.
       </p>
-      
-    <div class="space-y-6 mb-24 max-w-4xl mx-auto">
+      <p class="text-taronja font-bold mb-12 text-lg">
+        “Quan posem la tecnologia al servei de les persones, el futur es construeix amb justícia i dignitat.”
+      </p>
+      <a href="#itinerari" class="bg-taronja text-futur font-bold py-3 px-8 rounded-full text-lg hover:bg-white transition-all duration-300 shadow-lg">
+        Descobreix les 3 Fases
+      </a>
+    </section>
 
-  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-      Diagnosi inicial
-      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-    </summary>
-    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
-      <p>Avaluació personalitzada per detectar necessitats digitals i emocionals.</p>
-    </div>
-  </details>
-
-  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-      Tallers d’IA i Eines Digitals
-      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-    </summary>
-    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
-      <p>Sessions pràctiques per aprendre a utilitzar IA i eines digitals útils al món laboral.</p>
-    </div>
-  </details>
-
-  <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl">
-    <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center">
-      Comunitat
-      <span class="text-white group-open:rotate-180 transition-transform">&#9660;</span>
-    </summary>
-    <div class="mt-4 text-white text-base leading-relaxed space-y-2">
-      <p>Grup de suport continu per compartir recursos, experiències i resoldre dubtes.</p>
-    </div>
-  </details>
-
-</div>
-
-<section aria-label="Objectius" class="mb-24">
-  <h2 class="text-3xl font-bold mb-8 text-white text-center drop-shadow">Objectius del projecte</h2>
-  <p class="text-lg text-white text-center mb-10 max-w-2xl mx-auto font-medium">
-    Els objectius d’IMPULSA estan pensats per acompanyar persones adultes en un procés de transformació digital i personal.
-  </p>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
-      <img src="BRETXA DIGITAL.png" alt="Bretxa digital" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
-      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Reduir la bretxa digital</h3>
-      <p class="text-white text-center">Facilitem l’accés a la tecnologia amb eines pràctiques i suport emocional.</p>
-    </article>
-    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
-      <img src="AUTOESTIMA.png" alt="Autoestima" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
-      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Reforçar l’autoestima</h3>
-      <p class="text-white text-center">Acompanyem les persones per guanyar confiança en l’ús de la tecnologia.</p>
-    </article>
-    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
-      <img src="representaciones-de-ui-y-ux-con-smartphone.jpg" alt="Adaptació digital" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
-      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Facilitar l’adaptació</h3>
-      <p class="text-white text-center">Oferim recursos per adaptar-se als canvis digitals i laborals.</p>
-    </article>
-    <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-6 hover:scale-105 transition-all hover:bg-taronja hover:text-white">
-      <img src="COMUNITAT.png" alt="Comunitat" class="rounded-xl shadow-xl w-full h-40 object-cover mb-4" />
-      <h3 class="text-xl font-semibold text-taronja mb-2 text-center">Crear comunitat</h3>
-      <p class="text-white text-center">Fomentem el suport mutu i la creació de xarxa entre participants.</p>
-    </article>
-  </div>
-</section>
-
-<section class="mt-24 relative">
-  <h3 class="text-3xl font-bold text-taronja text-center mb-4">Impacte esperat</h3>
-  <p class="text-white text-center max-w-3xl mx-auto mb-16 text-base">
-    Impulsa busca generar un impacte real en tres nivells: personal, comunitari i institucional. No només millora habilitats, sinó que activa confiança, dignitat i futur.
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-    <div>
-      <h4 class="text-xl font-bold text-taronja mb-6 text-center uppercase">IMPACTE EN LES PERSONES</h4>
-      <div class="space-y-6">
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
-          <p class="font-bold">Augment de la confiança digital i autonomia en l’ús de noves tecnologies</p>
+    <!-- === SECCIÓ ITINERARI CORREGIDA === -->
+    <section id="itinerari" aria-label="Itinerari del programa" class="mb-24">
+        <h2 class="text-3xl font-bold mb-16 text-white text-center drop-shadow">L'Itinerari: Un Camí en 3 Fases</h2>
+        <div class="relative max-w-4xl mx-auto px-4">
+            <!-- Línia vertical -->
+            <div class="absolute w-1 h-full bg-white/20 top-0 left-1/2 -translate-x-1/2" aria-hidden="true"></div>
+            <!-- Contenidor dels ítems -->
+            <div class="space-y-16">
+    
+                <!-- FASE 1: Esquerra -->
+                <div class="relative">
+                    <div class="md:flex md:flex-row-reverse md:items-center">
+                        <div class="md:w-1/2"></div> <!-- Spacer a la dreta -->
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl text-center">
+                                <h3 class="text-xl text-taronja font-bold mb-2">Fase 1: Diagnosi</h3>
+                                <p class="text-white">Avaluació personalitzada per detectar les teves necessitats digitals i emocionals, creant un punt de partida a mida.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Icona -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-futur p-2 rounded-full border-2 border-taronja">
+                        <svg class="w-8 h-8 text-taronja" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    </div>
+                </div>
+    
+                <!-- FASE 2: Dreta -->
+                <div class="relative">
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2"></div> <!-- Spacer a l'esquerra -->
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl text-center">
+                                <h3 class="text-xl text-taronja font-bold mb-2">Fase 2: Formació Pràctica</h3>
+                                <p class="text-white">Tallers pràctics per dominar la IA i eines digitals clau, aplicades a reptes reals del món laboral actual.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Icona -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-futur p-2 rounded-full border-2 border-taronja">
+                        <svg class="w-8 h-8 text-taronja" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                </div>
+    
+                <!-- FASE 3: Esquerra -->
+                <div class="relative">
+                    <div class="md:flex md:flex-row-reverse md:items-center">
+                        <div class="md:w-1/2"></div> <!-- Spacer a la dreta -->
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl text-center">
+                                <h3 class="text-xl text-taronja font-bold mb-2">Fase 3: Comunitat</h3>
+                                <p class="text-white">Creació d’un grup de suport per compartir recursos, resoldre dubtes i enfortir una xarxa professional activa i empoderada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Icona -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-futur p-2 rounded-full border-2 border-taronja">
+                        <svg class="w-8 h-8 text-taronja" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                </div>
+    
+            </div>
         </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
-          <p class="font-bold">Millora de la percepció del propi valor professional i emocional</p>
+    </section>
+
+    <section id="objectius" aria-label="Objectius" class="mb-24">
+      <h2 class="text-3xl font-bold mb-8 text-taronja text-center drop-shadow">El Nostre Propòsit</h2>
+      <p class="text-lg text-white text-center mb-12 max-w-2xl mx-auto">
+        Acompanyem persones adultes en una transformació digital i personal amb quatre objectius clars.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-8 hover:scale-105 transition-transform duration-300 hover:bg-blau">
+          <img src="BRETXA DIGITAL.png" alt="Icona bretxa digital" class="rounded-xl shadow-lg w-full h-40 object-cover mb-6" />
+          <h3 class="text-2xl font-bold text-taronja mb-3 text-center">Reduir la Bretxa Digital</h3>
+          <p class="text-white/90 text-center">Facilitem l’accés a la tecnologia amb eines pràctiques i suport emocional.</p>
+        </article>
+        <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-8 hover:scale-105 transition-transform duration-300 hover:bg-blau">
+          <img src="AUTOESTIMA.png" alt="Icona autoestima" class="rounded-xl shadow-lg w-full h-40 object-cover mb-6" />
+          <h3 class="text-2xl font-bold text-taronja mb-3 text-center">Reforçar l'Autoestima</h3>
+          <p class="text-white/90 text-center">Acompanyem per guanyar confiança i seguretat en l’ús de la tecnologia.</p>
+        </article>
+        <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-8 hover:scale-105 transition-transform duration-300 hover:bg-blau">
+          <img src="representaciones-de-ui-y-ux-con-smartphone.jpg" alt="Icona adaptació" class="rounded-xl shadow-lg w-full h-40 object-cover mb-6" />
+          <h3 class="text-2xl font-bold text-taronja mb-3 text-center">Facilitar l'Adaptació</h3>
+          <p class="text-white/90 text-center">Oferim recursos per adaptar-se als nous canvis digitals i laborals.</p>
+        </article>
+        <article class="flex flex-col items-center bg-white bg-opacity-10 border border-white/10 rounded-xl shadow-xl p-8 hover:scale-105 transition-transform duration-300 hover:bg-blau">
+          <img src="COMUNITAT.png" alt="Icona comunitat" class="rounded-xl shadow-lg w-full h-40 object-cover mb-6" />
+          <h3 class="text-2xl font-bold text-taronja mb-3 text-center">Crear Comunitat</h3>
+          <p class="text-white/90 text-center">Fomentem el suport mutu i la creació de xarxa entre participants.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="impacte" class="mb-24">
+      <h2 class="text-3xl font-bold text-taronja text-center mb-4">Impacte Esperat</h2>
+      <p class="text-white text-center max-w-3xl mx-auto mb-12">
+        Més enllà de les habilitats, activem confiança, dignitat i futur a nivell personal i col·lectiu.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <h4 class="text-xl font-bold text-white text-center mb-6 uppercase">Impacte en les Persones</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Augment de la confiança i autonomia digital.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Millora de la percepció del propi valor professional.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Reducció de la por davant la intel·ligència artificial.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Activació d’un procés d’actualització contínua.</span></li>
+          </ul>
         </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
-          <p class="font-bold">Reducció del sentiment de desconnexió o por davant la intel·ligència artificial</p>
-        </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white">
-          <p class="font-bold">Activació d’un procés d’actualització contínua adaptat a la seva realitat</p>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+          <h4 class="text-xl font-bold text-white text-center mb-6 uppercase">Impacte en el Municipi</h4>
+           <ul class="space-y-4">
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Reducció de la bretxa digital entre generacions.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Impuls de la innovació social posant al centre les persones.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Enfortiment del teixit social i creació de xarxes de suport locals.</span></li>
+            <li class="flex items-start gap-3"><svg class="w-6 h-6 text-taronja flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Reforç del municipi com a pioner en acció social digital.</span></li>
+          </ul>
         </div>
       </div>
-    </div>
-
-    <div>
-      <h4 class="text-xl font-bold text-taronja text-center mb-6 uppercase">IMPACTE EN EL MUNICIPI</h4>
-      <div class="space-y-6">
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
-          <p class="font-bold">Reducció de la bretxa digital entre generacions</p>
+    </section>
+    
+    <section id="destinataris" class="mb-24">
+      <h2 class="text-3xl font-bold mb-12 text-center text-taronja drop-shadow-lg">A qui va dirigit Impulsa?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-8 text-center transition-transform transform hover:scale-105">
+          <img src="transicio.png" alt="Professionals en transició" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover mx-auto mb-4" />
+          <h3 class="text-xl font-bold text-white leading-tight mb-2">Professionals en transició</h3>
+          <p class="text-white/80">Persones que busquen actualitzar les seves habilitats per reincorporar-se al mercat laboral o canviar de sector.</p>
         </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
-          <p class="font-bold">Impuls de la innovació amb inclusió, posant al centre les persones</p>
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-8 text-center transition-transform transform hover:scale-105">
+          <img src="professionals.png" alt="Emprenedors sènior" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover mx-auto mb-4" />
+          <h3 class="text-xl font-bold text-white leading-tight mb-2">Emprenedors/es sènior</h3>
+          <p class="text-white/80">Persones que volen iniciar un nou negoci i necessiten eines digitals per fer-lo créixer.</p>
         </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
-          <p class="font-bold">Enfortiment del teixit social i creació d’una xarxa de suport local +45</p>
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-8 text-center transition-transform transform hover:scale-105">
+          <img src="actius.png" alt="Ciutadans actius" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover mx-auto mb-4" />
+          <h3 class="text-xl font-bold text-white leading-tight mb-2">Ciutadans/es actives</h3>
+          <p class="text-white/80">Persones que volen millorar l'ús de la tecnologia per a la gestió personal i l'accés a serveis.</p>
         </div>
-        <div class="bg-white bg-opacity-5 border border-white/10 rounded-xl shadow-lg px-6 py-5 text-white text-right">
-          <p class="font-bold">Reforç del lideratge del municipi com a pioner en acció social digital</p>
+        <div class="bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-8 text-center transition-transform transform hover:scale-105">
+          <img src="atur.png" alt="Persones en situació d'atur" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover mx-auto mb-4" />
+          <h3 class="text-xl font-bold text-white leading-tight mb-2">Persones en situació d'atur</h3>
+          <p class="text-white/80">Persones que volen potenciar les seves habilitats digitals per trobar noves oportunitats laborals.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<hr class="my-16 border-t border-taronja/30">
+    <section id="cta-final" class="text-center bg-blau rounded-2xl p-10 md:p-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Estàs a punt?</h2>
+        <p class="text-white/90 text-lg mb-8 max-w-xl mx-auto">Fes el primer pas cap a la teva transformació digital. Contacta amb nosaltres i reserva la teva plaça.</p>
+        <a href="contacte.html" class="bg-taronja text-futur font-bold py-4 px-10 rounded-full text-xl hover:bg-white transition-all duration-300 shadow-lg inline-block">
+            Vull participar-hi!
+        </a>
+    </section>
 
-<section class="max-w-4xl mx-auto px-4 py-8">
-  <h2 class="text-3xl font-bold mb-10 text-center text-taronja drop-shadow-lg">
-    A qui va dirigit Impulsa?
-  </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  </main>
 
-    <details class="group bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02] cursor-pointer">
-      <summary class="flex flex-col items-center justify-center space-y-4 outline-none">
-        <img src="transicio.png" alt="Professionals en transició" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover" />
-        <h3 class="text-xl font-bold text-white leading-tight">Professionals en transició</h3>
-        <span class="text-white text-2xl group-open:rotate-180 transition-transform">&#9660;</span>
-      </summary>
-      <div class="mt-4 pt-4 border-t border-white/20 text-gray-200 text-base leading-relaxed text-left">
-        <p>Persones amb experiència laboral que busquen actualitzar les seves habilitats per reincorporar-se al mercat laboral o canviar de sector.</p>
-      </div>
-    </details>
-
-    <details class="group bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02] cursor-pointer">
-      <summary class="flex flex-col items-center justify-center space-y-4 outline-none">
-        <img src="professionals.png" alt="Emprenedors sènior" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover" />
-        <h3 class="text-xl font-bold text-white leading-tight">Emprenedors i emprenedores sènior</h3>
-        <span class="text-white text-2xl group-open:rotate-180 transition-transform">&#9660;</span>
-      </summary>
-      <div class="mt-4 pt-4 border-t border-white/20 text-gray-200 text-base leading-relaxed text-left">
-        <p>Aquells que volen iniciar un nou projecte o negoci i necessiten eines digitals per fer-lo possible.</p>
-      </div>
-    </details>
-
-    <details class="group bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02] cursor-pointer">
-      <summary class="flex flex-col items-center justify-center space-y-4 outline-none">
-        <img src="actius.png" alt="Ciutadans actius" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover" />
-        <h3 class="text-xl font-bold text-white leading-tight">Ciutadans i ciutadanes actives</h3>
-        <span class="text-white text-2xl group-open:rotate-180 transition-transform">&#9660;</span>
-      </summary>
-      <div class="mt-4 pt-4 border-t border-white/20 text-gray-200 text-base leading-relaxed text-left">
-        <p>Persones que volen millorar el seu ús de la tecnologia en el dia a dia per a la comunicació, la gestió personal i l'accés a serveis.</p>
-      </div>
-    </details>
-
-    <details class="group bg-white bg-opacity-10 rounded-xl shadow-lg border border-white/10 p-6 text-center transition-transform transform hover:scale-[1.02] cursor-pointer">
-      <summary class="flex flex-col items-center justify-center space-y-4 outline-none">
-        <img src="atur.png" alt="Persones en situació d'atur" class="w-24 h-24 rounded-full border-4 border-taronja shadow-md object-cover" />
-        <h3 class="text-xl font-bold text-white leading-tight">Persones en situació d'atur</h3>
-        <span class="text-white text-2xl group-open:rotate-180 transition-transform">&#9660;</span>
-      </summary>
-      <div class="mt-4 pt-4 border-t border-white/20 text-gray-200 text-base leading-relaxed text-left">
-        <p>Persones que es troben en un període de transició laboral i busquen potenciar les seves habilitats digitals i la seva confiança per trobar noves oportunitats i reincorporar-se al mercat de treball.</p>
-      </div>
-    </details>
-
-  </div>
-</section>
-
- <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4" aria-label="Peu de pàgina">
-    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
+ <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mt-16" aria-label="Peu de pàgina">
+    <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0">
         <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
             <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
@@ -321,7 +339,36 @@
             <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
     </div>
-    <p class="text-center order-2 sm:order-1">&copy; 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
+    <p class="text-center order-2 sm:order-1">© 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('a.nav-lateral, a[href^="#"]');
+    const header = document.querySelector('nav');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        let targetId = this.getAttribute('href');
+        
+        if (targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            const headerHeight = header ? header.offsetHeight : 0;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
