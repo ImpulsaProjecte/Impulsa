@@ -58,15 +58,14 @@
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
-  <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50 backdrop-blur-sm" aria-label="Navegació principal">
+<nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50 backdrop-blur-sm" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2"> <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity"><img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a> <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity"><img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a></div>
       <a href="index.html" class="flex items-center gap-3"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /> <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span></a>
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
-     <div class="hidden md:flex items-center gap-6 text-white font-semibold">
+      <div class="hidden md:flex items-center gap-6 text-white font-semibold">
         <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
-        <a href="impulsa+45.html" class="hover:text-taronja transition-colors duration-300">Impulsa+45</a>
         <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
+        <a href="projectes.htm" class="text-taronja font-bold">Projectes</a>
         <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
         <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all duration-300">Contacte</a>
       </div>
@@ -74,11 +73,12 @@
     <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
         <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Programa</a>
-        <a href="impulsa+45.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Impulsa+45</a>
         <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
+        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Projectes</a>
         <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
         <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
       </div>
+    </div>
   </nav>
 
   <aside aria-label="Navegació ràpida" class="hidden lg:block fixed top-1/2 left-6 transform -translate-y-1/2 z-40">
@@ -86,7 +86,6 @@
       <ul class="space-y-4">
         <li><a href="#Programa" title="Anar a Sobre el projecte" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Programa</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#destinataris" title="Anar a Persones destinatàries" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Destinataris</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
-        <li><a href="#moment-actuar" title="Anar a Per què actuar ara" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Per què ara?</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#beneficis" title="Anar als Beneficis" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Beneficis</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#estructura" title="Anar a l'Estructura" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Estructura</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#testimonis" title="Anar als Testimonis" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-blau font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Testimonis</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
@@ -142,45 +141,6 @@
       </div>
     </section>
 
-    <section id="moment-actuar" class="mb-24 animate-on-scroll">
-        <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Per què ara és el moment d'<span class="text-taronja">actuar?</span></h2>
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="animate-on-scroll">
-                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Equip de professionals de diverses edats col·laborant davant d'un ordinador portàtil" class="rounded-2xl shadow-2xl w-full h-full object-cover border-4 border-white/10">
-            </div>
-            <div class="animate-on-scroll space-y-6" style="transition-delay: 0.2s;">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg></div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-taronja mb-2">Revolució de la IA</h3>
-                        <p class="text-lg text-white/90 font-light leading-relaxed">La intel·ligència artificial està canviant les regles del joc. Adaptar-se no és una opció, és una necessitat per no quedar enrere.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                     <div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-taronja mb-2">Bretxa generacional</h3>
-                        <p class="text-lg text-white/90 font-light leading-relaxed">El mercat laboral valora la joventut, però l'experiència i la maduresa són un actiu insubstituïble si es combinen amb noves competències.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                     <div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-taronja mb-2">Noves oportunitats</h3>
-                        <p class="text-lg text-white/90 font-light leading-relaxed">La digitalització obre portes a perfils professionals híbrids, on la teva trajectòria pot convergir amb noves eines i rols.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-1.5a6 6 0 00-5.98-5.995M15 21S9 18 9 10.5a3 3 0 013-3h0a3 3 0 013 3C15 18 15 21 15 21z" /></svg></div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-taronja mb-2">Experiència + Innovació</h3>
-                        <p class="text-lg text-white/90 font-light leading-relaxed">Ets un pont entre el saber fer tradicional i les noves tecnologies. Aquesta combinació és única i molt buscada per les empreses.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="beneficis" class="mb-24 animate-on-scroll">
         <h2 class="text-4xl font-extrabold mb-12 text-center drop-shadow-lg">Per què <span class="text-taronja">Impulsa+45?</span></h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -211,59 +171,45 @@
         </div>
     </section>
 
-    <!-- ===== SECCIÓ DEL VÍDEO RESTAURADA ===== -->
     <section aria-label="Perfil tipus" class="mb-24 animate-on-scroll">
-      <div class="bg-white bg-opacity-10 p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl text-center">
+      <div class="bg-white bg-opacity-10 p-8 rounded-3xl border border-white/10 shadow-2xl text-center">
         <h3 class="text-3xl font-bold text-white mb-6">Un perfil com el teu té molt a aportar</h3>
-        <p class="max-w-3xl mx-auto text-lg text-white/80 mb-8 font-light leading-relaxed">Hem creat una petita història en vídeo per representar el tipus de perfil que busquem. Persones amb experiència, ganes d'aprendre i de superar la barrera digital.</p>
+        <p class="max-w-3xl mx-auto text-white/80 mb-8">Hem creat una petita història en vídeo per representar el tipus de perfil que busquem. Persones amb experiència, ganes d'aprendre i de superar la barrera digital.</p>
         <video autoplay loop muted playsinline class="mx-auto rounded-xl w-full max-w-[750px] shadow-xl border-4 border-white/10"><source src="participant.mp4" type="video/mp4">El teu navegador no suporta l'etiqueta de vídeo.</video>
       </div>
     </section>
-    <!-- ===== FI DE LA SECCIÓ RESTAURADA ===== -->
 
     <section id="estructura" class="mb-24 animate-on-scroll">
-      <h2 class="text-4xl font-extrabold mt-16 mb-12 text-center drop-shadow-lg">Els tres blocs del <span class="text-taronja">programa</span></h2>
+      <h2 class="text-4xl font-extrabold mt-16 mb-12 text-center drop-shadow-lg">Estructura del <span class="text-taronja">programa</span></h2>
       <div class="max-w-3xl mx-auto text-lg text-white/90 font-light text-center mb-12 leading-relaxed bg-white bg-opacity-5 p-6 rounded-2xl shadow-lg border border-white/10">
         El programa es desplega en tres blocs, pensats per oferir una experiència completa i humana. Totes les sessions són en grups reduïts, amb un enfocament proper, pràctic i adaptat al teu ritme.
       </div>
       <div class="max-w-4xl mx-auto space-y-6">
         <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
           <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
-            01. Descobrir: Autoconeixement i propòsit
+            Bloc 1: Diagnòstic inicial i activació personal
             <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
           </summary>
           <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
-            <p class="pt-4">És el punt de partida per enfortir la teva autoestima i redefinir els teus objectius. Treballem la teva marca personal per projectar la teva experiència i adaptar-la al món digital, creant un discurs potent i coherent.</p>
-            <ul class="space-y-3 pt-2">
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Actualització del teu CV per a l'era digital.</span></li>
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Definició de la teva nova proposta de valor.</span></li>
-            </ul>
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Prendre consciència del punt de partida i començar a trencar la barrera psicològica cap a la tecnologia.</p>
           </div>
         </details>
         <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
           <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
-            02. Aprendre: Eines d'IA i competències digitals
+            Bloc 2: Tallers pràctics amb IA i eines digitals
             <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
           </summary>
           <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
-            <p class="pt-4">Aterrem la tecnologia a la teva realitat. Tallers pràctics on aprendràs a utilitzar la Intel·ligència Artificial i altres eines digitals per automatitzar tasques, millorar la teva productivitat i potenciar la teva creativitat.</p>
-             <ul class="space-y-3 pt-2">
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Aplicacions pràctiques d'IA per al dia a dia.</span></li>
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Optimització de processos i gestió del temps.</span></li>
-            </ul>
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Oferir eines útils immediates i canviar la percepció de la tecnologia des de l’experiència pròpia.</p>
           </div>
         </details>
         <details class="group bg-white bg-opacity-10 p-6 rounded-2xl border border-white/10 shadow-xl transition-all duration-300 hover:border-taronja/80">
           <summary class="text-xl text-taronja font-bold cursor-pointer flex justify-between items-center list-none">
-            03. Connectar: Comunitat, mentoring i xarxa
+            Bloc 3: Comunitat +45 i reconeixement
             <span class="text-white transform transition-transform duration-300 group-open:rotate-180">▼</span>
           </summary>
           <div class="mt-4 text-white/90 text-lg space-y-4 font-light overflow-hidden transition-all duration-500 max-h-0 group-open:max-h-96">
-            <p class="pt-4">L'impuls definitiu. Creem connexions reals amb altres professionals i empreses del territori. Fomentem un espai de suport mutu on compartir experiències, resoldre dubtes i obrir noves portes professionals.</p>
-             <ul class="space-y-3 pt-2">
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Sessions de networking i contacte amb empreses.</span></li>
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Accés a una comunitat activa post-programa.</span></li>
-            </ul>
+            <p class="pt-4"><strong class="text-taronja font-medium">Objectiu:</strong> Mantenir el vincle, fomentar l’autoestima i donar visibilitat al talent sènior digitalment actiu.</p>
           </div>
         </details>
       </div>
