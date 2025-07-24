@@ -21,8 +21,8 @@
             'blau-hover': '#1e40af',
             verd: '#16a34a',
             'verd-hover': '#15803d',
-            taronja: '#f59e0b', // Color corporatiu final
-            'taronja-hover': '#f97316', 
+            taronja: '#f59e0b', // Color corporatiu estandarditzat
+            'taronja-hover': '#f97316', // Hover consistent
             futur: '#0f172a',
             'futur-light': '#1e293b',
             violeta: '#8b5cf6',
@@ -64,7 +64,7 @@
     }
     
     .nav-active {
-        background-color: #f59e0b !important; /* Taronja corporatiu */
+        background-color: #f59e0b !important; /* El nou taronja corporatiu */
         transform: scale(1.15);
     }
     .nav-active div {
@@ -86,7 +86,7 @@
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
         <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
         <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
-        <a href="projectes.html" class="text-taronja font-bold">Projectes</a>
+        <a href="projectes.htm" class="text-taronja font-bold">Projectes</a>
         <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
         <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-taronja-hover transition-all duration-300">Contacte</a>
       </div>
@@ -132,7 +132,7 @@
       <section id="projecte-45" class="reveal pt-24 -mt-24">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="w-full">
-                <img src="https://i.ibb.co/3k03P1Q/impulsa-45.jpg" alt="Equip de professionals sèniors col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+                <img src="img/impulsa-45.jpg" alt="Equip de professionals sèniors col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
             </div>
             <div class="w-full">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
@@ -163,7 +163,7 @@
       <section id="projecte-joves" class="reveal pt-24 -mt-24">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="w-full md:order-2">
-                <img src="https://i.ibb.co/F8t9gG1/impulsa-joves.jpg" alt="Joves aprenent i col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+                <img src="img/impulsa-joves.jpg" alt="Joves aprenent i col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
             </div>
             <div class="w-full md:order-1">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
@@ -194,12 +194,12 @@
       <section id="projecte-emprenedors" class="reveal pt-24 -mt-24">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="w-full">
-                <img src="https://i.ibb.co/LQrM2w3/impulsa-emprenedors.jpg" alt="Mans planificant un nou negoci" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+                <img src="img/impulsa-emprenedors.jpg" alt="Mans planificant un nou negoci" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
             </div>
             <div class="w-full">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
                     <i data-lucide="rocket" class="w-8 h-8 text-taronja"></i>
-                    Projecte <span class="text-taronja">Impulsa+Emprenedors</span>
+                    Projecte <span class="text-taronja">Impulsa+Emprenedors/es</span>
                 </h2>
                 <p class="text-lg text-gray-300 mb-6">Suport pràctic per a persones que volen emprendre o transformar el seu projecte amb eines digitals i IA.</p>
                 <details class="details-arrow bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
@@ -225,7 +225,7 @@
       <section id="projecte-dones" class="reveal pt-24 -mt-24">
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="w-full md:order-2">
-                <img src="https://i.ibb.co/VvZscd8/impulsa-dones.jpg" alt="Grup de dones diverses col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+                <img src="img/impulsa-dones.jpg" alt="Grup de dones diverses col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
             </div>
             <div class="w-full md:order-1">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
@@ -267,7 +267,7 @@
         <!-- Card 1: Equips -->
         <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="relative">
-            <img src="https://i.ibb.co/8YjL3xG/projecte-equips.jpg" alt="Equip col·laborant i planificant estratègies" class="w-full h-48 object-cover">
+            <img src="img/projecte-equips.jpg" alt="Equip col·laborant i planificant estratègies" class="w-full h-48 object-cover">
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Equips</h3>
@@ -289,7 +289,7 @@
         <!-- Card 2: Experiències -->
         <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="relative">
-            <img src="https://i.ibb.co/dG6M8z6/projecte-experiencies.jpg" alt="Persones de diferents generacions compartint coneixement" class="w-full h-48 object-cover">
+            <img src="img/projecte-experiencies.jpg" alt="Persones de diferents generacions compartint coneixement" class="w-full h-48 object-cover">
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Experiències</h3>
@@ -311,7 +311,7 @@
         <!-- Card 3: Reinicia -->
         <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="relative">
-            <img src="https://i.ibb.co/6yF1gGZ/projecte-reinicia.jpg" alt="Eines de treball sobre una taula" class="w-full h-48 object-cover">
+            <img src="img/projecte-reinicia.jpg" alt="Eines de treball sobre una taula" class="w-full h-48 object-cover">
           </div>
           <div class="p-6 flex flex-col flex-grow">
             <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Reinicia</h3>
