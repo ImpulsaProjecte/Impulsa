@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IMPULSA - Els Nostres Projectes Estratègics</title>
+  <title>IMPULSA - Els Nostres Programes Estratègics</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Script per a icones -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
     tailwind.config = {
@@ -22,7 +20,8 @@
             blau: '#1e3a8a',
             taronja: '#f59e0b',
             gris: '#f3f4f6',
-            futur: '#0f172a'
+            futur: '#0f172a',
+            violeta: '#8b5cf6' // Nou color per a Impulsa+Dones
           }
         }
       }
@@ -125,9 +124,8 @@
         <span class="text-taronja font-bold text-2xl tracking-wide">IMPULSA</span>
       </a>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
-        <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
+        <a href="programa.html" class="text-taronja font-bold">Programa</a>
         <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
-        <a href="projectes.htm" class="text-taronja font-bold">Projectes</a>
         <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
         <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all duration-300">Contacte</a>
       </div>
@@ -137,9 +135,8 @@
     </div>
     <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Programa</a>
+        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Programa</a>
         <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
-        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Projectes</a>
         <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
         <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
       </div>
@@ -152,6 +149,7 @@
         <li><a href="#projecte-45" title="Anar a Impulsa+45" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-futur font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Impulsa+45</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#projecte-joves" title="Anar a Impulsa+Joves" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-futur font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Impulsa+Joves</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
         <li><a href="#projecte-emprenedors" title="Anar a Impulsa+Emprenedors" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-futur font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Emprenedors</span><div class="w-2 h-2 bg-taronja rounded-full transition-all"></div></a></li>
+        <li><a href="#projecte-dones" title="Anar a Impulsa+Dones" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur hover:bg-taronja transition-all duration-300"><span class="text-white opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-futur font-bold whitespace-nowrap transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0">Impulsa+Dones</span><div class="w-2 h-2 bg-violeta rounded-full transition-all"></div></a></li>
       </ul>
     </div>
   </aside>
@@ -159,10 +157,10 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32">
     <header class="text-center pt-16 pb-12 reveal">
       <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
-        Coneix els nostres <span class="text-taronja">Projectes</span>
+        Coneix els nostres <span class="text-taronja">Programes</span>
       </h1>
       <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed">
-        Tres iniciatives estratègiques dissenyades per acompanyar-te en cada etapa. Fes clic a la portada de cada llibre per explorar com ho fem.
+        Quatre iniciatives estratègiques dissenyades per acompanyar-te en cada etapa. Fes clic a la portada de cada llibre per explorar com ho fem.
       </p>
     </header>
 
@@ -255,48 +253,34 @@
         </div>
       </section>
 
-      <!-- === NOVA SECCIÓ: PROJECTES EN CONSTRUCCIÓ === -->
-      <section id="projectes-en-construccio" class="reveal pt-24 -mt-24 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">
-          Projectes en <span class="text-taronja">Construcció</span>
-        </h2>
-        <p class="mt-4 text-lg text-white/70 italic">El futur el co-creem junts.</p>
-
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <!-- Card 1: Equips -->
-          <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm transition-all duration-300 hover:border-taronja hover:bg-white/10 transform hover:-translate-y-2">
-            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-futur border-2 border-taronja mx-auto mb-6">
-              <i data-lucide="users-2" class="w-8 h-8 text-taronja"></i>
+      <!-- === PROJECTE IMPULSA+DONES (NOU) === -->
+      <section id="projecte-dones" class="reveal pt-24 -mt-24">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center md:text-left mb-6">
+                  <span class="text-violeta">🟣</span> Projecte <span class="text-taronja">Impulsa+Dones</span>
+                </h2>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Grup de dones diverses col·laborant en una sessió de formació" class="rounded-xl shadow-2xl w-full object-cover aspect-[4/3]">
+                <div class="mt-8 text-center md:text-left">
+                    <a href="activitat.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                        Veure Més Detalls del Projecte
+                    </a>
+                </div>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Impulsa+ Equips</h3>
-            <p class="text-white/80 font-light leading-relaxed">
-              Fomentem la col·laboració i la integració de la IA per potenciar equips de treball diversos i preparats per als reptes del demà.
-            </p>
-          </div>
-
-          <!-- Card 2: Experiències -->
-          <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm transition-all duration-300 hover:border-taronja hover:bg-white/10 transform hover:-translate-y-2">
-            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-futur border-2 border-taronja mx-auto mb-6">
-              <i data-lucide="book-heart" class="w-8 h-8 text-taronja"></i>
+            <div class="book-container">
+                <input type="checkbox" id="book4" class="flipper"/>
+                <div class="book">
+                    <label for="book4" class="book-page p1 cursor-pointer">
+                        <div class="book-page--front relative flex flex-col justify-end p-6 text-white">
+                            <img src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=1771&auto=format&fit=crop" alt="Dona empoderada en un entorn creatiu" class="book-cover-image">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <div class="relative z-10"><h3 class="text-3xl font-bold">El Teu Camí,<br><span class="text-violeta">La Teva Força</span></h3><div class="mt-4 border-2 border-taronja rounded-full px-4 py-2 text-sm font-semibold inline-block">Obre i descobreix</div></div>
+                        </div>
+                        <div class="book-page--back flex flex-col justify-center"><h3 class="text-xl font-bold text-white mb-2">La nostra missió amb +Dones</h3><p class="text-sm font-light leading-relaxed text-white/80"><span class="text-xl mr-2">💡</span>Acompanyar, empoderar i connectar dones en moments de canvi, oferint eines per redefinir el seu camí i projectar el seu valor.</p></div>
+                    </label>
+                    <div class="book-page p2"><div class="book-page--front flex flex-col justify-center h-full"><div><h3 class="text-xl font-bold text-taronja mb-4">Què treballarem?</h3><ul class="space-y-3 text-sm text-white/80 font-light leading-relaxed"><li><span class="font-bold text-taronja mr-2">›</span> Redefinir-me amb força</li><li><span class="font-bold text-taronja mr-2">›</span> El meu valor, les meves decisions</li><li><span class="font-bold text-taronja mr-2">›</span> Xarxes de suport real</li><li><span class="font-bold text-taronja mr-2">›</span> Em projecte, em posiciono</li></ul></div></div></div>
+                </div>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Impulsa+ Experiències</h3>
-            <p class="text-white/80 font-light leading-relaxed">
-              Donem veu a les històries personals i l'experiència vital, transformant-les en una font de valor, aprenentatge i connexió comunitària.
-            </p>
-          </div>
-
-          <!-- Card 3: Reinicia -->
-          <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm transition-all duration-300 hover:border-taronja hover:bg-white/10 transform hover:-translate-y-2">
-            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-futur border-2 border-taronja mx-auto mb-6">
-              <i data-lucide="key-round" class="w-8 h-8 text-taronja"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Impulsa+ Reinicia</h3>
-            <p class="text-white/80 font-light leading-relaxed">
-              Acompanyem en la reconstrucció de camins professionals, oferint eines per encaixar les peces d'un nou futur laboral en l'era digital.
-            </p>
-          </div>
-
         </div>
       </section>
 
@@ -369,7 +353,6 @@
 
         const observer = new IntersectionObserver((entries) => {
             let activeId = '';
-            // Troba l'última secció visible
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     activeId = entry.target.id;
@@ -388,7 +371,6 @@
             observer.observe(section);
         });
 
-        // Activa el primer enllaç si l'usuari està a dalt de tot
         function checkScrollPosition() {
             if (window.scrollY < 400) {
                  navLinks.forEach(link => link.classList.remove('nav-active'));
@@ -399,9 +381,6 @@
         window.addEventListener('scroll', checkScrollPosition);
         checkScrollPosition();
     });
-    
-    // Inicialitzar Lucide Icons
-    lucide.createIcons();
   </script>
 
 </body>
