@@ -88,6 +88,8 @@
     
     <!-- === ENCAPÇALAMENT DEL PROJECTE === -->
     <header class="text-center pt-16 pb-12 reveal">
+      <!-- ===== NOU LOGO AFEGIT AQUÍ ===== -->
+      <img src="dones.png" alt="Logo Projecte Impulsa+Dones" class="w-28 h-28 mx-auto mb-6 rounded-full shadow-2xl border-4 border-white/10">
       <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
         Projecte <span class="text-violeta">Impulsa+Dones</span>
       </h1>
@@ -169,14 +171,21 @@
         </div>
       </section>
 
-      <!-- === CRIDA A L'ACCIÓ (CTA) === -->
+      <!-- ===== CRIDA A L'ACCIÓ (CTA) AMB NOU BOTÓ ===== -->
       <section class="reveal text-center pt-10">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
               Estàs preparada per impulsar el teu camí?
           </h2>
-          <a href="contacte.html" class="inline-block bg-taronja text-futur font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform text-lg">
-              Contacta'ns i comença ara
-          </a>
+          <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
+              <a href="contacte.html" class="w-full sm:w-auto bg-violeta text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:text-futur hover:scale-105 transform flex items-center justify-center gap-3">
+                  <i data-lucide="send" class="w-5 h-5"></i>
+                  <span>Contacta'ns i comença</span>
+              </a>
+              <a href="IMPULSA+DONES.pdf" download="Dossier_Impulsa_Dones.pdf" target="_blank" class="w-full sm:w-auto bg-transparent border-2 border-taronja text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:bg-taronja hover:text-futur hover:scale-105 transform flex items-center justify-center gap-3">
+                  <i data-lucide="download-cloud" class="w-5 h-5"></i>
+                  <span>Descarregar Dossier</span>
+              </a>
+          </div>
       </section>
 
     </div>
