@@ -98,6 +98,7 @@
     <section id="Programa" class="relative flex items-center justify-center min-h-[400px] md:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl mb-24">
       <div class="video-background-container"><video autoplay loop muted playsinline poster="image_previa_impulsa45.png"><source src="avanzandoIA.mp4" type="video/mp4">El teu navegador no suporta l'etiqueta de vídeo.</video><div class="absolute inset-0 bg-black opacity-60"></div></div>
       <div class="relative z-10 text-white text-center p-8">
+        <!-- ===== NOU LOGO AFEGIT AQUÍ ===== -->
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gradient-orange mb-4 leading-tight drop-shadow-lg animate-on-scroll">Impulsa+45: Talent sense edat</h1>
         <p class="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto drop-shadow-md animate-on-scroll" style="transition-delay: 0.2s;">Un programa dissenyat per a persones majors de 45 anys que volen reimpulsar-se en el món digital i laboral.</p>
       </div>
@@ -246,7 +247,18 @@
     <section id="contacte" class="max-w-3xl mx-auto px-6 py-16 bg-white bg-opacity-10 rounded-3xl shadow-2xl border border-white/10 text-center animate-on-scroll">
       <h2 class="text-4xl font-extrabold mb-8 text-center drop-shadow-lg">És el teu moment. <span class="text-taronja">Uneix-te a Impulsa+45</span></h2>
       <p class="text-lg text-white/90 font-light mb-10 leading-relaxed">Si tens més de 45 anys i vols potenciar el teu talent a l'era digital, estem aquí per acompanyar-te. Fes el pas.</p>
-      <a href="contacte.html" class="bg-taronja text-blau font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-blau hover:text-white hover:scale-105 focus:outline-none focus:ring-4 focus:ring-taronja focus:ring-opacity-50">Vull més informació</a>
+      
+      <!-- ===== BOTONS D'ACCIÓ ACTUALITZATS AQUÍ ===== -->
+      <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
+          <a href="contacte.html" class="w-full sm:w-auto bg-taronja text-blau font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-blau hover:text-white hover:scale-105 transform flex items-center justify-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              <span>Vull més informació</span>
+          </a>
+          <a href="Impulsa45.pdf" download="Dossier_Impulsa45.pdf" target="_blank" class="w-full sm:w-auto bg-transparent border-2 border-taronja text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:bg-taronja hover:text-blau hover:scale-105 transform flex items-center justify-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              <span>Descarregar Dossier</span>
+          </a>
+      </div>
     </section>
   </main>
 
@@ -285,7 +297,7 @@
       });
 
       // Indicador actiu a la navegació lateral
-      const sections = document.querySelectorAll('section[id]');
+      const sections = document.querySelectorAll('main section[id]');
       if (sections.length > 0 && navLinks.length > 0) {
         const observerOptions = { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 };
         const observer = new IntersectionObserver((entries) => {
