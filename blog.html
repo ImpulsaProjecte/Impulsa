@@ -40,6 +40,7 @@
     ol > li::marker { color: #f59e0b; font-weight: bold; }
   </style>
 </head>
+
 <body class="min-h-screen text-white font-sans">
   
   <div class="video-background-container">
@@ -56,6 +57,9 @@
         </a>
         <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
           <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+         <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
+          <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
         </a>
       </div>
   
@@ -90,120 +94,108 @@
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 pt-32 pb-20 sm:pt-40">
-    <div class="text-center mb-16 animate-fade-in-up opacity-0">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-16 bg-gradient-to-r mb-10 from-taronja to-amber-300 bg-clip-text text-transparent drop-shadow-lg">Blog IMPULSA</h1>
-        <p class="text-lg mt-10 text-gris max-w-2xl mx-auto">Consells pràctics, eines i estratègies sobre Intel·ligència Artificial per al futur del treball.</p>
-    </div>
+  <!-- Header del Blog -->
+  <header class="text-center mb-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-taronja mb-4">Blog d’IMPULSA</h1>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto">
+      Històries, idees i eines per impulsar persones. Acompanyem camins, obrim futurs.
+    </p>
+  </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
-      <!-- Contingut Principal dels Articles -->
-      <div class="lg:col-span-2">
-        
-        <!-- Article 1: CV i IA -->
-        <article id="article-cv">
-          <div class="overflow-hidden rounded-2xl shadow-xl mb-6">
-            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070&auto=format&fit=crop" alt="Persona treballant en un CV en un ordinador portàtil" class="w-full h-auto object-cover transform transition-transform duration-300 hover:scale-105">
-          </div>
-          <span class="text-sm font-semibold text-taronja">RECERCA DE FEINA</span>
-          <h2 class="text-3xl font-bold text-white mt-2">Optimitza el teu CV i Carta de Presentació amb ChatGPT</h2>
-          <p class="text-sm text-gray-400 mt-2">Lectura de 3 minuts</p>
-          <div class="text-lg text-gris leading-relaxed space-y-6 mt-4 text-justify">
-            <p>En un mercat laboral competitiu, el teu CV i la teva carta de presentació són la teva primera oportunitat per causar una bona impressió. La Intel·ligència Artificial, i especialment eines com ChatGPT, s'han convertit en un <span class="text-taronja font-semibold">aliat estratègic</span> per crear documents que no només llueixen professionals, sinó que estan optimitzats per superar els filtres automàtics (<span class="text-taronja font-semibold">ATS</span>) i captar l'atenció dels reclutadors.</p>
-            
-            <h3 class="flex items-center gap-3 text-2xl font-bold text-white pt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
-              Guia Pas a Pas per a un CV d'Alt Impacte
-            </h3>
-            <ol class="list-decimal list-inside space-y-4 pl-4">
-              <li><strong>El 'Prompt' Inicial:</strong> Utilitza un prompt per estructurar la teva informació:
-                <div class="bg-futur/50 border border-blau/50 rounded-lg p-4 my-4 text-white font-mono text-sm flex gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-taronja flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg><span>Actua com un expert en selecció de personal...</span></div>
-              </li>
-              <li><strong>El 'Prompt' d'Optimització:</strong> Adapta el teu CV a una oferta específica:
-                <div class="bg-futur/50 border border-blau/50 rounded-lg p-4 my-4 text-white font-mono text-sm flex gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-taronja flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" /></svg><span>Basant-te en el meu CV i aquesta descripció de feina...</span></div>
-              </li>
-            </ol>
-            <h3 class="flex items-center gap-3 text-2xl font-bold text-white pt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              Consell Final: El Toc Humà
-            </h3>
-            <p>La IA és una eina, no un substitut. <span class="text-taronja font-semibold">Revisa sempre el resultat final.</span> Assegura't que el to reflecteix la teva personalitat, verifica totes les dades i personalitza els detalls. Un CV creat amb l'ajuda de la IA però revisat per tu és la combinació guanyadora.</p>
-          </div>
-        </article>
+  <!-- Grid d’Entrades -->
+  <section class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Post 1 -->
+    <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+      <div class="overflow-hidden rounded-xl mb-5">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
+             alt="Il·lustració d'IA i persones connectades"
+             class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+      </div>
+      <h2 class="text-2xl font-bold mb-2">IA amb ànima: quan la tecnologia et dona ales</h2>
+      <p class="text-white/70 text-sm mb-4">Beneficis reals per al teu dia a dia</p>
 
-        <hr class="my-16 custom-hr">
-
-        <!-- Article 2: Productivitat -->
-        <article id="article-productivitat">
-           <div class="overflow-hidden rounded-2xl shadow-xl mb-6">
-             <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop" alt="Escriptori organitzat amb diversos dispositius i eines de productivitat" class="w-full h-auto object-cover transform transition-transform duration-300 hover:scale-105">
-           </div>
-           <span class="text-sm font-semibold text-taronja">PRODUCTIVITAT</span>
-           <h2 class="text-3xl font-bold text-white mt-2">5 Eines de IA per Multiplicar la Teva Productivitat Diària</h2>
-           <p class="text-sm text-gray-400 mt-2">Lectura de 2 minuts</p>
-           <div class="text-lg text-gris leading-relaxed space-y-6 mt-4 text-justify">
-             <p>La sensació de tenir massa tasques i poc temps és universal. La bona notícia és que la IA ofereix solucions per <span class="text-taronja font-semibold">automatitzar, organitzar i optimitzar</span> la nostra feina diària. Integrar aquestes eines no es tracta de treballar més, sinó de treballar de manera més intel·ligent.</p>
-             <h3 class="text-xl font-bold text-white pt-4">1. Assistents d'Escriptura i Resum (ChatGPT)</h3>
-             <p><strong>Cas d'ús pràctic:</strong> Enganxa la transcripció d'una reunió i demana-li que resumeixi els punts clau i extregui les accions a realitzar.</p>
-             <h3 class="text-xl font-bold text-white pt-4">2. Organitzadors de Coneixement (Notion AI)</h3>
-             <p><strong>Cas d'ús pràctic:</strong> Escriu una llista de tasques i demana a Notion AI que les organitzi per projecte i prioritat.</p>
-             <h3 class="text-xl font-bold text-white pt-4">3. Planificació Intel·ligent de l'Agenda (Reclaim.ai)</h3>
-             <p><strong>Cas d'ús pràctic:</strong> Afegeix una tasca de llarga durada i deixa que l'eina trobi els espais ideals a la teva agenda.</p>
-           </div>
-        </article>
-
-        <hr class="my-16 custom-hr">
-
-        <!-- Article 3: Emprenedors -->
-        <article id="article-emprenedors">
-          <div class="overflow-hidden rounded-2xl shadow-xl mb-6">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Emprenedors col·laborant en una startup" class="w-full h-auto object-cover transform transition-transform duration-300 hover:scale-105">
-          </div>
-          <span class="text-sm font-semibold text-taronja">EMPRENEDORIA</span>
-          <h2 class="text-3xl font-bold text-white mt-2">IA per a Emprenedors: Com Fer Créixer el Teu Negoci amb Menys Recursos</h2>
-          <p class="text-sm text-gray-400 mt-2">Lectura de 3 minuts</p>
-          <div class="text-lg text-gris leading-relaxed space-y-6 mt-4 text-justify">
-            <p>Començar un negoci és un repte majúscul, sovint amb recursos limitats. La IA s'ha convertit en el gran <span class="text-taronja font-semibold">democratitzador</span>, oferint a emprenedors i petites empreses eines que abans estaven reservades a les grans corporacions. Vegem com pots aplicar-la de manera pràctica.</p>
-            <h3 class="flex items-center gap-3 text-xl font-bold text-white pt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-              Validació d'Idees i Anàlisi de Mercat
-            </h3>
-            <p>Abans d'invertir, utilitza la IA per investigar. <br><strong>Prompt d'exemple:</strong> "Sóc un emprenedor que vol llançar [la teva idea]. Analitza competidors, públic objectiu i suggereix nínxols de mercat poc atesos."</p>
-            <h3 class="flex items-center gap-3 text-xl font-bold text-white pt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-              Creació de Contingut per a Màrqueting
-            </h3>
-            <p>Supera la pàgina en blanc i alimenta les teves xarxes socials. <br><strong>Prompt d'exemple:</strong> "Genera 5 idees per a publicacions d'Instagram per a una marca de [el teu producte]. Inclou un títol, text i hashtags."</p>
-            <h3 class="flex items-center gap-3 text-xl font-bold text-white pt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-taronja" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14z" /></svg>
-              Generació d'Imatges per a la teva Marca
-            </h3>
-            <p>Crea recursos visuals únics a un cost molt baix amb eines com Midjourney. <br><strong>Prompt d'exemple:</strong> "Crea un logo minimalista per a una consultoria tecnològica anomenada 'Impulsa', amb colors blau i taronja."</p>
-          </div>
-        </article>
+      <div class="space-y-3 text-white/90 leading-relaxed">
+        <p>La intel·ligència artificial no va de substituir-te, sinó de donar-te aire: automatitzar tasques repetitives, ordenar idees i ajudar-te a prendre millors decisions.</p>
+        <p>Quan la tecnologia es posa al teu servei, guanyes temps, focus i serenitat. I el més important: recuperes energia per dedicar-la al que té valor.</p>
+        <p>Amb eines senzilles i accessibles, qualsevol persona pot començar a fer passos concrets avui mateix.</p>
       </div>
 
-      <!-- Barra Lateral (Índex) -->
-      <aside class="lg:col-span-1 mt-16 lg:mt-0">
-        <div class="sticky top-28 bg-blau/20 backdrop-blur-md border border-blau/30 rounded-2xl p-6">
-          <h3 class="text-xl font-bold text-white mb-4">En aquest article</h3>
-          <ul class="space-y-3">
-            <li><a href="#article-cv" class="text-gris hover:text-taronja transition-colors duration-300 flex items-center gap-3 group"><div class="bg-taronja/80 text-blau rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm transition-all group-hover:bg-taronja group-hover:scale-110">1</div><span>Optimitza el teu CV amb IA</span></a></li>
-            <li><a href="#article-productivitat" class="text-gris hover:text-taronja transition-colors duration-300 flex items-center gap-3 group"><div class="bg-taronja/80 text-blau rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm transition-all group-hover:bg-taronja group-hover:scale-110">2</div><span>Eines de productivitat amb IA</span></a></li>
-            <li><a href="#article-emprenedors" class="text-gris hover:text-taronja transition-colors duration-300 flex items-center gap-3 group"><div class="bg-taronja/80 text-blau rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm transition-all group-hover:bg-taronja group-hover:scale-110">3</div><span>IA per a Emprenedors</span></a></li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-  </main>
+      <div class="mt-6">
+        <a href="programa.html"
+           class="inline-block bg-taronja text-futur font-bold px-5 py-2 rounded-full hover:bg-white transition-all">Descobreix els nostres programes</a>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+      <div class="overflow-hidden rounded-xl mb-5">
+   <img
+  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop"
+  alt="Persona creixent amb tecnologia i IA"
+  class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+  loading="lazy"
+/>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Creixement 10x: la IA per multiplicar el teu talent</h2>
+      <p class="text-white/70 text-sm mb-4">Del bloqueig a l’acció amb metodologies simples</p>
+
+      <div class="space-y-3 text-white/90 leading-relaxed">
+        <p>Si et sents encallat/ada, la IA pot ser el teu punt d’arrencada: et suggereix camins, et crea esbossos i et retorna confiança per passar del 0 al 1.</p>
+        <p>Prova-ho: demana un guió per a un CV, una llista de tasques setmanals o idees per comunicar el teu projecte. El secret és començar petit i iterar.</p>
+        <p>Quan combines constància + eines digitals, el progrés es fa visible molt abans del que esperaves.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="impulsa+emprenedors.html" class="inline-block bg-taronja text-futur font-bold px-5 py-2 rounded-full hover:bg-white transition-all">
+          Impulsa+Emprenedors
+        </a>
+        <a href="impulsa+45.html" class="inline-block border-2 border-taronja text-taronja font-bold px-5 py-2 rounded-full hover:bg-taronja hover:text-futur transition-all">
+          Impulsa+45
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+      <div class="overflow-hidden rounded-xl mb-5">
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop"
+             alt="Aula i espai de treball col·laboratiu amb tecnologia"
+             class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Educar i treballar en temps d’IA</h2>
+      <p class="text-white/70 text-sm mb-4">La nova alfabetització: criteri, creativitat i connexió</p>
+
+      <div class="space-y-3 text-white/90 leading-relaxed">
+        <p>L’educació i l’ocupació estan canviant: avui el valor està a saber preguntar, validar i crear amb la màquina, no contra ella.</p>
+        <p>A l’aula i a la feina, la IA obre portes a aprenentatges més personalitzats i a itineraris professionals més flexibles i reals.</p>
+        <p>Amb criteri i ètica, podem fer de la tecnologia una palanca d’oportunitats per a totes les persones.</p>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="impulsa+joves.html" class="inline-block bg-taronja text-futur font-bold px-5 py-2 rounded-full hover:bg-white transition-all">
+          Impulsa+Joves
+        </a>
+        <a href="programa.html" class="inline-block border-2 border-taronja text-taronja font-bold px-5 py-2 rounded-full hover:bg-taronja hover:text-futur transition-all">
+          Tots els programes
+        </a>
+      </div>
+    </article>
+  </section>
+</main>
+
 
   <footer class="bg-futur text-white py-6 flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mt-10">
     <div class="flex items-center gap-4 order-1 sm:order-2 mb-4 sm:mb-0"> 
       <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity">
-        <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-      </a>
-      <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity">
-        <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-      </a>
+       <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
+          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
+          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
+         <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
+          <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
+        </a>
     </div>
     <p class="text-center order-2 sm:order-1 text-sm text-gray-400">© 2025 IMPULSA. Dissenyat amb propòsit i passió.</p>
   </footer>
