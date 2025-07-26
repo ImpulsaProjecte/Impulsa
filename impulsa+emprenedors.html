@@ -54,12 +54,184 @@
     }
   </style>
 </head>
+<!-- === Sidebar Proyectos (Desktop) === -->
+<aside id="psb-aside"
+       class="hidden lg:block fixed top-24 right-6 z-40 w-80">
+  <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl">
+    <div class="px-4 py-3 border-b border-white/10">
+      <h2 class="text-sm uppercase tracking-wider text-taronja/70 text-center font-bold">Altres projectes</h2>
+
+    </div>
+    <ul id="psb-list-desktop"
+        class="max-h-[calc(100vh-180px)] overflow-y-auto divide-y divide-white/5">
+      <!-- Items generados por JS -->
+    </ul>
+  </div>
+</aside>
+
+<!-- === Botón flotante (Mobile) === -->
+<button id="psb-open"
+        class="lg:hidden fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-4 py-3 rounded-full bg-taronja text-futur font-bold shadow-xl hover:bg-white transition">
+  <!-- Icono grid -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 8v-8h8v8h-8z"/></svg>
+  Projectes
+</button>
+
+<!-- === Drawer Mobile === -->
+<div id="psb-drawer" class="lg:hidden fixed inset-0 z-50 hidden">
+  <div id="psb-backdrop" class="absolute inset-0 bg-black/50"></div>
+  <div class="absolute right-0 top-0 h-full w-11/12 max-w-sm bg-futur/95 backdrop-blur-xl border-l border-white/10 shadow-2xl">
+    <!-- REEMPLAZAR ESTE HEADER -->
+    <div class="px-4 py-3 border-b border-white/10 flex items-center justify-between">
+      <h2 class="text-sm uppercase tracking-wider text-white/80">Altres projectes</h2>
+      <button id="psb-close" class="p-2 rounded-full hover:bg-white/10" aria-label="Tancar">…</button>
+    </div>
+    <ul id="psb-list-mobile" class="h-[calc(100%-56px)] overflow-y-auto divide-y divide-white/5">
+      <!-- Items generados por JS -->
+    </ul>
+  </div>
+</div>
+<script>
+(() => {
+  // Configura aquí tus proyectos (thumb puede ser local; hay fallback automático)
+  const PROJECTS = [
+    {
+      id: 'impulsa+45',
+      title: 'IMPULSA+45',
+      href: 'impulsa+45.html',
+      desc: 'Empoderament digital i laboral per a +45.',
+      thumb: 'logo_impulsa.png'
+    },
+    {
+      id: 'impulsa+joves',
+      title: 'IMPULSA+JOVES',
+      href: 'impulsa+joves.html',
+      desc: 'Dissenya el teu futur amb tecnologia i acció.',
+      thumb: 'joves.png'
+    },
+    {
+      id: 'impulsa+emprenedors',
+      title: 'IMPULSA+EMPRENEDORS',
+      href: 'impulsa+emprenedors.html',
+      desc: 'De la idea a l’èxit amb IA i comunitat.',
+      thumb: 'emprenedors.png'
+    },
+    {
+      id: 'impulsa+dones',
+      title: 'IMPULSA+DONES',
+      href: 'activitat.html',
+      desc: 'Reconeixement, veu pròpia i tecnologia humana.',
+      thumb: 'dones.png'
+    },
+    // Afegiu més si cal
+  ];
+
+  const current = location.pathname.split('/').pop().toLowerCase();
+  const listDesktop = document.getElementById('psb-list-desktop');
+  const listMobile  = document.getElementById('psb-list-mobile');
+
+  function createItem(p) {
+    // Contenedor li
+    const li = document.createElement('li');
+    li.className = 'px-3 py-3 hover:bg-white/5 transition';
+
+    // Enlace
+    const a = document.createElement('a');
+    a.href = p.href;
+    a.className = 'flex items-center gap-3 group';
+
+    // Miniatura
+    const fig = document.createElement('div');
+    fig.className = 'relative w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden border border-white/10 bg-white/5';
+
+    const img = document.createElement('img');
+    img.src = p.thumb || 'logo_impulsa_general.png';
+    img.alt = p.title;
+    img.className = 'w-full h-full object-cover';
+    img.loading = 'lazy';
+    img.onerror = () => {
+      // Fallback a logo + estilo centrado si la miniatura no existe
+      img.src = 'logo_impulsa_general.png';
+      img.className = 'w-full h-full object-contain p-3';
+    };
+    fig.appendChild(img);
+
+    // Texto (título + desc)
+    const box = document.createElement('div');
+    box.className = 'min-w-0';
+    const h3 = document.createElement('h3');
+    h3.textContent = p.title;
+    h3.className = 'text-sm font-bold text-white truncate';
+    const pdesc = document.createElement('p');
+    pdesc.textContent = p.desc || '';
+    pdesc.className = 'text-xs text-white/60 line-clamp-2';
+
+    box.appendChild(h3);
+    box.appendChild(pdesc);
+
+    a.appendChild(fig);
+    a.appendChild(box);
+    li.appendChild(a);
+
+    // Estado activo (si coincide p.href con la URL actual)
+    const isActive = current === p.href.toLowerCase();
+    if (isActive) {
+      li.classList.add('bg-white/10');
+      li.classList.add('border-l-4', 'border-taronja');
+    }
+
+    return { li, isActive };
+  }
+
+  // Rellena listas (oculta el proyecto actual para navegar "a otros")
+  PROJECTS.forEach(p => {
+    const isCurrent = current === p.href.toLowerCase();
+    if (listDesktop && !isCurrent) {
+      listDesktop.appendChild(createItem(p).li);
+    }
+    if (listMobile && !isCurrent) {
+      listMobile.appendChild(createItem(p).li.cloneNode(true));
+    }
+  });
+
+  // --- Mobile drawer ---
+  const openBtn = document.getElementById('psb-open');
+  const drawer  = document.getElementById('psb-drawer');
+  const closeBtn= document.getElementById('psb-close');
+  const backdrop= document.getElementById('psb-backdrop');
+
+  const openDrawer = () => {
+    drawer.classList.remove('hidden');
+    document.body.classList.add('no-scroll'); // ja l’utilitzes a la web
+  };
+  const closeDrawer = () => {
+    drawer.classList.add('hidden');
+    document.body.classList.remove('no-scroll');
+  };
+
+  openBtn && openBtn.addEventListener('click', openDrawer);
+  closeBtn && closeBtn.addEventListener('click', closeDrawer);
+  backdrop && backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+})();
+</script>
 <body class="min-h-screen text-white font-sans bg-futur">
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
   <nav class="bg-futur bg-opacity-90 shadow-lg fixed w-full z-50 backdrop-blur-sm" aria-label="Navegació principal">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+         <div class="flex items-center gap-2"> 
+  <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
+    <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
+  </a>
+  <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
+    <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
+  </a>
+  <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
+    <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
+  </a>
+</div>
       <a href="index.html" class="flex items-center gap-3"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /> <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span></a>
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
@@ -228,6 +400,9 @@
         <div class="flex items-center gap-4 order-1 md:order-2">
             <a href="#" aria-label="Visita el nostre perfil d'Instagram al peu de pàgina" class="hover:opacity-75 transition-opacity"><img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
             <a href="#" aria-label="Visita el nostre perfil de Facebook al peu de pàgina" class="hover:opacity-75 transition-opacity"><img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+             <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
+    <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
+  </a>
         </div>
       </div>
   </footer>
