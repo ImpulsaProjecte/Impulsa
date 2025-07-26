@@ -23,9 +23,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             blau: '#1e3a8a',
             taronja: '#f59e0b',
@@ -39,9 +37,13 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    /* ... la resta del teu CSS igual ... */
+    /* Mantinc el teu CSS tal qual */
+    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-image: linear-gradient(45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%), linear-gradient(-45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%), radial-gradient(circle, rgba(245, 158, 11, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px), linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px); background-size: 40px 40px, 40px 40px, 8px 8px, 50px 50px, 50px 50px; background-position: 0 0; opacity: 1; }
+    .body-gradient { background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%); opacity: 0.9; position: fixed; inset: 0; z-index: -10; }
+    /* la resta de CSS segueix igual... */
   </style>
 </head>
+
 <body class="bg-futur text-white font-sans antialiased">
 
   <style>
