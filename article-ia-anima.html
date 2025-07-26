@@ -3,32 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog - IMPULSA</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>IA amb ànima: quan la tecnologia et dona ales - Blog IMPULSA</title>
+  <!-- SCRIPT DE TAILWIND CORREGIT PER INCLOURE EL PLUGIN -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          typography: (theme) => ({
+            DEFAULT: {
+              css: {
+                '--tw-prose-body': theme('colors.white[200]'),
+                '--tw-prose-headings': theme('colors.white'),
+                '--tw-prose-links': theme('colors.taronja'),
+                '--tw-prose-bold': theme('colors.white'),
+                '--tw-prose-counters': theme('colors.taronja'),
+                '--tw-prose-bullets': theme('colors.taronja'),
+                '--tw-prose-hr': theme('colors.white[800]'),
+                '--tw-prose-quotes': theme('colors.taronja'),
+                '--tw-prose-quote-borders': theme('colors.taronja'),
+                h3: { 'font-weight': '700' },
+              },
+            },
+          }),
           colors: {
             blau: '#3b82f6',
             verd: '#16a34a',
             violeta: '#8b5cf6',
             taronja: '#f59e0b',
-            gris: '#f3f4f6',
             futur: '#0f172a',
-            'futur-light': '#1e293b'
           },
-          animation: { 'fade-in-up': 'fadeInUp 0.8s ease-out forwards' },
-          keyframes: { fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } } },
         },
       },
     };
   </script>
   <style>
     body { overflow-y: scroll; background-color: #0f172a; }
-    body.no-scroll { overflow: hidden; }
-    #mobile-menu { max-height: calc(100vh - 64px); overflow-y: auto; }
     .video-background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -20; }
     .video-background-container video { width: 100%; height: 100%; object-fit: cover; }
     .body-gradient-overlay { position: fixed; inset: 0; z-index: -10; width: 100%; height: 100%; background: radial-gradient(circle at 60% 40%, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.8) 60%, #000 100%); opacity: 0.9; }
@@ -53,7 +64,7 @@
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
       </a>
-    <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
+     <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
         <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
         <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
@@ -75,99 +86,82 @@
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 pt-32 pb-20 sm:pt-40">
+  <main class="max-w-4xl mx-auto px-4 pt-32 pb-20 sm:pt-40">
   
-    <header class="text-center mb-16 animate-fade-in-up opacity-0">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-taronja mb-4">Blog d’IMPULSA</h1>
-      <p class="text-white/80 text-lg max-w-3xl mx-auto">
-        Històries, idees i eines per impulsar persones. Troba l'article que necessites per començar el teu canvi.
-      </p>
-    </header>
-
-    <!-- Barra de Filtres i Cerca -->
-    <section class="mb-12 animate-fade-in-up opacity-0" style="animation-delay: 0.2s;">
-        <div class="flex flex-col md:flex-row gap-4 items-center">
-            <div class="flex-grow flex flex-wrap gap-2 justify-center md:justify-start">
-                <button class="px-4 py-2 text-sm font-semibold bg-taronja text-futur rounded-full transition">Tots</button>
-                <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Tecnologia Humana</button>
-                <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Desenvolupament Professional</button>
-                <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Emprenedoria</button>
-            </div>
-            <div class="relative min-w-[280px]">
-                <input type="search" placeholder="Cerca un article..." class="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-taronja focus:outline-none">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <i data-lucide="search" class="w-5 h-5 text-white/50"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Post Destacat amb Estructura Corregida -->
-    <article class="group grid md:grid-cols-2 gap-0 items-center bg-white/5 border border-white/10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm mb-12 animate-fade-in-up opacity-0 overflow-hidden" style="animation-delay: 0.4s;">
-        <!-- CONTENIDOR DE LA IMATGE AMB ALTURA CONTROLADA -->
-        <div class="relative h-64 md:h-full w-full overflow-hidden">
-            <a href="article-ia-anima.html">
-                <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
-                     alt="Il·lustració d'IA i persones connectades"
-                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+    <article>
+        <!-- CAPÇALERA DE L'ARTICLE -->
+        <header class="text-center mb-12">
+            <a href="blog.html" class="inline-flex items-center gap-2 text-taronja hover:underline mb-4">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span>Tornar al Blog</span>
             </a>
-        </div>
-        <!-- CONTENIDOR DEL TEXT AMB PADDING -->
-        <div class="p-8">
-            <span class="inline-block bg-violeta/80 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">Tecnologia Humana</span>
-            <h2 class="text-3xl font-bold mb-3"><a href="article-ia-anima.html" class="hover:text-taronja transition-colors">IA amb ànima: quan la tecnologia et dona ales</a></h2>
-            <div class="flex items-center gap-4 text-sm text-white/60 mb-4">
+            <span class="block bg-violeta/80 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 max-w-max mx-auto">Tecnologia Humana</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">IA amb ànima: quan la tecnologia et dona ales</h1>
+            <div class="flex items-center justify-center gap-4 text-sm text-white/60 mt-6">
                 <span>Per l'Equip d'IMPULSA</span>
                 <span>•</span>
                 <span>25 de Juliol, 2025</span>
                 <span>•</span>
                 <span>Lectura de 4 minuts</span>
             </div>
-            <p class="text-white/80 leading-relaxed mb-6">La intel·ligència artificial no va de substituir-te, sinó de donar-te aire: automatitzar tasques, ordenar idees i ajudar-te a prendre millors decisions.</p>
-            <a href="article-ia-anima.html" class="inline-flex items-center gap-2 bg-taronja text-futur font-bold px-6 py-3 rounded-full hover:bg-white transition-all">
-                Llegeix l'Article Sencer <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </a>
+        </header>
+
+        <!-- IMATGE DESTACADA AMB ALTURA CONTROLADA -->
+        <div class="relative overflow-hidden rounded-2xl mb-12 shadow-2xl max-h-[500px]">
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
+                 alt="Il·lustració d'IA i persones connectades"
+                 class="w-full h-full object-cover">
         </div>
+
+        <!-- COS DE L'ARTICLE -->
+        <div class="prose prose-lg prose-invert max-w-none mx-auto text-white/80 font-light leading-relaxed">
+            <p class="lead">La intel·ligència artificial ha deixat de ser ciència-ficció per convertir-se en una eina quotidiana. Però lluny de la visió apocalíptica que de vegades ens arriba, la IA pot ser una aliada extraordinària per millorar la nostra feina, la nostra creativitat i, en definitiva, la nostra qualitat de vida. La clau està a entendre-la no com un substitut, sinó com un assistent.</p>
+            
+            <h3>La IA com a alliberadora de temps i energia</h3>
+            <p>Pensa en totes aquelles tasques repetitives que consumeixen el teu dia: respondre correus similars, organitzar agendes, transcriure reunions... La intel·ligència artificial excel·leix en automatitzar aquests processos. En delegar-li aquestes tasques, no estàs perdent el control; estàs guanyant el recurs més valuós que tenim: <strong>el temps</strong>.</p>
+            <blockquote>Quan la tecnologia es posa al teu servei, guanyes temps, focus i serenitat. I el més important: recuperes energia per dedicar-la al que realment té valor.</blockquote>
+            
+            <h3>Un catalitzador per a les teves idees</h3>
+            <p>Et sents bloquejat o no saps per on començar un projecte? La IA és una eina increïble per superar la por a la "pàgina en blanc". Pots demanar-li:</p>
+            <ul>
+                <li>Un esborrany per a la presentació d'un nou projecte.</li>
+                <li>Una llista d'idees per a un article o publicació a xarxes socials.</li>
+                <li>L'estructura d'un pla de negoci o d'un currículum.</li>
+            </ul>
+            <p>La IA et dona un punt de partida. Després, la teva experiència, el teu criteri i el teu toc humà són els que transformen aquest esborrany en una cosa realment única i valuosa.</p>
+
+            <h3>Com començar avui mateix?</h3>
+            <p>No cal ser un expert en tecnologia. Amb eines senzilles i accessibles, qualsevol persona pot començar a fer passos concrets avui mateix. Als nostres programes, ens centrem precisament en això: fer la tecnologia accessible i útil per a tothom, demostrant que és una palanca d'oportunitats quan s'utilitza amb criteri i ètica.</p>
+        </div>
+
+        <hr class="border-white/10 my-12">
+
+        <!-- CTA CONTEXTUAL I ARTICLES RELACIONATS -->
+        <footer class="space-y-12">
+            <div class="bg-violeta/20 p-8 rounded-2xl text-center border border-violeta">
+                <h3 class="text-2xl font-bold text-white mb-3">T'interessa la Tecnologia Humana?</h3>
+                <p class="text-white/80 max-w-xl mx-auto mb-6">Aquest article és només el principi. Als nostres projectes, passem de la teoria a l'acció. Descobreix com ho fem.</p>
+                <a href="projectes.htm" class="inline-block bg-taronja text-futur font-bold px-6 py-3 rounded-full hover:bg-white transition-all">
+                    Explora els Nostres Projectes
+                </a>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-6">Lectures Relacionades</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="article-creixement-10x.html" class="group block bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-taronja transition-all">
+                        <span class="text-xs font-bold uppercase text-taronja">Emprenedoria</span>
+                        <h4 class="text-lg font-bold text-white mt-2 mb-2 group-hover:underline">Creixement 10x: la IA per multiplicar el teu talent</h4>
+                        <p class="text-sm text-white/70 font-light">Si et sents encallat, la IA pot ser el teu punt d’arrencada per passar del 0 al 1.</p>
+                    </a>
+                    <a href="article-educar-treballar.html" class="group block bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-taronja transition-all">
+                        <span class="text-xs font-bold uppercase text-verd">Desenvolupament Professional</span>
+                        <h4 class="text-lg font-bold text-white mt-2 mb-2 group-hover:underline">Educar i treballar en temps d’IA</h4>
+                        <p class="text-sm text-white/70 font-light">Avui el valor està a saber preguntar, validar i crear amb la màquina, no contra ella.</p>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </article>
-
-    <!-- Graella d'Entrades -->
-    <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Post 2 -->
-      <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm animate-fade-in-up opacity-0" style="animation-delay: 0.6s;">
-        <div class="overflow-hidden rounded-xl mb-5">
-            <a href="article-creixement-10x.html"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop" alt="Persona creixent amb tecnologia i IA" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"></a>
-        </div>
-        <span class="inline-block bg-taronja/80 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">Emprenedoria</span>
-        <h2 class="text-2xl font-bold mb-2"><a href="article-creixement-10x.html" class="hover:text-taronja transition-colors">Creixement 10x: la IA per multiplicar el teu talent</a></h2>
-        <div class="flex items-center gap-3 text-xs text-white/60 mb-4"><span>22 de Juliol, 2025</span><span>•</span><span>Lectura de 3 minuts</span></div>
-        <p class="text-white/80 leading-relaxed mb-6">Si et sents encallat, la IA pot ser el teu punt d’arrencada: et suggereix camins, et crea esbossos i et retorna la confiança per passar del 0 al 1.</p>
-        <a href="article-creixement-10x.html" class="font-semibold text-taronja hover:underline">Llegeix l'Article →</a>
-      </article>
-
-      <!-- Post 3 -->
-      <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm animate-fade-in-up opacity-0" style="animation-delay: 0.8s;">
-        <div class="overflow-hidden rounded-xl mb-5">
-            <a href="article-educar-treballar.html"><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop" alt="Aula i espai de treball col·laboratiu" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"></a>
-        </div>
-        <span class="inline-block bg-verd/80 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">Desenvolupament Professional</span>
-        <h2 class="text-2xl font-bold mb-2"><a href="article-educar-treballar.html" class="hover:text-taronja transition-colors">Educar i treballar en temps d’IA</a></h2>
-        <div class="flex items-center gap-3 text-xs text-white/60 mb-4"><span>18 de Juliol, 2025</span><span>•</span><span>Lectura de 4 minuts</span></div>
-        <p class="text-white/80 leading-relaxed mb-6">L’educació i l’ocupació estan canviant: avui el valor està a saber preguntar, validar i crear amb la màquina, no contra ella.</p>
-        <a href="article-educar-treballar.html" class="font-semibold text-taronja hover:underline">Llegeix l'Article →</a>
-      </article>
-
-      <!-- Post 4 -->
-      <article class="group bg-white/10 border border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm animate-fade-in-up opacity-0" style="animation-delay: 1.0s;">
-        <div class="overflow-hidden rounded-xl mb-5">
-            <a href="article-cv-irresistible.html"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Equip col·laborant en una oficina" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"></a>
-        </div>
-        <span class="inline-block bg-blau/80 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">Desenvolupament Professional</span>
-        <h2 class="text-2xl font-bold mb-2"><a href="article-cv-irresistible.html" class="hover:text-taronja transition-colors">Com crear un CV irresistible amb ajuda de la IA</a></h2>
-        <div class="flex items-center gap-3 text-xs text-white/60 mb-4"><span>15 de Juliol, 2025</span><span>•</span><span>Lectura de 5 minuts</span></div>
-        <p class="text-white/80 leading-relaxed mb-6">Descobreix com utilitzar eines d'intel·ligència artificial per analitzar ofertes de feina i adaptar el teu currículum per destacar.</p>
-        <a href="article-cv-irresistible.html" class="font-semibold text-taronja hover:underline">Llegeix l'Article →</a>
-      </article>
-    </section>
 
   </main>
 

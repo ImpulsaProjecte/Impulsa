@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casos d'Èxit - IMPULSA+</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#3b82f6',
+            verd: '#16a34a',
+            violeta: '#8b5cf6',
+            taronja: '#f59e0b',
+            futur: '#0f172a',
+            'futur-light': '#1e293b'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .body-gradient { background: radial-gradient(circle at 60% 40%, rgba(59, 130, 246, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%); position: fixed; inset: 0; z-index: -10; }
+    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-color: #0f172a; opacity: 0.5; background-image: radial-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px), radial-gradient(rgba(59, 130, 246, 0.2) 1px, #0f172a 1px); background-size: 40px 40px; background-position: 0 0, 20px 20px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .text-gradient-orange { background: linear-gradient(45deg, #f59e0b, #ffc837); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen text-white font-sans bg-futur">
+  <div aria-hidden="true" class="body-gradient"></div>
+  <div aria-hidden="true" class="futuristic-pattern-background"></div>
+
+  <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2"> 
+        <a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer"><img src="instagram.png" alt="Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="#"><img src="facebook.png" alt="Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png" alt="LinkedIn" class="w-8 h-8 md:w-9 md:h-9" /></a>
+      </div>
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /><span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
+      <div class="hidden md:flex items-center gap-6 text-white font-semibold">
+        <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
+        <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
+        <a href="metode.html" class="hover:text-taronja transition-colors">El Nostre Mètode</a>
+        <a href="casos-exit.html" class="text-taronja font-bold">Casos d'Èxit</a>
+        <a href="colaboracio.html" class="hover:text-taronja transition-colors">Col·laboració</a>
+        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all">Contacte</a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Projectes</a>
+        <a href="quisom.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Qui Som</a>
+        <a href="metode.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">El Nostre Mètode</a>
+        <a href="casos-exit.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Casos d'Èxit</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Col·laboració</a>
+        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <!-- === SECCIÓ 1: HERO === -->
+    <section class="text-center pt-16 pb-12 reveal">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+        Històries de Transformació: <br><span class="text-gradient-orange">L'Impacte Real d'IMPULSA</span>
+      </h1>
+      <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed">
+        Cada persona té un potencial únic. Aquí compartim algunes de les històries que hem tingut el privilegi d'acompanyar i els resultats que hem aconseguit junts.
+      </p>
+    </section>
+
+    <!-- === SECCIÓ 2: IMPACTE EN XIFRES === -->
+    <section class="py-16 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                <span class="text-5xl font-bold text-taronja">+85%</span>
+                <p class="mt-2 text-white/80">d'augment en la confiança digital dels participants.</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                <span class="text-5xl font-bold text-taronja">+300</span>
+                <p class="mt-2 text-white/80">persones impulsades en els nostres programes.</p>
+            </div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                <span class="text-5xl font-bold text-taronja">9/10</span>
+                <p class="mt-2 text-white/80">participants recomanarien l'experiència IMPULSA.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SECCIÓ 3: GRAELLA DE CASOS D'ÈXIT === -->
+    <section class="py-16 reveal">
+        <!-- Filtres (opcional, preparat per al futur) -->
+        <div class="flex flex-wrap gap-2 justify-center mb-12">
+            <button class="px-4 py-2 text-sm font-semibold bg-taronja text-futur rounded-full transition">Tots</button>
+            <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Impulsa+45</button>
+            <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Impulsa+Joves</button>
+            <button class="px-4 py-2 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition">Impulsa+Emprenedors</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cas d'Èxit 1 -->
+            <div class="bg-futur-light rounded-2xl border border-white/10 flex flex-col overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto de Carme R." class="w-full h-56 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <p class="text-lg italic text-white/90 mb-4 flex-grow">"No només he après a utilitzar eines que no sabia ni que existien, sinó que he recuperat la confiança en les meves capacitats. Ha estat un impuls de veritat."</p>
+                    <div>
+                        <h3 class="font-bold text-white text-xl">Carme R.</h3>
+                        <p class="text-sm text-taronja">Participant d'Impulsa+45</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cas d'Èxit 2 -->
+            <div class="bg-futur-light rounded-2xl border border-white/10 flex flex-col overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Jordi P." class="w-full h-56 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <p class="text-lg italic text-white/90 mb-4 flex-grow">"El millor ha estat la comunitat. Adonar-me que no estava sol en això i aprendre dels meus companys ha sigut clau. Recomano el programa al 100%."</p>
+                    <div>
+                        <h3 class="font-bold text-white text-xl">Jordi P.</h3>
+                        <p class="text-sm text-taronja">Participant d'Impulsa+Emprenedors</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cas d'Èxit 3 -->
+            <div class="bg-futur-light rounded-2xl border border-white/10 flex flex-col overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Foto de Marc V." class="w-full h-56 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <p class="text-lg italic text-white/90 mb-4 flex-grow">"Vaig arribar sense una idea clara i vaig sortir amb un pla de negoci i els primers passos fets. L'enfocament pràctic és el que marca la diferència."</p>
+                    <div>
+                        <h3 class="font-bold text-white text-xl">Marc V.</h3>
+                        <p class="text-sm text-taronja">Participant d'Impulsa+Joves</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Afegeix més casos d'èxit aquí -->
+
+        </div>
+    </section>
+
+     <!-- === SECCIÓ 4: CTA FINAL === -->
+     <section class="reveal">
+        <div class="bg-blau rounded-2xl p-10 md:p-16 text-center border-2 border-taronja">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Vols ser la nostra propera història d'èxit?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 font-light leading-relaxed mb-8">
+                Tant si ets una persona que busca un nou impuls com si representes una entitat que vol generar un impacte positiu, ens encantaria parlar amb tu.
+            </p>
+            <a href="contacte.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                Iniciem una Conversa
+            </a>
+        </div>
+    </section>
+  </main>
+
+  <footer class="bg-futur-light border-t border-white/10 text-white/70 pt-16 pb-8" aria-label="Peu de pàgina"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-4 gap-8"><div class="md:col-span-1"><a href="index.html" class="flex items-center gap-3 mb-4"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /><span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span></a><p class="text-sm text-white/60 font-light leading-relaxed">Acompanyem camins i obrim portes a través de programes de transformació professional amb tecnologia humana.</p></div><div><h3 class="text-lg font-semibold text-white mb-4">Projectes</h3><ul class="space-y-3"><li><a href="impulsa+45.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+45</a></li><li><a href="impulsa+joves.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Joves</a></li><li><a href="impulsa+emprenedors.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Emprenedors</a></li><li><a href="activitat.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Dones</a></li></ul></div><div><h3 class="text-lg font-semibold text-white mb-4">Navegació</h3><ul class="space-y-3"><li><a href="quisom.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Qui Som</a></li><li><a href="colaboracio.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Col·laboració</a></li><li><a href="blog.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Blog</a></li></ul></div><div><h3 class="text-lg font-semibold text-white mb-4">Contacta'ns</h3><ul class="space-y-3"><li><a href="mailto:impulsames45@gmail.com" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="mail" class="w-4 h-4"></i><span>impulsames45@gmail.com</span></a></li><li><a href="tel:+34627113914" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="phone" class="w-4 h-4"></i><span>+34 627 113 914</span></a></li></ul><div class="flex items-center gap-4 mt-6"><a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a><a href="#" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a><a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a></div></div></div><div class="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm"><p class="text-white/50 order-2 md:order-1 mt-4 md:mt-0">© 2025 IMPULSA+. Tots els drets reservats.</p><div class="order-1 md:order-2"><a href="#" class="text-white/50 hover:text-taronja transition-colors">Política de Privacitat</a></div></div></div></footer>
+
+  <script>
+    lucide.createIcons();
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+    }
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

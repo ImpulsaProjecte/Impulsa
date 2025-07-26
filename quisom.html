@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IMPULSA+ | Transformació Professional amb Tecnologia Humana</title>
+  <title>Qui Som - IMPULSA+</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,10 +16,7 @@
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             blau: '#3b82f6',
-            verd: '#16a34a',
-            violeta: '#8b5cf6',
             taronja: '#f59e0b',
-            gris: '#f3f4f6',
             futur: '#0f172a',
             'futur-light': '#1e293b'
           }
@@ -33,6 +30,7 @@
     .body-gradient { background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0)); position: fixed; inset: 0; z-index: -10; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    .text-gradient-orange { background: linear-gradient(45deg, #f59e0b, #ffc837); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   </style>
 </head>
 <body class="bg-futur text-white font-sans antialiased">
@@ -51,7 +49,8 @@
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
       </a>
-   <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
+    
+  <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
         <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
         <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
@@ -71,102 +70,51 @@
         <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
       </div>
     </div>
+    </div>
   </nav>
 
-  <!-- === SECCIÓ 1: HERO === -->
-  <section class="relative min-h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2074&auto=format&fit=crop" 
-             alt="Grup de persones diverses col·laborant amb tecnologia" 
-             class="w-full h-full object-cover object-center">
-        <div class="absolute inset-0 bg-futur/80"></div>
-    </div>
-    <div class="relative z-10 max-w-3xl mx-auto reveal">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+
+    <!-- === SECCIÓ 1: HERO === -->
+    <section class="relative text-center py-24 md:py-32 reveal">
       <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
-        El Teu Futur <span class="text-taronja">Comença Avui.</span>
+        Persones <span class="text-gradient-orange">impulsant persones.</span>
       </h1>
-      <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed">
-        Acompanyem camins i obrim portes a través de programes de transformació professional amb tecnologia humana.
+      <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed">
+        Som un equip apassionat per la innovació social i la tecnologia humana. La nostra missió és crear oportunitats reals per a cada talent, sense excepció.
       </p>
-      <div class="mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
-        <a href="projectes.htm" class="w-full sm:w-auto bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
-          Descobreix els Projectes
-        </a>
-        <a href="contacte.html" class="w-full sm:w-auto bg-transparent border-2 border-white/80 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:text-futur hover:scale-105 transform">
-          Contacta'ns
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-
-    <!-- === SECCIÓ 2: LA NOSTRA METODOLOGIA === -->
-    <section class="reveal py-12">
-      <div class="bg-futur-light rounded-2xl border border-white/10">
-        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
-            <div class="p-8 text-center">
-                <h3 class="text-xl font-bold text-taronja mb-2">Tecnologia Humana</h3>
-                <p class="text-white/70">Utilitzem la IA com una eina per potenciar persones, no per substituir-les.</p>
-            </div>
-            <div class="p-8 text-center">
-                <h3 class="text-xl font-bold text-taronja mb-2">Aprenentatge Pràctic</h3>
-                <p class="text-white/70">Programes basats en reptes reals per obtenir resultats tangibles des del primer dia.</p>
-            </div>
-            <div class="p-8 text-center">
-                <h3 class="text-xl font-bold text-taronja mb-2">Comunitat i Suport</h3>
-                <p class="text-white/70">Creem xarxes de confiança per compartir, créixer i avançar junts.</p>
-            </div>
-        </div>
-      </div>
     </section>
 
-    <!-- === SECCIÓ 3: QUÈ FEM EXACTAMENT? === -->
+   <!-- === SECCIÓ 2: LA NOSTRA HISTÒRIA === -->
+    <section class="py-24 grid lg:grid-cols-2 gap-12 items-center reveal">
+        <div class="order-2 lg:order-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">El Punt de Partida: <br>Per què neix <span class="text-taronja">IMPULSA?</span></h2>
+            <div class="text-lg text-white/80 space-y-4 font-light leading-relaxed">
+                <p>IMPULSA+ neix d'una visió clara: posar la tecnologia al servei de les persones. En un món de canvis accelerats per la intel·ligència artificial, observem com molts col·lectius se senten desconnectats o amenaçats.</p>
+                <p>La nostra iniciativa sorgeix per transformar aquesta incertesa en confiança, recuperant el potencial i la dignitat de cada trajectòria professional a través d'una metodologia humana, pràctica i transformadora.</p>
+                <!-- PARÀGRAF AMB ENLLAÇ AFEGIT -->
+                <p class="pt-4">Aquesta visió es materialitza a través dels nostres programes. <a href="projectes.htm" class="font-semibold text-taronja hover:underline">Descobreix com ho fem</a>.</p>
+            </div>
+        </div>
+        <div class="order-1 lg:order-2">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Equip col·laborant i planificant estratègies" class="rounded-2xl shadow-2xl w-full h-full object-cover">
+        </div>
+    </section>
+    <!-- === SECCIÓ 3: MISSIÓ I VISIÓ === -->
     <section class="py-24 reveal">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white">La Nostra Proposta: <span class="text-taronja">Programes de Transformació Real</span></h2>
-            <p class="mt-4 max-w-3xl mx-auto text-lg text-white/80 font-light">
-                A IMPULSA no impartim cursos, dissenyem experiències. Creem itineraris pràctics i humans que connecten el teu talent amb les oportunitats del futur digital, recuperant la confiança i obrint noves portes professionals.
-            </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6">
-                <i data-lucide="navigation" class="w-12 h-12 text-taronja flex-shrink-0"></i>
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Orientació i Requalificació</h3>
-                    <p class="text-white/70 font-light leading-relaxed">Acompanyament per a persones en transició laboral que busquen actualitzar competències i redefinir el seu rumb.</p>
-                </div>
+        <div class="grid md:grid-cols-2 gap-8 bg-futur-light rounded-2xl p-10 md:p-12 border border-white/10">
+            <div class="border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">
+                <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3"><i data-lucide="compass" class="w-8 h-8 text-taronja"></i>La Nostra Missió</h3>
+                <p class="text-lg text-white/80 font-light leading-relaxed">Empoderar persones davant els reptes digitals i laborals, oferint eines, acompanyament i una comunitat per afrontar-los amb seguretat i sentit humà.</p>
             </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6">
-                <i data-lucide="cpu" class="w-12 h-12 text-taronja flex-shrink-0"></i>
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Empoderament Digital i IA</h3>
-                    <p class="text-white/70 font-light leading-relaxed">Formació pràctica per entendre i utilitzar la intel·ligència artificial i les eines digitals com a aliades per créixer.</p>
-                </div>
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3"><i data-lucide="eye" class="w-8 h-8 text-taronja"></i>La Nostra Visió</h3>
+                <p class="text-lg text-white/80 font-light leading-relaxed">Ser un projecte de referència en innovació social digital, replicable a qualsevol municipi, per contribuir a una transició justa cap al futur del treball.</p>
             </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6">
-                <i data-lucide="rocket" class="w-12 h-12 text-taronja flex-shrink-0"></i>
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Desenvolupament de Projectes</h3>
-                    <p class="text-white/70 font-light leading-relaxed">Assessorament per a emprenedors que volen validar, llançar o digitalitzar les seves idees de negoci amb sentit.</p>
-                </div>
-            </div>
-            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6">
-                <i data-lucide="users-round" class="w-12 h-12 text-taronja flex-shrink-0"></i>
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Creació de Comunitat</h3>
-                    <p class="text-white/70 font-light leading-relaxed">Disseny d'espais de suport i xarxes de contacte per fomentar la col·laboració i el creixement col·lectiu.</p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-12">
-            <a href="projectes.htm" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
-                Veure tots els projectes
-            </a>
         </div>
     </section>
 
-    <!-- === NOVA SECCIÓ 4: PER QUÈ TRIAR-NOS? === -->
+  <!-- === SECCIÓ 4: PER QUÈ TRIAR-NOS? === -->
     <section class="py-24 reveal">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="order-2 lg:order-1">
@@ -197,11 +145,6 @@
                         </div>
                     </li>
                 </ul>
-                <div class="mt-10">
-                    <a href="colaboracio.html" class="font-semibold text-taronja text-lg hover:underline">
-                        Parlem del teu projecte →
-                    </a>
-                </div>
             </div>
             <div class="order-1 lg:order-2">
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" 
@@ -210,50 +153,77 @@
             </div>
         </div>
     </section>
-
-      <!-- === SECCIÓ 4: EL NOSTRE MANIFEST === -->
+    
+ <!-- === SECCIÓ 5: EQUIP (AMB FOTOGRAFIES REALS) === -->
     <section class="py-24 reveal">
-      <div class="grid lg:grid-cols-2 gap-12 items-center bg-futur-light rounded-2xl p-10 md:p-16 border border-white/10">
-          <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">El Nostre <span class="text-taronja">Manifest</span></h2>
-              <p class="text-2xl font-light text-white/90 italic mb-6">
-                  "Creiem en el talent sense edat i en la tecnologia com a pont, no com a barrera."
-              </p>
-              <div class="text-white/80 space-y-4 leading-relaxed">
-                  <p>A IMPULSA, estem convençuts que cada persona posseeix un potencial únic que mereix ser impulsat. La nostra missió és trencar la bretxa digital i emocional, creant espais on l'experiència es fusiona amb la innovació.</p>
-                  <p>No formem en eines, acompanyem en transformacions. Defensem un futur on la tecnologia serveixi per humanitzar, connectar i obrir oportunitats per a tothom, sense excepció.</p>
-              </div>
-          </div>
-          <div class="hidden lg:block">
-              <img src="https://images.unsplash.com/photo-1590402494587-44b71d7772f6?q=80&w=2070&auto=format&fit=crop" 
-                   alt="Persona experimentada mentoritzant una persona jove" 
-                   class="rounded-lg shadow-xl object-cover w-full h-full">
-          <div class="mt-10">
-            <!-- ENLLAÇ MODIFICAT -->
-          <a href="quisom.html" class="font-semibold text-taronja text-lg hover:underline">
-             Coneix l'equip que ho fa possible →
-            </a>
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Un Equip <span class="text-taronja">Compromès</span></h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80 font-light">Darrere d'IMPULSA hi ha professionals amb una llarga trajectòria en l'àmbit social, tecnològic i de l'acompanyament a persones.</p>
+        </div>
+        
+        <!-- Graella de membres de l'equip -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+            <!-- Targeta d'Anthony Nicolás Albín Sánchez -->
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+                <!-- Foto d'Anthony (Nico) -->
+                <img src="nico.jfif" alt="Foto d'Anthony Nicolás Albín Sánchez" class="w-32 h-32 rounded-full mb-6 object-cover border-4 border-taronja">
+                
+                <h3 class="text-2xl font-bold text-white">Anthony Nicolás Albín Sánchez</h3>
+                <p class="text-taronja font-semibold mb-4">Fundador d'IMPULSA i Expert en Psicosociologia Laboral</p>
+                
+                <p class="text-white/70 font-light leading-relaxed flex-grow">
+                    Psicòleg especialitzat en salut laboral i dinamització de grups, amb una sòlida experiència en el sistema públic de salut.
+                </p>
+
+                <div class="mt-6">
+                    <a href="https://www.linkedin.com/in/nicolasalbin" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors" aria-label="Perfil de LinkedIn d'Anthony Nicolás Albín Sánchez">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
                 </div>
-          </div>
-      </div>
-    </section>
+            </div>
+            
+            <!-- Targeta de Sergi Fernandez Gracia -->
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+                <!-- Foto de Sergi -->
+                <img src="sergi.jfif" alt="Foto de Sergi Fernandez Gracia" class="w-32 h-32 rounded-full mb-6 object-cover border-4 border-taronja">
+                
+                <h3 class="text-2xl font-bold text-white">Sergi Fernández Gracia</h3>
+                <p class="text-taronja font-semibold mb-4">Fundador d'IMPULSA i Psicòleg Social</p>
+                
+                <p class="text-white/70 font-light leading-relaxed flex-grow">
+                    Expert en intervenció psicosociolaboral amb col·lectius en risc d'exclusió i amb experiència en projectes socials amb el tercer sector.
+                </p>
 
-    <!-- === SECCIÓ 5: CTA FINAL === -->
-    <section class="py-24 reveal">
-        <div class="text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white">Preparat/da per Fer el Següent Pas?</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80 font-light">Tant si vols participar en un programa com si representes una entitat i vols col·laborar, tenim un camí per a tu.</p>
-            <div class="mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
-                <a href="contacte.html" class="w-full sm:w-auto bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
-                  Vull Participar-hi
-                </a>
-                <a href="colaboracio.html" class="w-full sm:w-auto bg-transparent border-2 border-white/80 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:text-futur hover:scale-105 transform">
-                  Vull Col·laborar
-                </a>
-              </div>
+                <div class="mt-6">
+                    <a href="https://www.linkedin.com/in/sergifernandezgracia" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors" aria-label="Perfil de LinkedIn de Sergi Fernandez Gracia">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
-  </div>
+ 
+    <!-- === SECCIÓ 6: CTA FINAL === -->
+    <section class="py-24 reveal">
+        <div class="bg-blau rounded-2xl p-10 md:p-16 text-center border-2 border-taronja">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Vols formar part del canvi?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 font-light leading-relaxed mb-8">
+                Tant si ets una persona que busca un nou impuls com si representes una entitat que vol generar un impacte positiu, ens encantaria parlar amb tu.
+            </p>
+            <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4">
+                <a href="contacte.html" class="w-full sm:w-auto bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                    Contacta'ns
+                </a>
+                <a href="projectes.htm" class="w-full sm:w-auto bg-transparent border-2 border-white/80 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:text-futur hover:scale-105 transform">
+                    Descobreix els Projectes
+                </a>
+            </div>
+        </div>
+    </section>
+
+  </main>
 
   <!-- === NOU MEGA FOOTER === -->
   <footer class="bg-futur-light border-t border-white/10 text-white/70 pt-16 pb-8" aria-label="Peu de pàgina">

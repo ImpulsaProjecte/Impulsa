@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El Nostre Mètode - IMPULSA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blau: '#3b82f6',
+            taronja: '#f59e0b',
+            futur: '#0f172a',
+            'futur-light': '#1e293b'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .body-gradient { background: radial-gradient(circle at 60% 40%, rgba(59, 130, 246, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%); position: fixed; inset: 0; z-index: -10; }
+    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-color: #0f172a; opacity: 0.5; background-image: radial-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px), radial-gradient(rgba(59, 130, 246, 0.2) 1px, #0f172a 1px); background-size: 40px 40px; background-position: 0 0, 20px 20px; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .text-gradient-orange { background: linear-gradient(45deg, #f59e0b, #ffc837); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="min-h-screen text-white font-sans bg-futur">
+  <div aria-hidden="true" class="body-gradient"></div>
+  <div aria-hidden="true" class="futuristic-pattern-background"></div>
+
+  <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2"> 
+        <a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer"><img src="instagram.png" alt="Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="#"><img src="facebook.png" alt="Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png" alt="LinkedIn" class="w-8 h-8 md:w-9 md:h-9" /></a>
+      </div>
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /><span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
+      <div class="hidden md:flex items-center gap-6 text-white font-semibold">
+        <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
+        <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
+        <a href="metode.html" class="text-taronja font-bold">El Nostre Mètode</a>
+        <a href="colaboracio.html" class="hover:text-taronja transition-colors">Col·laboració</a>
+        <a href="blog.html" class="hover:text-taronja transition-colors">Blog</a>
+        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all">Contacte</a>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Projectes</a>
+        <a href="quisom.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Qui Som</a>
+        <a href="metode.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">El Nostre Mètode</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Col·laboració</a>
+        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Blog</a>
+        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <!-- === SECCIÓ 1: HERO === -->
+    <section class="relative text-center py-24 my-16 rounded-2xl overflow-hidden reveal">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Equip divers treballant en un pla estratègic" 
+                 class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-futur/80"></div>
+        </div>
+        <div class="relative z-10 p-8">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+                El Mètode IMPULSA: <br><span class="text-gradient-orange">De la Incertesa a l'Oportunitat</span>
+            </h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/80 font-light leading-relaxed">
+                No ensenyem eines, acompanyem transformacions. Descobreix el nostre sistema provat en 3 fases per a un creixement professional real i durador.
+            </p>
+        </div>
+    </section>
+
+    <!-- === SECCIÓ 2: ITINERARI VISUAL (CORREGIDA) === -->
+    <section id="itinerari" class="py-24 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+            <!-- Fase 1 -->
+            <div class="text-center bg-white/5 p-8 rounded-2xl border border-white/10">
+                <div class="relative bg-futur-light border-2 border-taronja rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-4xl font-bold text-taronja">1</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mt-6 mb-2">Diagnosi i Acollida</h3>
+                <p class="text-white/70 font-light">Partim de tu. Analitzem el teu punt de partida, les teves fortaleses i els teus objectius per co-crear un itinerari a mida.</p>
+            </div>
+            <!-- Fase 2 -->
+            <div class="text-center bg-white/5 p-8 rounded-2xl border border-white/10">
+                <div class="relative bg-futur-light border-2 border-taronja rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-4xl font-bold text-taronja">2</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mt-6 mb-2">Formació i Acció</h3>
+                <p class="text-white/70 font-light">A través de tallers pràctics, et dotem de les eines digitals i emocionals per passar a l'acció amb confiança.</p>
+            </div>
+            <!-- Fase 3 -->
+            <div class="text-center bg-white/5 p-8 rounded-2xl border border-white/10">
+                <div class="relative bg-futur-light border-2 border-taronja rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <span class="text-4xl font-bold text-taronja">3</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mt-6 mb-2">Comunitat i Futur</h3>
+                <p class="text-white/70 font-light">Enfortim una xarxa de suport professional per compartir coneixement, resoldre dubtes i créixer junts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SECCIÓ 3: QUÈ ENS FA ÚNICS? === -->
+    <section class="py-24 reveal">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Què Fa Únic el Nostre <span class="text-taronja">Acompanyament?</span></h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6"><i data-lucide="user-check" class="w-16 h-16 text-taronja flex-shrink-0"></i><div><h3 class="text-2xl font-bold text-white mb-2">Acompanyament a Mida</h3><p class="text-white/70 font-light leading-relaxed">Partim de les teves necessitats reals. No creiem en solucions genèriques, sinó en itineraris personalitzats.</p></div></div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6"><i data-lucide="heart-handshake" class="w-16 h-16 text-taronja flex-shrink-0"></i><div><h3 class="text-2xl font-bold text-white mb-2">Benestar Emocional</h3><p class="text-white/70 font-light leading-relaxed">El nostre equip expert en psicologia acompanya en la gestió de la por al canvi i en la recuperació de l'autoestima.</p></div></div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6"><i data-lucide="lightbulb" class="w-16 h-16 text-taronja flex-shrink-0"></i><div><h3 class="text-2xl font-bold text-white mb-2">Aprenentatge Pràctic</h3><p class="text-white/70 font-light leading-relaxed">Tot el que aprens està dissenyat per ser aplicat immediatament a la teva vida professional o personal.</p></div></div>
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex items-start gap-6"><i data-lucide="line-chart" class="w-16 h-16 text-taronja flex-shrink-0"></i><div><h3 class="text-2xl font-bold text-white mb-2">Resultats i Comunitat</h3><p class="text-white/70 font-light leading-relaxed">Busquem un impacte durador i la creació d'una xarxa de suport que continuï activa més enllà del programa.</p></div></div>
+        </div>
+    </section>
+
+    <!-- === SECCIÓ 4: EL MÈTODE EN ACCIÓ (VÍDEO) === -->
+    <section class="py-24 reveal">
+        <div class="relative bg-futur-light rounded-2xl p-10 md:p-16 text-center border border-white/10 flex flex-col items-center justify-center min-h-[400px] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Persones veient una presentació" class="absolute inset-0 w-full h-full object-cover opacity-20">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">El Nostre Mètode en <span class="text-taronja">Acció</span></h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80 font-light mb-8">Una imatge val més que mil paraules. Descobreix la nostra filosofia en aquest breu vídeo.</p>
+                <button class="w-20 h-20 bg-taronja/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-taronja hover:scale-110 transition-all duration-300"><i data-lucide="play" class="w-10 h-10 ml-1"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SECCIÓ 5: CTA FINAL === -->
+    <section class="reveal">
+        <div class="bg-blau rounded-2xl p-10 md:p-16 text-center border-2 border-taronja">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Veus com el nostre mètode et pot ajudar?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 font-light leading-relaxed mb-8">Descobreix com apliquem aquesta filosofia a cada un dels nostres programes dissenyats per a tu.</p>
+            <a href="projectes.htm" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">Explora els Projectes</a>
+        </div>
+    </section>
+  </main>
+
+  <footer class="bg-futur-light border-t border-white/10 text-white/70 pt-16 pb-8" aria-label="Peu de pàgina">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-1"><a href="index.html" class="flex items-center gap-3 mb-4"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /><span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span></a><p class="text-sm text-white/60 font-light leading-relaxed">Acompanyem camins i obrim portes a través de programes de transformació professional amb tecnologia humana.</p></div>
+            <div><h3 class="text-lg font-semibold text-white mb-4">Projectes</h3><ul class="space-y-3"><li><a href="impulsa+45.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+45</a></li><li><a href="impulsa+joves.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Joves</a></li><li><a href="impulsa+emprenedors.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Emprenedors</a></li><li><a href="activitat.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Dones</a></li></ul></div>
+            <div><h3 class="text-lg font-semibold text-white mb-4">Navegació</h3><ul class="space-y-3"><li><a href="quisom.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Qui Som</a></li><li><a href="colaboracio.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Col·laboració</a></li><li><a href="blog.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Blog</a></li></ul></div>
+            <div><h3 class="text-lg font-semibold text-white mb-4">Contacta'ns</h3><ul class="space-y-3"><li><a href="mailto:impulsames45@gmail.com" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="mail" class="w-4 h-4"></i><span>impulsames45@gmail.com</span></a></li><li><a href="tel:+34627113914" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="phone" class="w-4 h-4"></i><span>+34 627 113 914</span></a></li></ul><div class="flex items-center gap-4 mt-6"><a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a><a href="#" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a><a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a></div></div>
+        </div>
+        <div class="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p class="text-white/50 order-2 md:order-1 mt-4 md:mt-0">© 2025 IMPULSA+. Tots els drets reservats.</p>
+            <div class="order-1 md:order-2"><a href="#" class="text-white/50 hover:text-taronja transition-colors">Política de Privacitat</a></div>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+    }
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

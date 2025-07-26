@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IMPULSA - Els Nostres Projectes Estratègics</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -17,122 +14,67 @@
             sans: ['Inter', 'sans-serif'],
           },
           colors: {
-            blau: '#1e3a8a',
-            'blau-hover': '#1e40af',
+            blau: '#3b82f6',
             verd: '#16a34a',
-            'verd-hover': '#15803d',
-            taronja: '#f59e0b', // Color corporatiu estandarditzat
-            'taronja-hover': '#f97316', // Hover consistent
+            taronja: '#f59e0b',
             futur: '#0f172a',
             'futur-light': '#1e293b',
             violeta: '#8b5cf6',
-            'violeta-hover': '#7c3aed',
+            // NOUS COLORS PER A PROJECTES EN CONSTRUCCIÓ
+            turquesa: '#14b8a6',
+            'gris-pissarra': '#64748b',
+            'verd-llima': '#a3e635',
           }
         }
       }
     }
   </script>
-
   <style>
     html { scroll-behavior: smooth; }
-    
-    .futuristic-pattern-background { 
-        position: fixed; inset: 0; z-index: -20; 
-        background-color: #0f172a;
-        opacity: 0.5;
-        background-image: radial-gradient(rgba(30, 58, 138, 0.5) 1px, transparent 1px), radial-gradient(rgba(30, 58, 138, 0.5) 1px, #0f172a 1px);
-        background-size: 40px 40px;
-        background-position: 0 0, 20px 20px;
-    }
-    
+    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-color: #0f172a; opacity: 0.5; background-image: radial-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px), radial-gradient(rgba(59, 130, 246, 0.2) 1px, #0f172a 1px); background-size: 40px 40px; background-position: 0 0, 20px 20px; }
     .body-gradient { background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0)); position: fixed; inset: 0; z-index: -10; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #mobile-menu { max-height: calc(100vh - 64px); overflow-y: auto; }
-    
-    .details-arrow[open] summary .arrow-icon {
-        transform: rotate(180deg);
-    }
-    
-    .nav-active {
-        background-color: #f59e0b !important; /* El nou taronja corporatiu */
-        transform: scale(1.15);
-    }
-    .nav-active div {
-        background-color: #0f172a !important; /* Punt fosc per contrast */
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    details[open] summary .arrow-icon { transform: rotate(180deg); }
   </style>
 </head>
 <body class="bg-futur text-gray-200 font-sans antialiased">
 
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
+  
   <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2"> 
-        <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
-          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
-          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-         <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
-          <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
+        <a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer"><img src="instagram.png" alt="Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="#"><img src="facebook.png" alt="Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png" alt="LinkedIn" class="w-8 h-8 md:w-9 md:h-9" /></a>
       </div>
-  
       <a href="index.html" class="flex items-center gap-2">
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
-        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA</span>
+        <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
       </a>
-  
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      </a>
+     <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
-        <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
-        <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
-        <a href="projectes.htm" class="text-taronja font-bold">Projectes</a>
-        <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
-        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-taronja-hover transition-all duration-300">Contacte</a>
-      </div>
-      <div class="flex items-center md:hidden">
-        <button id="menu-toggle" class="text-white focus:outline-none"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
+        <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
+        <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
+        <a href="metode.html" class="text-taronja font-bold">El Nostre Mètode</a>
+        <a href="colaboracio.html" class="hover:text-taronja transition-colors">Col·laboració</a>
+        <a href="blog.html" class="hover:text-taronja transition-colors">Blog</a>
+        <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all">Contacte</a>
       </div>
     </div>
     <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Programa</a>
-        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
-        <a href="projectes.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Projectes</a>
-        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
-        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-taronja-hover">Contacte</a>
+        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Projectes</a>
+        <a href="quisom.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Qui Som</a>
+        <a href="metode.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">El Nostre Mètode</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Col·laboració</a>
+        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Blog</a>
+        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
       </div>
     </div>
   </nav>
-
-  <aside aria-label="Navegació ràpida" class="hidden lg:block fixed top-1/2 left-6 transform -translate-y-1/2 z-40">
-    <div class="bg-futur-light/50 backdrop-blur-sm border border-white/10 rounded-full shadow-lg p-2">
-      <ul class="space-y-3">
-        <li><a href="#projecte-45" title="Anar a Impulsa+45" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur-light hover:bg-blau transition-all duration-300"><span class="opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-blau rounded-md text-white font-bold whitespace-nowrap transition-all duration-300">Impulsa+45</span><div class="w-3 h-3 bg-blau rounded-full transition-all"></div></a></li>
-        <li><a href="#projecte-joves" title="Anar a Impulsa+Joves" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur-light hover:bg-verd transition-all duration-300"><span class="opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-verd rounded-md text-white font-bold whitespace-nowrap transition-all duration-300">Impulsa+Joves</span><div class="w-3 h-3 bg-verd rounded-full transition-all"></div></a></li>
-        <li><a href="#projecte-emprenedors" title="Anar a Impulsa+Emprenedors" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur-light hover:bg-taronja transition-all duration-300"><span class="opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-taronja rounded-md text-futur font-bold whitespace-nowrap transition-all duration-300">Emprenedors</span><div class="w-3 h-3 bg-taronja rounded-full transition-all"></div></a></li>
-        <li><a href="#projecte-dones" title="Anar a Impulsa+Dones" class="nav-lateral group flex items-center justify-center w-10 h-10 rounded-full bg-futur-light hover:bg-violeta transition-all duration-300"><span class="opacity-0 group-hover:opacity-100 absolute left-full ml-4 px-3 py-1 bg-violeta rounded-md text-white font-bold whitespace-nowrap transition-all duration-300">Impulsa+Dones</span><div class="w-3 h-3 bg-violeta rounded-full transition-all"></div></a></li>
-      </ul>
-    </div>
-  </aside>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32">
     <header class="text-center pt-16 pb-24 reveal">
@@ -144,205 +86,202 @@
       </p>
     </header>
 
-    <div class="space-y-32">
+    <div class="space-y-16">
       
       <!-- === PROJECTE IMPULSA+45 === -->
-      <section id="projecte-45" class="reveal pt-24 -mt-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="w-full">
-                <img src="img/impulsa-45.jpg" alt="Equip de professionals sèniors col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
-            </div>
-            <div class="w-full">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-                    <i data-lucide="bar-chart-3" class="w-8 h-8 text-blau"></i>
-                    Projecte <span class="text-blau">Impulsa+45</span>
-                </h2>
-                <p class="text-lg text-gray-300 mb-6">Adaptació digital i emocional per a persones de més de 45 anys davant els reptes de la IA i els canvis laborals.</p>
-                <details class="details-arrow bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
-                    <summary class="relative cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
-                        Objectius principals
-                        <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-blau transition-transform duration-300"></i>
-                    </summary>
-                    <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
-                        <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Reduir la bretxa digital amb eines pràctiques.</li>
-                        <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Reforçar l’autoestima i posar en valor l’experiència.</li>
-                        <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Millorar l’ocupabilitat i la resiliència professional.</li>
-                        <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Fomentar una comunitat +45 de suport mutu.</li>
-                    </ul>
-                </details>
-                <a href="impulsa+45.html" class="inline-block bg-blau text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-blau-hover hover:scale-105 transform">
-                    Veure Més Detalls
-                </a>
-            </div>
-        </div>
-      </section>
+      <div class="reveal bg-white/5 border border-transparent hover:border-blau rounded-2xl shadow-xl transition-all duration-300 p-8 lg:p-10">
+        <section id="projecte-45">
+          <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="w-full">
+                  <img src="img/impulsa-45.jpg" alt="Equip de professionals sèniors col·laborant" class="rounded-xl shadow-lg w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+              </div>
+              <div class="w-full">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-4">
+                      <i data-lucide="bar-chart-3" class="w-9 h-9 text-blau"></i>
+                      <span>Projecte Impulsa+45</span>
+                  </h2>
+                  <p class="text-lg text-gray-300 mb-6">Adaptació digital i emocional per a persones de més de 45 anys davant els reptes de la IA i els canvis laborals.</p>
+                  <details class="bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
+                      <summary class="cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
+                          Objectius principals
+                          <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-blau transition-transform duration-300"></i>
+                      </summary>
+                      <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
+                          <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Reduir la bretxa digital amb eines pràctiques.</li>
+                          <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Reforçar l’autoestima i posar en valor l’experiència.</li>
+                          <li class="flex items-start"><span class="font-bold text-blau mr-2 mt-1">›</span>Fomentar una comunitat +45 de suport mutu.</li>
+                      </ul>
+                  </details>
+                  <a href="impulsa+45.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                      Veure Més Detalls
+                  </a>
+              </div>
+          </div>
+        </section>
+      </div>
 
       <!-- === PROJECTE IMPULSA+JOVES === -->
-      <section id="projecte-joves" class="reveal pt-24 -mt-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="w-full md:order-2">
-                <img src="img/impulsa-joves.jpg" alt="Joves aprenent i col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
-            </div>
-            <div class="w-full md:order-1">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-                    <i data-lucide="compass" class="w-8 h-8 text-verd"></i>
-                    Projecte <span class="text-verd">Impulsa+Joves</span>
-                </h2>
-                <p class="text-lg text-gray-300 mb-6">Orientació i empoderament digital per a joves en situació de transició educativa, laboral o vital.</p>
-                <details class="details-arrow bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
-                    <summary class="relative cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
-                        Objectius principals
-                        <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-verd transition-transform duration-300"></i>
-                    </summary>
-                    <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
-                        <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Definir l'itinerari personal i professional.</li>
-                        <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Millorar competències digitals i emocionals.</li>
-                        <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Apropar la IA i la tecnologia com a eines útils.</li>
-                        <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Connectar joves amb recursos i referents locals.</li>
-                    </ul>
-                </details>
-                <a href="impulsa+joves.html" class="inline-block bg-verd text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-verd-hover hover:scale-105 transform">
-                    Veure Més Detalls
-                </a>
-            </div>
-        </div>
-      </section>
+      <div class="reveal bg-white/5 border border-transparent hover:border-verd rounded-2xl shadow-xl transition-all duration-300 p-8 lg:p-10">
+        <section id="projecte-joves">
+          <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="w-full md:order-2">
+                  <img src="img/impulsa-joves.jpg" alt="Joves aprenent i col·laborant" class="rounded-xl shadow-lg w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+              </div>
+              <div class="w-full md:order-1">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-4">
+                      <i data-lucide="compass" class="w-9 h-9 text-verd"></i>
+                      <span>Projecte Impulsa+Joves</span>
+                  </h2>
+                  <p class="text-lg text-gray-300 mb-6">Orientació i empoderament digital per a joves en situació de transició educativa, laboral o vital.</p>
+                  <details class="bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
+                      <summary class="cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
+                          Objectius principals
+                          <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-verd transition-transform duration-300"></i>
+                      </summary>
+                      <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
+                          <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Definir l'itinerari personal i professional.</li>
+                          <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Millorar competències digitals i emocionals.</li>
+                          <li class="flex items-start"><span class="font-bold text-verd mr-2 mt-1">›</span>Connectar joves amb recursos i referents locals.</li>
+                      </ul>
+                  </details>
+                  <a href="impulsa+joves.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                      Veure Més Detalls
+                  </a>
+              </div>
+          </div>
+        </section>
+      </div>
 
       <!-- === PROJECTE IMPULSA+EMPRENEDORS === -->
-      <section id="projecte-emprenedors" class="reveal pt-24 -mt-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="w-full">
-                <img src="img/impulsa-emprenedors.jpg" alt="Mans planificant un nou negoci" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
-            </div>
-            <div class="w-full">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-                    <i data-lucide="rocket" class="w-8 h-8 text-taronja"></i>
-                    Projecte <span class="text-taronja">Impulsa+Emprenedors/es</span>
-                </h2>
-                <p class="text-lg text-gray-300 mb-6">Suport pràctic per a persones que volen emprendre o transformar el seu projecte amb eines digitals i IA.</p>
-                <details class="details-arrow bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
-                    <summary class="relative cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
-                        Objectius principals
-                        <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-taronja transition-transform duration-300"></i>
-                    </summary>
-                    <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
-                        <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Validar idees de negoci amb eines digitals i IA.</li>
-                        <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Millorar la comunicació i el màrqueting online.</li>
-                        <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Dotar de recursos per a la gestió eficient.</li>
-                        <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Fomentar la mentalitat emprenedora.</li>
-                    </ul>
-                </details>
-                <a href="impulsa+emprenedors.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-taronja-hover hover:scale-105 transform">
-                    Veure Més Detalls
-                </a>
-            </div>
-        </div>
-      </section>
+      <div class="reveal bg-white/5 border border-transparent hover:border-taronja rounded-2xl shadow-xl transition-all duration-300 p-8 lg:p-10">
+        <section id="projecte-emprenedors">
+          <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="w-full">
+                  <img src="img/impulsa-emprenedors.jpg" alt="Mans planificant un nou negoci" class="rounded-xl shadow-lg w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+              </div>
+              <div class="w-full">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-4">
+                      <i data-lucide="rocket" class="w-9 h-9 text-taronja"></i>
+                      <span>Projecte Impulsa+Emprenedors/es</span>
+                  </h2>
+                  <p class="text-lg text-gray-300 mb-6">Suport pràctic per a persones que volen emprendre o transformar el seu projecte amb eines digitals i IA.</p>
+                  <details class="bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
+                      <summary class="cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
+                          Objectius principals
+                          <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-taronja transition-transform duration-300"></i>
+                      </summary>
+                      <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
+                          <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Validar idees de negoci amb eines digitals i IA.</li>
+                          <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Millorar la comunicació i el màrqueting online.</li>
+                          <li class="flex items-start"><span class="font-bold text-taronja mr-2 mt-1">›</span>Fomentar la mentalitat emprenedora.</li>
+                      </ul>
+                  </details>
+                  <a href="impulsa+emprenedors.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
+                      Veure Més Detalls
+                  </a>
+              </div>
+          </div>
+        </section>
+      </div>
 
       <!-- === PROJECTE IMPULSA+DONES === -->
-      <section id="projecte-dones" class="reveal pt-24 -mt-24">
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div class="w-full md:order-2">
-                <img src="img/impulsa-dones.jpg" alt="Grup de dones diverses col·laborant" class="rounded-xl shadow-2xl w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
-            </div>
-            <div class="w-full md:order-1">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-3">
-                    <i data-lucide="sparkles" class="w-8 h-8 text-violeta"></i>
-                    Projecte <span class="text-violeta">Impulsa+Dones</span>
-                </h2>
-                <p class="text-lg text-gray-300 mb-6">Acompanyar, empoderar i connectar dones en moments de canvi, oferint eines per redefinir el seu camí i projectar el seu valor.</p>
-                <details class="details-arrow bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
-                    <summary class="relative cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
-                        Què treballarem?
-                        <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-violeta transition-transform duration-300"></i>
-                    </summary>
-                    <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
-                        <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>Redefinir-me amb força</li>
-                        <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>El meu valor, les meves decisions</li>
-                        <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>Xarxes de suport real</li>
-                        <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>Em projecte, em posiciono</li>
-                    </ul>
-                </details>
-                 <a href="activitat.html" class="inline-block bg-violeta text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-violeta-hover hover:scale-105 transform">
+      <div class="reveal bg-white/5 border border-transparent hover:border-violeta rounded-2xl shadow-xl transition-all duration-300 p-8 lg:p-10">
+        <section id="projecte-dones">
+          <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div class="w-full md:order-2">
+                  <img src="img/impulsa-dones.jpg" alt="Grup de dones diverses col·laborant" class="rounded-xl shadow-lg w-full object-cover aspect-video md:aspect-[4/3] transform transition-transform duration-500 hover:scale-105">
+              </div>
+              <div class="w-full md:order-1">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center gap-4">
+                      <i data-lucide="sparkles" class="w-9 h-9 text-violeta"></i>
+                      <span>Projecte Impulsa+Dones</span>
+                  </h2>
+                  <p class="text-lg text-gray-300 mb-6">Acompanyar, empoderar i connectar dones en moments de canvi, oferint eines per redefinir el seu camí i projectar el seu valor.</p>
+                  <details class="bg-futur-light/50 rounded-lg border border-white/10 mb-6 transition-all duration-300">
+                      <summary class="cursor-pointer p-4 text-md font-semibold text-white list-none flex justify-between items-center">
+                          Què treballarem?
+                          <i data-lucide="chevron-down" class="arrow-icon w-5 h-5 text-violeta transition-transform duration-300"></i>
+                      </summary>
+                      <ul class="space-y-3 p-4 pt-2 text-gray-300 leading-relaxed list-none">
+                          <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>Redefinir-me amb força.</li>
+                          <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>El meu valor, les meves decisions.</li>
+                          <li class="flex items-start"><span class="font-bold text-violeta mr-2 mt-1">›</span>Xarxes de suport real.</li>
+                      </ul>
+                  </details>
+                 <a href="activitat.html" class="inline-block bg-taronja text-futur font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
                     Veure Més Detalls
                 </a>
-            </div>
-        </div>
-      </section>
+              </div>
+          </div>
+        </section>
+      </div>
     </div>
 
-    <!-- === SECCIÓ: PROJECTES EN CONSTRUCCIÓ === -->
-    <section id="projectes-en-construccio" class="reveal pt-40 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white">
-        Projectes en <span class="text-taronja">Construcció</span>
-      </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
-        El futur el co-creem junts. Aquests són els propers programes que estem desenvolupant per obrir nous camins.
-      </p>
+    <!-- === NOVA SECCIÓ: PROJECTES EN CONSTRUCCIÓ === -->
+    <section id="projectes-en-construccio" class="reveal pt-24 mt-16">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white">
+          Explorant Nous Futurs: <span class="text-taronja">Projectes en Construcció</span>
+        </h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
+          El futur el co-creem junts. Aquests són els propers programes que estem desenvolupant per obrir nous camins.
+        </p>
+      </div>
 
-      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Card 1: Equips -->
-        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
-          <div class="relative">
-            <img src="img/projecte-equips.jpg" alt="Equip col·laborant i planificant estratègies" class="w-full h-48 object-cover">
-          </div>
+        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-turquesa/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Equips</h3>
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-3"><i data-lucide="users-round" class="w-6 h-6 text-turquesa"></i>Impulsa+Equips</h3>
             <p class="text-gray-400 font-light leading-relaxed mb-6 flex-grow">
               Fomentem la col·laboració i la integració de la IA per potenciar equips de treball diversos i preparats per als reptes del demà.
             </p>
             <div>
                 <div class="flex justify-between items-center mb-1 text-sm">
-                    <span class="font-semibold text-taronja">En Progrés</span>
+                    <span class="font-semibold text-turquesa">Fase de Disseny</span>
                     <span class="font-bold text-white">75%</span>
                 </div>
                 <div class="w-full bg-futur rounded-full h-2.5 border border-white/10">
-                    <div class="bg-taronja h-2 rounded-full" style="width: 75%"></div>
+                    <div class="bg-turquesa h-2 rounded-full" style="width: 75%"></div>
                 </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Experiències -->
-        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
-          <div class="relative">
-            <img src="img/projecte-experiencies.jpg" alt="Persones de diferents generacions compartint coneixement" class="w-full h-48 object-cover">
-          </div>
+        <!-- Card 2: +65 -->
+        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-gris-pissarra/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Experiències</h3>
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-3"><i data-lucide="gem" class="w-6 h-6 text-gris-pissarra"></i>Impulsa+65</h3>
             <p class="text-gray-400 font-light leading-relaxed mb-6 flex-grow">
-              Donem veu a les històries personals i l'experiència vital, transformant-les en una font de valor, aprenentatge i connexió.
+              Donem veu a l'experiència vital, transformant la saviesa sènior en una font de valor, aprenentatge i connexió intergeneracional.
             </p>
              <div>
                 <div class="flex justify-between items-center mb-1 text-sm">
-                    <span class="font-semibold text-taronja">En Progrés</span>
+                    <span class="font-semibold text-gris-pissarra">Fase Conceptual</span>
                     <span class="font-bold text-white">40%</span>
                 </div>
                 <div class="w-full bg-futur rounded-full h-2.5 border border-white/10">
-                    <div class="bg-taronja h-2 rounded-full" style="width: 40%"></div>
+                    <div class="bg-gris-pissarra h-2 rounded-full" style="width: 40%"></div>
                 </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Reinicia -->
-        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-taronja/80 hover:-translate-y-2 overflow-hidden flex flex-col">
-          <div class="relative">
-            <img src="img/projecte-reinicia.jpg" alt="Eines de treball sobre una taula" class="w-full h-48 object-cover">
-          </div>
+        <!-- Card 3: Recicla't -->
+        <div class="group bg-futur-light border border-white/10 rounded-xl transition-all duration-300 hover:border-verd-llima/80 hover:-translate-y-2 overflow-hidden flex flex-col">
           <div class="p-6 flex flex-col flex-grow">
-            <h3 class="text-xl font-bold text-white mb-3">Impulsa+ Reinicia</h3>
+            <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-3"><i data-lucide="recycle" class="w-6 h-6 text-verd-llima"></i>Impulsa+Recicla't</h3>
             <p class="text-gray-400 font-light leading-relaxed mb-6 flex-grow">
               Acompanyem en la reconstrucció de camins professionals, oferint eines per encaixar les peces d'un nou futur laboral en l'era digital.
             </p>
              <div>
                 <div class="flex justify-between items-center mb-1 text-sm">
-                    <span class="font-semibold text-taronja">En Progrés</span>
+                    <span class="font-semibold text-verd-llima">Planificació</span>
                     <span class="font-bold text-white">15%</span>
                 </div>
                 <div class="w-full bg-futur rounded-full h-2.5 border border-white/10">
-                    <div class="bg-taronja h-2 rounded-full" style="width: 15%"></div>
+                    <div class="bg-verd-llima h-2 rounded-full" style="width: 15%"></div>
                 </div>
             </div>
           </div>
@@ -350,32 +289,70 @@
 
       </div>
     </section>
-
+  
   </main>
   
-  <footer class="bg-futur-light border-t border-white/10 text-white/70 py-6" aria-label="Peu de pàgina">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-center text-gray-400">© 2025 IMPULSA. Acompanyem camins, obrim futurs.</p>
-        <div class="flex items-center gap-5">
-       <a href="#" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity">
-          <img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
-          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-         <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
-          <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
+  <!-- === NOU MEGA FOOTER === -->
+  <footer class="bg-futur-light border-t border-white/10 text-white/70 pt-16 pb-8" aria-label="Peu de pàgina">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Columna 1: Marca -->
+            <div class="md:col-span-1">
+                <a href="index.html" class="flex items-center gap-3 mb-4">
+                    <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
+                    <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
+                </a>
+                <p class="text-sm text-white/60 font-light leading-relaxed">Acompanyem camins i obrim portes a través de programes de transformació professional amb tecnologia humana.</p>
+            </div>
+
+            <!-- Columna 2: Projectes -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Projectes</h3>
+                <ul class="space-y-3">
+                    <li><a href="impulsa+45.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+45</a></li>
+                    <li><a href="impulsa+joves.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Joves</a></li>
+                    <li><a href="impulsa+emprenedors.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Emprenedors</a></li>
+                    <li><a href="activitat.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Impulsa+Dones</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Navegació -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Navegació</h3>
+                <ul class="space-y-3">
+                    <li><a href="quisom.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Qui Som</a></li>
+                    <li><a href="colaboracio.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Col·laboració</a></li>
+                    <li><a href="blog.html" class="text-sm text-white/60 hover:text-taronja transition-colors">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4: Contacte -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Contacta'ns</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:impulsames45@gmail.com" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="mail" class="w-4 h-4"></i><span>impulsames45@gmail.com</span></a></li>
+                    <li><a href="tel:+34627113914" class="flex items-center gap-2 text-sm text-white/60 hover:text-taronja transition-colors"><i data-lucide="phone" class="w-4 h-4"></i><span>+34 627 113 914</span></a></li>
+                </ul>
+                <div class="flex items-center gap-4 mt-6">
+                    <a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-taronja transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p class="text-white/50 order-2 md:order-1 mt-4 md:mt-0">© 2025 IMPULSA+. Tots els drets reservats.</p>
+            <div class="order-1 md:order-2">
+                <a href="#" class="text-white/50 hover:text-taronja transition-colors">Política de Privacitat</a>
+            </div>
+        </div>
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
-  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
-    // Activar icones Lucide
     lucide.createIcons();
 
-    // Script menú mòbil
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     if (menuToggle) {
@@ -384,52 +361,16 @@
         });
     }
 
-    // Script animació on-scroll
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
     
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    
-    // Script per activar el punt de la navegació lateral
-    document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('main section[id]');
-        const navLinks = document.querySelectorAll('aside .nav-lateral');
-        
-        if (sections.length === 0 || navLinks.length === 0) return;
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50% 0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            let activeId = '';
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    activeId = entry.target.id;
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('nav-active');
-                const linkHref = link.getAttribute('href');
-                if (linkHref === `#${activeId}`) {
-                    link.classList.add('nav-active');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    });
-
   </script>
 
 </body>
