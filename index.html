@@ -2,34 +2,17 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Umami Analytics -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="e586379d-7e4b-4d43-9d55-48cdffa8d0fe"></script>
-  <title>IMPULSA+</title>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R3P2LNF6C2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); 
-
-    gtag('config', 'G-R3P2LNF6C2');
-  </script>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IMPULSA - Acompanyem camins, obrim futurs</title>
+  <title>IMPULSA+</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             blau: '#1e3a8a',
             taronja: '#f59e0b',
@@ -40,97 +23,62 @@
       }
     }
   </script>
-
   <style>
     html { scroll-behavior: smooth; }
-    
-    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-image: linear-gradient(45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%), linear-gradient(-45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%), radial-gradient(circle, rgba(245, 158, 11, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px), linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px); background-size: 40px 40px, 40px 40px, 8px 8px, 50px 50px, 50px 50px; background-position: 0 0; opacity: 1; }
-    
+    .futuristic-pattern-background { position: fixed; inset: 0; z-index: -20; background-image: linear-gradient(45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%), linear-gradient(-45deg, rgba(30, 58, 138, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 58, 138, 0.1) 75%, rgba(30, 58, 138, 0.1) 100%); background-size: 40px 40px; }
     .body-gradient { background: radial-gradient(circle at 60% 40%, #1e3a8a 0%, #0f172a 60%, #000 100%); opacity: 0.9; position: fixed; inset: 0; z-index: -10; }
-
-    .news-sidebar::-webkit-scrollbar { width: 8px; }
-    .news-sidebar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); border-radius: 4px; }
-    .news-sidebar::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
-    .news-sidebar::-webkit-scrollbar-thumb:hover { background: #e08e00; }
-    .news-sidebar { scrollbar-color: #f59e0b rgba(15, 23, 42, 0.5); scrollbar-width: thin; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #mobile-menu { max-height: calc(100vh - 64px); overflow-y: auto; }
-    body.no-scroll { overflow: hidden; }
-
-    .nav-active {
-        background-color: #f59e0b !important;
-        transform: scale(1.1);
-    }
-    .nav-active div {
-        background-color: #0f172a !important;
-    }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 0; }
   </style>
+</head>
 <body class="bg-futur text-white font-sans antialiased">
 
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
+  <!-- Navegació -->
   <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2"> 
-   <a href="https://www.instagram.com/impulsa_mes/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil d'Instagram" class="hover:opacity-75 transition-opacity"><img src="instagram.png" alt="Icona d'Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
-        </a>
-        <a href="#" aria-label="Visita el nostre perfil de Facebook" class="hover:opacity-75 transition-opacity">
-          <img src="facebook.png" alt="Icona de Facebook" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <!-- ===== ENLLAÇ DE LINKEDIN ACTUALITZAT AQUÍ ===== -->
-        <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer" aria-label="Visita el nostre perfil de LinkedIn" class="hover:opacity-75 transition-opacity">
-          <img src="linkedin.png" alt="Icona de LinkedIn" class="w-8 h-8 md:w-9 md:h-9" />
-        </a>
-        <!-- ===== FI DE L'ENLLAÇ DE LINKEDIN ===== -->
+        <a href="https://www.instagram.com/impulsa_mes/" target="_blank"><img src="instagram.png" alt="Instagram" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="#"><img src="facebook.png" alt="Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
+        <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank"><img src="linkedin.png" alt="LinkedIn" class="w-8 h-8 md:w-9 md:h-9" /></a>
       </div>
-  
       <a href="index.html" class="flex items-center gap-2">
         <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
         <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
       </a>
-  
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
-      
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
-         <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
+        <a href="programa.html" class="hover:text-taronja transition-colors duration-300">Programa</a>
         <a href="blog.html" class="hover:text-taronja transition-colors duration-300">Blog</a>
-        <a href="projectes.htm" class="text-taronja font-bold">Projectes</a>
+        <a href="projectes.htm" class="hover:text-taronja transition-colors duration-300">Projectes</a>
         <a href="colaboracio.html" class="hover:text-taronja transition-colors duration-300">Col·laboració</a>
         <a href="contacte.html" class="bg-taronja text-futur px-4 py-2 rounded-full hover:bg-white transition-all duration-300">Contacte</a>
       </div>
-
-      <div class="flex items-center md:hidden">
-        <button id="menu-toggle" class="text-white focus:outline-none">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-        </button>
-      </div>
     </div>
-    
+    <!-- Únic menú mòbil -->
     <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Programa</a>
-        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Blog</a>
-        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Projectes</a>
-        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja hover:bg-white/5">Col·laboració</a>
-        <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
+        <a href="programa.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Programa</a>
+        <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Blog</a>
+        <a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Projectes</a>
+        <a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Col·laboració</a>
+        <a href="contacte.html" class="block px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur">Contacte</a>
       </div>
     </div>
   </nav>
+
+  <!-- HERO -->
+  <section class="relative flex items-center justify-center min-h-screen text-center px-4">
+    <div class="hero-overlay"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">IMPULSA <span class="text-taronja">+45</span> </h1>
+      <p class="text-lg md:text-2xl text-gray-200 mb-8">Programes d’orientació i creixement amb tecnologia humana.</p>
+      <a href="programa.html" class="bg-taronja hover:bg-white text-futur font-bold px-8 py-4 rounded-full text-lg transition">Descobreix els programes</a>
+    </div>
+  </section>
 
   <aside aria-label="Navegació ràpida" class="hidden lg:block fixed top-1/2 left-6 transform -translate-y-1/2 z-40">
     <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg p-3">
@@ -160,12 +108,7 @@
             "Transformació real. Amb sentit. Amb tu."
           </p>
           <div class="mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="programa.html" class="w-full sm:w-auto bg-taronja text-futur font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-white hover:scale-105 transform">
-              Descobreix el Programa
-            </a>
-            <a href="#que-fem" class="w-full sm:w-auto bg-white/10 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 transform">
-              Què fem?
-            </a>
+           
             <a href="DOSSIER+IMPULSA.pdf" download="Dossier IMPULSA+.pdf" target="_blank" class="w-full sm:w-auto bg-transparent border-2 border-taronja text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:bg-taronja hover:text-futur hover:scale-105 transform flex items-center justify-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
