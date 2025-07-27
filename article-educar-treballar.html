@@ -49,6 +49,7 @@
 <body class="min-h-screen text-white font-sans">
   <div class="video-background-container"><video playsinline autoplay muted loop><source src="https://cdn.pixabay.com/video/2020/03/02/33238-401494953.mp4" type="video/mp4"></video></div>
   <div class="body-gradient-overlay"></div>
+  
   <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2"> 
@@ -56,8 +57,11 @@
         <a href="#"><img src="facebook.png" alt="Facebook" class="w-8 h-8 md:w-9 md:h-9" /></a>
         <a href="https://www.linkedin.com/company/impulsames/posts/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png" alt="LinkedIn" class="w-8 h-8 md:w-9 md:h-9" /></a>
       </div>
-      <a href="index.html" class="flex items-center gap-2"><img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" /><span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span></a>
-   <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
+       <a href="index.html" class="flex items-center gap-2">
+        <img src="LOGOS/+IMPULSA.FONDO.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span style="color:#3b9cd6; font-weight:bold; font-size:1.25rem; letter-spacing:0.05em;">IMPULSA</span><span style="color:#f59e0b; font-weight:bold; margin-left:-7px; font-size:1.25rem;">+</span>
+      </a>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><i data-lucide="menu" class="w-7 h-7"></i></button>
       <div class="hidden md:flex items-center gap-6 text-white font-semibold">
         <a href="projectes.htm" class="hover:text-taronja transition-colors">Projectes</a>
         <a href="quisom.html" class="hover:text-taronja transition-colors">Qui Som</a>
@@ -77,6 +81,8 @@
         <a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a>
       </div>
     </div>
+  </nav> <!-- ETIQUETA </nav> AFEGIDA AQUÍ -->
+
   <main class="max-w-4xl mx-auto px-4 pt-32 pb-20 sm:pt-40">
     <article>
         <header class="text-center mb-12">
@@ -85,7 +91,7 @@
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Educar i treballar en temps d’IA</h1>
             <div class="flex items-center justify-center gap-4 text-sm text-white/60 mt-6"><span>Per l'Equip d'IMPULSA</span><span>•</span><span>18 de Juliol, 2025</span><span>•</span><span>Lectura de 4 minuts</span></div>
         </header>
-        <div class="overflow-hidden rounded-2xl mb-12 shadow-2xl"><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop" alt="Aula i espai de treball col·laboratiu" class="w-full h-auto object-cover"></div>
+        <div class="overflow-hidden rounded-2xl mb-12 shadow-2xl"><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format=fit=crop" alt="Aula i espai de treball col·laboratiu" class="w-full h-auto object-cover"></div>
         <div class="prose prose-lg prose-invert max-w-none mx-auto text-white/80 font-light leading-relaxed">
             <p class="lead">La irrupció de la intel·ligència artificial està transformant les bases del que significa aprendre i treballar. El model tradicional, basat en la memorització i l'execució de tasques, està donant pas a un nou paradigma on les habilitats més valuoses són la creativitat, el pensament crític i la capacitat de col·laborar amb la tecnologia.</p>
             <h3>La nova alfabetització: preguntar, validar i crear</h3>
@@ -124,10 +130,10 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- Columna 1: Marca -->
             <div class="md:col-span-1">
-                <a href="index.html" class="flex items-center gap-3 mb-4">
-                    <img src="logo_impulsa_general.png" alt="Logo IMPULSA" class="w-10 h-10" />
-                    <span class="text-taronja font-bold text-xl tracking-wide">IMPULSA+</span>
-                </a>
+              <a href="index.html" class="flex items-center gap-2">
+        <img src="LOGOS/+IMPULSA.FONDO.png" alt="Logo IMPULSA" class="w-10 h-10" />
+        <span style="color:#3b9cd6; font-weight:bold; font-size:1.25rem; letter-spacing:0.05em;">IMPULSA</span><span style="color:#f59e0b; font-weight:bold; margin-left:-7px; font-size:1.25rem;">+</span>
+      </a>
                 <p class="text-sm text-white/60 font-light leading-relaxed">Acompanyem camins i obrim portes a través de programes de transformació professional amb tecnologia humana.</p>
             </div>
 
