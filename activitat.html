@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
+  <meta name="description" content="Descobreix Impulsa+Dones, un espai segur per a dones en transició. T'acompanyem per redefinir el teu camí, guanyar confiança i crear xarxes de suport reals.">
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IMPULSA+Dones - La Teva Veu, la Teva Força</title>
@@ -30,13 +32,10 @@
     body.no-scroll { overflow: hidden; }
   </style>
 </head>
-<body class="bg-futur text-white font-sans antialiased">
+<body class="bg-futur text-white font-sans antialiased flex flex-col min-h-screen">
   <div aria-hidden="true" class="body-gradient"></div>
   <div aria-hidden="true" class="futuristic-pattern-background"></div>
 
-  <aside id="psb-aside" class="hidden lg:block fixed top-24 right-6 z-40 w-80"><div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl"><div class="px-4 py-3 border-b border-white/10"><h2 class="text-sm uppercase tracking-wider text-taronja/70 text-center font-bold">Altres projectes</h2></div><ul id="psb-list-desktop" class="max-h-[calc(100vh-180px)] overflow-y-auto divide-y divide-white/5"></ul></div></aside>
-  <button id="psb-open" class="lg:hidden fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-4 py-3 rounded-full bg-taronja text-futur font-bold shadow-xl hover:bg-white transition"><i data-lucide="layout-grid" class="h-5 w-5"></i>Projectes</button>
-  <div id="psb-drawer" class="lg:hidden fixed inset-0 z-50 hidden"><div id="psb-backdrop" class="absolute inset-0 bg-black/50"></div><div class="absolute right-0 top-0 h-full w-11/12 max-w-sm bg-futur/95 backdrop-blur-xl border-l border-white/10 shadow-2xl"><div class="px-4 py-3 border-b border-white/10 flex items-center justify-between"><h2 class="text-sm uppercase tracking-wider text-white/80">Altres projectes</h2><button id="psb-close" class="p-2 rounded-full hover:bg-white/10" aria-label="Tancar"><i data-lucide="x" class="w-5 h-5"></i></button></div><ul id="psb-list-mobile" class="h-[calc(100%-56px)] overflow-y-auto divide-y divide-white/5"></ul></div></div>
 
   <nav class="bg-futur/80 backdrop-blur-sm shadow-lg fixed w-full z-50" aria-label="Navegació principal">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -52,7 +51,7 @@
     <div id="mobile-menu" class="md:hidden hidden bg-futur/95 backdrop-blur-xl"><div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center"><a href="projectes.htm" class="block px-3 py-2 rounded-md text-base font-medium text-taronja bg-white/5">Projectes</a><a href="quisom.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Qui Som</a><a href="metode.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">El Nostre Mètode</a><a href="colaboracio.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Col·laboració</a><a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-taronja">Blog</a><a href="contacte.html" class="block w-full text-center mt-2 px-3 py-2 rounded-md text-base font-medium bg-taronja text-futur hover:bg-white">Contacte</a></div></div>
   </nav>
 
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32">
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-40 flex-grow">
     <header class="text-center pt-16 pb-12 reveal">
       <img src="LOGOS/DONES+.png" alt="Logo Projecte Impulsa+Dones" class="w-28 h-28 mx-auto mb-6 rounded-full shadow-2xl border-4 border-white/10">
       <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">Projecte <span class="text-violeta">Impulsa+Dones</span></h1>
@@ -94,6 +93,51 @@
     </div>
   </main>
 
+<!-- === SECCIÓ VISUAL COMPACTA: EXPLORA ALTRES CAMINS === -->
+<section class="reveal pt-24 mt-16 mb-16 border-white/10">
+    <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Explora Altres <span class="text-taronja">Camins</span></h2>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80 font-light">
+            Tenim un programa dissenyat per a cada moment de la teva trajectòria. Descobreix-los.
+        </p>
+    </div>
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Targeta Impulsa+45 -->
+            <a href="impulsa+45.html" class="group relative block rounded-2xl overflow-hidden shadow-2xl h-64">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop" alt="Professional sènior treballant en un ordinador" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-blau/80 via-blau/50 to-transparent"></div>
+                <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h3 class="text-2xl font-extrabold text-white">Impulsa+45</h3>
+                    <p class="text-white/90 mt-1 text-base">L'experiència és un valor. La tecnologia, una aliada.</p>
+                </div>
+            </a>
+            
+            <!-- Targeta Impulsa+Joves -->
+            <a href="impulsa+joves.html" class="group relative block rounded-2xl overflow-hidden shadow-2xl h-64">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop" alt="Grup de joves estudiant junts" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-verd/80 via-verd/50 to-transparent"></div>
+                <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h3 class="text-2xl font-extrabold text-white">Impulsa+Joves</h3>
+                    <p class="text-white/90 mt-1 text-base">Dissenya el teu futur amb tecnologia i acció.</p>
+                </div>
+            </a>
+
+            <!-- Targeta Impulsa+Emprenedors -->
+            <a href="impulsa+emprenedors.html" class="group relative block rounded-2xl overflow-hidden shadow-2xl h-64">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop" alt="Persona treballant en un pla de negoci" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-taronja/80 via-taronja/50 to-transparent"></div>
+                <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h3 class="text-2xl font-extrabold text-white">Impulsa+Emprenedors</h3>
+                    <p class="text-white/90 mt-1 text-base">De la idea a l'èxit amb IA i comunitat.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+        </div>
+    </section>
  <!-- === NOU MEGA FOOTER === -->
   <footer class="bg-futur-light border-t border-white/10 text-white/70 pt-16 pb-8" aria-label="Peu de pàgina">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

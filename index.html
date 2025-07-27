@@ -34,7 +34,35 @@
     .body-gradient { background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0)); position: fixed; inset: 0; z-index: -10; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* Estils per a un focus consistent i accessible */
+    *:focus-visible {
+      outline: 3px solid #f59e0b; /* Color taronja de la marca */
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
   </style>
+<!-- === DADES ESTRUCTURADES (VERSIÓ CORREGIDA AMB DOMINI FINAL) === -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "IMPULSA+",
+      "url": "https://www.impulsames.com",
+      "logo": "https://www.impulsames.com/LOGOS/+IMPULSA.FONDO.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+34-627-113-914",
+        "contactType": "Customer Service",
+        "email": "impulsames45@gmail.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/impulsa_mes/",
+        "https://www.linkedin.com/company/impulsames/"
+      ],
+      "description": "Programes de transformació professional amb tecnologia humana. Acompanyem camins i obrim portes per a +45, joves i emprenedors."
+    }
+    </script>
 </head>
 <body class="bg-futur text-white font-sans antialiased">
 
@@ -261,7 +289,7 @@
         <p class="text-white/70 mb-8">Rep directament al teu correu les últimes notícies, articles i novetats sobre els nostres programes. Sigues la primera en saber-ho tot.</p>
         <form action="https://formsubmit.co/impulsames45@gmail.com" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
              <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://impulsaprojecte.github.io/Impulsa/gracies-subscripcio.html"> <input type="email" name="email" placeholder="El teu correu electrònic" required class="flex-grow w-full bg-futur/50 border border-blau/50 rounded-full py-3 px-5 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all" />
+            <input type="hidden" name="_next" value="https://www.impulsames.com/gracies-subscripcio.html"> <input type="email" name="email" placeholder="El teu correu electrònic" required class="flex-grow w-full bg-futur/50 border border-blau/50 rounded-full py-3 px-5 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all" />
             <button type="submit" class="bg-taronja text-futur font-bold px-6 py-3 rounded-full transition-all duration-300 transform hover:bg-white hover:scale-105">
               Subscriu-m'hi
             </button>
