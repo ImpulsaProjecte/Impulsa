@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="ca">
-     </head>
-     <script async src="https://eu.umami.is/script.js" data-website-id="e586379d-7e4b-4d43-9d55-48cdffa8d0fe"></script>
 <head>
   <meta name="description" content="Contacta amb IMPULSA+. Estem aquí per escoltar-te. Omple el formulari o truca'ns per parlar de la teva idea o del teu futur professional.">
   <meta charset="UTF-8" />
@@ -60,8 +58,7 @@
     details summary::-webkit-details-marker { display: none; }
     details[open] summary .arrow-icon { transform: rotate(180deg); }
   </style>
-     <script async src="https://eu.umami.is/script.js" data-website-id="4821baa9-2f9c-40b6-b7e0-a8f620fa1063"></script>
-
+  <script async src="https://eu.umami.is/script.js" data-website-id="e586379d-7e4b-4d43-9d55-48cdffa8d0fe"></script>
 </head>
 <body class="min-h-screen text-white font-sans">
   
@@ -122,8 +119,12 @@
             class="bg-blau/20 backdrop-blur-md border border-blau/30 rounded-2xl shadow-2xl p-8 flex flex-col gap-6"
             aria-label="Formulari de contacte">
 
-          <input type="hidden" name="_next" value="https://www.impulsames.com/missatge-enviat.html" />
+            <!-- Configuració FormSubmit millorada -->
+            <input type="hidden" name="_next" value="https://www.impulsames.com/missatge-enviat.html" />
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_subject" value="Nou missatge des del web d'IMPULSA+" />
+            <input type="hidden" name="_autoresponse" value="Gràcies pel teu missatge! Ens posarem en contacte amb tu aviat." />
 
             <div>
               <label for="nom" class="font-medium text-gris mb-2 block">Nom *</label>
@@ -136,13 +137,18 @@
             </div>
 
             <div>
+              <label for="telefon" class="font-medium text-gris mb-2 block">Telèfon (opcional)</label>
+              <div class="relative"><span class="absolute inset-y-0 left-0 flex items-center pl-3"><i data-lucide="phone" class="w-5 h-5 text-gray-400"></i></span><input type="tel" id="telefon" name="telefon" class="w-full bg-futur/50 border border-blau/50 rounded-lg py-2.5 pl-10 pr-3 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all" placeholder="Escriu el teu telèfon" /></div>
+            </div>
+
+            <div>
               <label for="motiu" class="font-medium text-gris mb-2 block">Motiu de la consulta *</label>
               <div class="relative"><span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"><i data-lucide="message-circle-question" class="w-5 h-5 text-gray-400"></i></span><select id="motiu" name="motiu" required class="w-full appearance-none bg-futur/50 border border-blau/50 rounded-lg py-2.5 pl-10 pr-3 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all"><option value="" class="text-gray-500">Selecciona una opció</option><option value="informacio" class="text-black">Vull més informació</option><option value="inscripcio" class="text-black">Vull inscriure'm al programa</option><option value="colaboracio" class="text-black">Vull col·laborar amb el projecte</option><option value="altres" class="text-black">Altres</option></select></div>
             </div>
 
             <div>
-              <label for="missatge" class="font-medium text-gris mb-2 block">Missatge</label>
-              <textarea id="missatge" name="missatge" rows="4" class="w-full bg-futur/50 border border-blau/50 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all" placeholder="Escriu la teva consulta..."></textarea>
+              <label for="missatge" class="font-medium text-gris mb-2 block">Missatge *</label>
+              <textarea id="missatge" name="missatge" rows="4" required class="w-full bg-futur/50 border border-blau/50 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-taronja transition-all" placeholder="Escriu la teva consulta..."></textarea>
             </div>
 
             <button type="submit" class="w-full bg-taronja text-futur font-bold px-6 py-3 rounded-full mt-4 transition-all duration-300 transform hover:bg-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-taronja focus:ring-offset-2 focus:ring-offset-futur flex items-center justify-center gap-2">
