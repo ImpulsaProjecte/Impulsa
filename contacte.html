@@ -288,21 +288,6 @@
     // Activar Lucide Icons
     lucide.createIcons();
   </script>
-    <script>
-    document.getElementById('formulari').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = new FormData(this);
-      fetch(this.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(() => {
-        window.location.href = 'missatge-enviat.html';
-      }).catch(() => {
-        alert('Hi ha hagut un error en enviar el formulari.');
-      });
-    });
-    lucide.createIcons();
-  </script>
+  
 </body>
 </html>
